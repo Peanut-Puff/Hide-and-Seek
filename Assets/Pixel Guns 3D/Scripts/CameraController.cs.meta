@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e474bee46fd824c4da59811a89e416f4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241958
+  packageName: 'Pixel Guns 3D: Low Poly Guns'
+  packageVersion: 1.0.0
+  assetPath: Assets/Pixel Guns 3D/Scripts/CameraController.cs
+  uploadId: 613591
