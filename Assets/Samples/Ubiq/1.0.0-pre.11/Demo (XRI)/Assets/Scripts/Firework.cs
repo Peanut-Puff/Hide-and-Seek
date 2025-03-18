@@ -41,6 +41,23 @@ namespace Ubiq.Samples
 
             var grab = GetComponent<XRGrabInteractable>();
             grab.selectExited.AddListener(Interactable_SelectExited);
+            if (body == null)
+            {
+                body = GetComponent<Rigidbody>();
+                if (body == null)
+                {
+                    Debug.LogError("Rigidbody is missing on " + gameObject.name);
+                }
+            }
+
+            if (particles == null)
+            {
+                particles = GetComponent<ParticleSystem>();
+                if (particles == null)
+                {
+                    Debug.LogError("ParticleSystem is missing on " + gameObject.name);
+                }
+            }
         }
 
         private void Interactable_SelectExited(SelectExitEventArgs eventArgs)
@@ -82,6 +99,11 @@ namespace Ubiq.Samples
                 
                 if (Time.time > explodeTime)
                 {
+                    var spawner = NetworkSpawnManager.Find(this);
+                    if (spawner == null)
+                    {
+                        Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+                    }
                     NetworkSpawnManager.Find(this).Despawn(gameObject);
                     return;
                 }
