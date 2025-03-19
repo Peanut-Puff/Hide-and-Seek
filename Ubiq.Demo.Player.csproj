@@ -65,6 +65,7 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\JoinAllRoomClients.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\Firework.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\XRGunController.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\FireworksBox.cs" />
   </ItemGroup>
   <ItemGroup>
