@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\unityproject\\halloween\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|e:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|e:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|e:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\fireworksbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\fireworksbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{587690DC-DB5D-D722-F419-F4ECB7FD8091}|Ubiq.csproj|E:\\unityproject\\halloween\\library\\packagecache\\com.ucl.ubiq\\runtime\\spawning\\networkspawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
               "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFIAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T15:45:35.806Z",
               "IsPinned": true,
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Firework.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
@@ -88,8 +88,7 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
               "ViewState": "AgIAAF4AAAAAAAAAAAAuwJAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T00:51:16.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T00:51:16.386Z"
             },
             {
               "$type": "Document",
@@ -101,18 +100,17 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\FireworksBox.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAuwCgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T20:12:58.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T20:12:58.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "GunSpawner.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T00:15:27.149Z",
               "EditorCaption": ""

@@ -37,6 +37,7 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            body.isKinematic = true;
             context = NetworkScene.Register(this);
             var grab = GetComponent<XRGrabInteractable>();
             grab.selectExited.AddListener(Interactable_SelectExited);
@@ -62,6 +63,7 @@ namespace Ubiq.Samples
 
         private void Interactable_SelectExited(SelectExitEventArgs eventArgs)
         {
+            Debug.Log("fired: " + fired);
             //if (fired)
             //{
             //    return;
@@ -75,9 +77,15 @@ namespace Ubiq.Samples
             //    z: (Random.value - 0.5f) * 0.05f);
             //explodeTime = Time.time + 10.0f;
 
-            //// No longer interactable
-            //var interactable = (XRGrabInteractable)eventArgs.interactableObject;
-            //interactable.enabled = false;
+            // No longer interactable
+            var interactable = (XRGrabInteractable)eventArgs.interactableObject;
+            interactable.enabled = false;
+            var spawner = NetworkSpawnManager.Find(this);
+            if (spawner == null)
+            {
+                Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+            }
+            NetworkSpawnManager.Find(this).Despawn(gameObject);
         }
 
         private void FixedUpdate()
@@ -88,6 +96,7 @@ namespace Ubiq.Samples
             }
             if (owner && fired)
             {
+                Debug.Log("fired: " + fired);
                 body.isKinematic = false;
                 body.AddForce(flightForce, ForceMode.Force);
 

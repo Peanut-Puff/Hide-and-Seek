@@ -32,15 +32,15 @@ namespace Ubiq.Samples
             interactable = GetComponent<XRSimpleInteractable>();
             interactionManager = interactable.interactionManager;
 
-            interactable.selectEntered.AddListener(XRGrabInteractable_SelectEntered);
+            interactable.selectEntered.AddListener(Gun_XRGrabInteractable_SelectEntered);
         }
 
         private void OnDestroy()
         {
-            interactable.selectEntered.RemoveListener(XRGrabInteractable_SelectEntered);
+            interactable.selectEntered.RemoveListener(Gun_XRGrabInteractable_SelectEntered);
         }
 
-        private void XRGrabInteractable_SelectEntered(SelectEnterEventArgs eventArgs)
+        private void Gun_XRGrabInteractable_SelectEntered(SelectEnterEventArgs eventArgs)
         {
             var go = spawnManager.SpawnWithPeerScope(gunPrefeb);
             var firework = go.GetComponent<Gun>();

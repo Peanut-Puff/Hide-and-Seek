@@ -322,8 +322,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Generation\Processors\GraphCompilationResult.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Nodes\Math\Vector\RotateAboutAxisNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Interfaces\IHasCustomDeprecationMessage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Drawing\Manipulators\Draggable.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Graphs\PropertyConnectionStateMaterialSlot.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Drawing\Manipulators\Draggable.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Util\ShaderGraphRequirementsPerKeyword.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Graphs\Texture2DArrayShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Nodes\Channel\CombineNode.cs" />

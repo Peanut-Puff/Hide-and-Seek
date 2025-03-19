@@ -3,19 +3,23 @@
   "WorkspaceRootPath": "E:\\unityproject\\halloween\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|e:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\fireworksbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\fireworksbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|e:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{587690DC-DB5D-D722-F419-F4ECB7FD8091}|Ubiq.csproj|e:\\unityproject\\halloween\\library\\packagecache\\com.ucl.ubiq\\runtime\\spawning\\networkspawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|E:\\unityproject\\halloween\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8F9BB91-7835-83F3-C6A0-857DB7D215F6}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{587690DC-DB5D-D722-F419-F4ECB7FD8091}|Ubiq.csproj|E:\\unityproject\\halloween\\library\\packagecache\\com.ucl.ubiq\\runtime\\spawning\\networkspawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{587690DC-DB5D-D722-F419-F4ECB7FD8091}|Ubiq.csproj|solutionrelative:library\\packagecache\\com.ucl.ubiq\\runtime\\spawning\\networkspawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -58,33 +62,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NetworkSpawnManager.cs",
-              "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
-              "ToolTip": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
-              "RelativeToolTip": "Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
-              "ViewState": "AgIAAEEBAAAAAAAAAAAewHoBAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAFIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T12:32:50.754Z",
+              "WhenOpened": "2025-03-18T15:45:35.806Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Firework.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
               "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Firework.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAuwCEAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAuwJAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T00:51:16.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T00:51:16.386Z"
             },
             {
               "$type": "Document",
@@ -94,20 +98,20 @@
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\FireworksBox.cs",
               "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\FireworksBox.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\FireworksBox.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAuwCgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T20:12:58.533Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "GunSpawner.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "ToolTip": "E:\\unityproject\\halloween\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunSpawner.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAuwDMAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAD8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T00:15:27.149Z",
               "EditorCaption": ""
@@ -115,6 +119,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "NetworkSpawnManager.cs",
+              "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
+              "ToolTip": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.ucl.ubiq\\Runtime\\Spawning\\NetworkSpawnManager.cs",
+              "ViewState": "AgIAAEEBAAAAAAAAAAAewHoBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:32:50.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Shooter.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Assets\\- Scripts\\Shooter.cs",
               "RelativeDocumentMoniker": "Assets\\- Scripts\\Shooter.cs",
@@ -126,7 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "XRInteractionManager.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Interaction\\XRInteractionManager.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Interaction\\XRInteractionManager.cs",
@@ -138,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DesktopLookController.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRI\\DesktopLookController.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRI\\DesktopLookController.cs",
@@ -150,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "InputActionManager.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Inputs\\InputActionManager.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Inputs\\InputActionManager.cs",
@@ -162,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "HandSkeletonAvatarInputXRHands.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRHands\\HandSkeletonAvatarInputXRHands.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRHands\\HandSkeletonAvatarInputXRHands.cs",
@@ -174,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "HeadAndHandsAvatarInputXRI.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRI\\HeadAndHandsAvatarInputXRI.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq@708a532ddc8b\\Runtime\\Compatibility\\XRI\\HeadAndHandsAvatarInputXRI.cs",
@@ -186,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "XRSimpleInteractable.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Interaction\\Interactables\\XRSimpleInteractable.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Interaction\\Interactables\\XRSimpleInteractable.cs",
@@ -198,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "XRInputModalityManager.cs",
               "DocumentMoniker": "E:\\unityproject\\halloween\\Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Inputs\\XRInputModalityManager.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.xr.interaction.toolkit@3c62ab08b942\\Runtime\\Inputs\\XRInputModalityManager.cs",
