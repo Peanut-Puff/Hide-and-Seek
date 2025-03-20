@@ -72,6 +72,8 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"trigger"
+	"button"
 ]
 searchItemFavorites = [
 ]

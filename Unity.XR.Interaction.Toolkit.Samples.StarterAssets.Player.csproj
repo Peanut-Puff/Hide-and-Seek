@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Scripts\RotationAxisLockGrabTransformer.cs" />
     <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\DemoSceneAssets\Scripts\IncrementUIText.cs" />
+    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Scripts\MenuManage.cs" />
     <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Scripts\DynamicMoveProvider.cs" />
     <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Scripts\ControllerInputActionManager.cs" />
     <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Scripts\DestroySelf.cs" />

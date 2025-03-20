@@ -45,7 +45,8 @@ namespace Ubiq.Samples
             var go = spawnManager.SpawnWithPeerScope(gunPrefeb);
             var firework = go.GetComponent<Gun>();
             firework.transform.position = transform.position;
-            firework.owner = true;
+            firework.owner = true;            
+            firework.iscatched = true;
 
             if (!interactionManager)
             {
