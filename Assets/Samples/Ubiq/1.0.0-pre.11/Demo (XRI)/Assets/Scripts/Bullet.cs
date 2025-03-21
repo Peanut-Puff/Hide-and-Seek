@@ -6,6 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Ubiq.Spawning;
 using Ubiq.Geometry;
+using UnityEngine.InputSystem.Utilities;
+
 #if XRI_3_0_7_OR_NEWER
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -17,6 +19,7 @@ namespace Ubiq.Samples
 
     public class Bullet : MonoBehaviour, INetworkSpawnable
     {
+        public float force;
         public bool owner;
         public bool ishit = false;
         private NetworkContext context;
@@ -41,8 +44,21 @@ namespace Ubiq.Samples
                 ishit = true;
                 Debug.Log("you do hit on something");
             }
-            explodeTime = Time.time + 3.0f;
+            if(hitObject.name == "XR Origin Hands (XR Rig)")
+            {
+                Debug.Log("hit on avatar");
+                Rigidbody rb = hitObject.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    Debug.Log("fly back");
+                    Vector3 hitDirection = (hitObject.transform.position - transform.position).normalized;
+                    rb.AddForce(hitDirection * force, ForceMode.Impulse);
+                }
+            }
+
+            explodeTime = Time.time + 1.0f;
         }
+
         private void FixedUpdate()
         {
             SendMessage();
