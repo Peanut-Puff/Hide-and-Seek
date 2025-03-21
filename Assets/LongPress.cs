@@ -69,7 +69,7 @@ namespace Ubiq.Samples
                 if (selectTimer >= selectThreshold)
                 {
                     Debug.Log("Longpressed");
-
+                    FindObjectOfType<NetworkScoreboard>().AddScore("hider", 1);
                     isSelecting = false;
                     selectTimer = 0f;
 
