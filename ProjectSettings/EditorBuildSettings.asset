@@ -15,6 +15,7 @@ EditorBuildSettings:
     path: Assets/Samples/Ubiq/1.0.0-pre.11/Demo (XRI)/Demo.unity
     guid: 2de505d34345ab340bdde30d419b24eb
   m_configObjects:
+    WebXR.Settings: {fileID: 11400000, guid: 595f89ea2a4add84182e04ffb5dad045, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: bb92d1753a607cb4280b18a49dab3627, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b9203ead9b22d1741a6ab32366c137be, type: 2}
