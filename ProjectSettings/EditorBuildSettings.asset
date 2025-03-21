@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/polyperfect/Poly Halloween/- Demo Scenes/05 Graveyard.unity
     guid: 669716b1cdf60e943962eae184f2693e
   - enabled: 1
-    path: Assets/Samples/Ubiq/1.0.0-pre.11/Demo (XRI)/Demo.unity
+    path: Assets/Samples/Ubiq/1.0.0-pre.11/Demo (XRI)/halloween.unity
     guid: 2de505d34345ab340bdde30d419b24eb
   m_configObjects:
     WebXR.Settings: {fileID: 11400000, guid: 595f89ea2a4add84182e04ffb5dad045, type: 2}
