@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f0a99ff15bf4a7f4abc8aaeb3272cefe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241958
+  packageName: 'Pixel Guns 3D: Low Poly Guns'
+  packageVersion: 1.0.0
+  assetPath: Assets/Pixel Guns 3D/Scripts/GunRotationDemo.cs
+  uploadId: 613591

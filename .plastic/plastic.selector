@@ -1,0 +1,4 @@
+repository "halloween@tj_clothocanterville4@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
