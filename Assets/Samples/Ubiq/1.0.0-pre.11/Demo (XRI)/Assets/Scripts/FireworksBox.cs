@@ -46,7 +46,6 @@ namespace Ubiq.Samples
             var firework = go.GetComponent<Firework>();
             firework.transform.position = transform.position;
             firework.owner = true;
-
             
             if (!interactionManager)
             {
