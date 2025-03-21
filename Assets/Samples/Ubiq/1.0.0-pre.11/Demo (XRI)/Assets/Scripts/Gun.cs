@@ -17,8 +17,8 @@ namespace Ubiq.Samples
     {
         //network
         private NetworkSpawnManager spawnManager;
-
-
+        public float cooltime;
+        private float lastFireTime;
         //shooting part
         public GameObject bulletPrefab;
         public float bulletSpeed = 50f; // 
@@ -72,59 +72,34 @@ namespace Ubiq.Samples
 
         private void OnMyLeftButton_X_Action(InputAction.CallbackContext context)
         {
-            var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
-            var bullet = go.GetComponent<Bullet>();
-            bullet.transform.position = transform.position+ transform.forward * 0.6f;
-            bullet.owner = true;
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            Transform bulletTransform = bullet.GetComponent<Transform>();
-            bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
-
-            if (rb != null)
-            {
-                rb.linearVelocity = transform.forward * bulletSpeed;
-            }
-
-            //Fire();
+            Fire();
         }
         private void OnMyRightButton_X_Action(InputAction.CallbackContext context)
         {
-            var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
-            var bullet = go.GetComponent<Bullet>();
-            bullet.transform.position = transform.position+ transform.forward * 0.6f;
-            bullet.owner = true;
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            Transform bulletTransform = bullet.GetComponent<Transform>();
-            bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
-
-            if (rb != null)
-            {
-                rb.linearVelocity = transform.forward * bulletSpeed;
-            }
-
-            // Fire();
+            Fire();
         }
         private void Fire()
         {
-            if (transform == null)
+            if (Time.time - lastFireTime < cooltime) // cooling
             {
-                Debug.Log("over");
-            }
-            Quaternion bulletRotation = Quaternion.LookRotation(transform.forward);
-            Debug.Log("fired started");
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + transform.forward * 0.6f, bulletRotation);
-            if (bulletPrefab == null)
-            {
-                Debug.LogError("no bullet");
                 return;
             }
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (iscatched)
             {
-                rb.linearVelocity = transform.forward * bulletSpeed;
-            }
+                var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
+                var bullet = go.GetComponent<Bullet>();
+                bullet.transform.position = transform.position + transform.forward * 0.6f;
+                bullet.owner = true;
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                Transform bulletTransform = bullet.GetComponent<Transform>();
+                bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
 
-            //Destroy(bullet, 3f);
+                if (rb != null)
+                {
+                    rb.linearVelocity = transform.forward * bulletSpeed;
+                }
+                lastFireTime = Time.time;
+            }
         }
 
         static InputAction GetInputAction(InputActionReference actionReference)
@@ -173,18 +148,8 @@ namespace Ubiq.Samples
 
         private void OnSpacePressed(InputAction.CallbackContext context)
         {
-            var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
-            var bullet = go.GetComponent<Bullet>();
-            bullet.transform.position = transform.position + transform.forward * 0.6f;
-            bullet.owner = true;
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            Transform bulletTransform = bullet.GetComponent<Transform>();
-            bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
+            Fire();
 
-            if (rb != null)
-            {
-                rb.linearVelocity = transform.forward * bulletSpeed;
-            }
         }
 
         private void Interactable_SelectEntered(SelectEnterEventArgs eventArgs)

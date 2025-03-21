@@ -39,7 +39,7 @@ namespace Ubiq.Samples
             if (hitObjectTransform != null)
             {
                 ishit = true;
-                Debug.Log("you do hit on something");
+                Debug.Log("You hit: " + hitObject.name);
             }
             explodeTime = Time.time + 3.0f;
         }
