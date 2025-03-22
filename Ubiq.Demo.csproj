@@ -61,10 +61,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.34f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\AvatarRole.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\Shooting.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\NetworkScoreboard.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\GunSpawner.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\TeamAssigner.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\TexturedAvatar.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\Firework.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\LongPress.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\JoinAllRoomClients.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\TexturedAvatar1.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\XRGunController.cs" />
@@ -1097,6 +1102,10 @@
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{03E2D104-AF1D-FA71-98C7-4303E84AC49C}</Project>
       <Name>Unity.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{F52AF76B-FA84-87AE-01D7-FA9EBFE027C7}</Project>
+      <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{42096365-17BC-BC25-1195-A641C8EE624E}</Project>
