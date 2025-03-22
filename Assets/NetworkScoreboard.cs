@@ -12,9 +12,9 @@ public class NetworkScoreboard : MonoBehaviour
 
     private int hiderScore = 0;
     private int catcherScore = 0;
-    private float timeLeft = 300f;
+    private float timeLeft;
 
-    public bool isHost = true;
+    public bool isHost;
 
     private void Start()
     {
@@ -24,13 +24,26 @@ public class NetworkScoreboard : MonoBehaviour
 
     void Update()
     {
-        if (!isHost) return;
+        if (!enabled) return;
 
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0) timeLeft = 0;
 
         SendScore(); // host 同步分数
         UpdateDisplay();
+    }
+
+    public void StartScoring(float duration = 300f)
+    {
+        timeLeft = duration;
+        isHost = true;
+        enabled = true;
+    }
+
+    public void StopScoring()
+    {
+        isHost = false;
+        enabled = false;
     }
 
     private void SendScore()
