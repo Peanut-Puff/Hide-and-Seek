@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 1553132514509220987}
   - component: {fileID: 7412670257738839763}
   - component: {fileID: 3961145813237657137}
-  - component: {fileID: 6020743511753951263}
   - component: {fileID: 7878101271554926368}
   m_Layer: 0
-  m_Name: TriggerMy1
+  m_Name: TriggerMy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,19 +301,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6020743511753951263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7733055594138989950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c51cf2941b9744da6f77af7047e904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8772464220562224933, guid: 8dc18b64dc20e4548af4744b4961ec55, type: 3}
 --- !u!64 &7878101271554926368
 MeshCollider:
   m_ObjectHideFlags: 0
