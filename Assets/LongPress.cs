@@ -39,18 +39,14 @@ namespace Ubiq.Samples
 
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
-            Debug.Log("1111");
             isSelecting = true;
             selectTimer = 0f;
             currentInteractor = args.interactorObject as IXRSelectInteractor;
-            if (currentInteractor != null)
-                print("get!");
 
         }
 
         private void OnSelectExited(SelectExitEventArgs args)
         {
-            Debug.Log("2222");
             isSelecting = false;
             selectTimer = 0f;
             currentInteractor = null;
