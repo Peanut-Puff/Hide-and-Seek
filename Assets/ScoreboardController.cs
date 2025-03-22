@@ -16,12 +16,12 @@ public class ScoreboardController : MonoBehaviour
         gameTime -= Time.deltaTime;
         if (gameTime < 0f) gameTime = 0f;
 
-        // 格式化时间
+        // Formatting time
         int minutes = Mathf.FloorToInt(gameTime / 60f);
         int seconds = Mathf.FloorToInt(gameTime % 60f);
         timerText.text = $"Time Left: {minutes:00}:{seconds:00}";
 
-        // 显示分数
+        // show score
         hiderScoreText.text = $"Hider: {hiderScore}";
         catcherScoreText.text = $"Catcher: {catcherScore}";
     }
