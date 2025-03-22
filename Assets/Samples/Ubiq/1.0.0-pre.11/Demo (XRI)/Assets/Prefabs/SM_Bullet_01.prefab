@@ -57,7 +57,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -95,6 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d731ebfc6109e4a810fbc0a815ecb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 0
+  vibrationIntensity: 0.5
+  vibrationDuration: 0.2
+  knockbackForce: 3
+  knockbackDuration: 0.3
+  tiltAngle: 20
+  tiltDuration: 0.15
   owner: 0
   ishit: 0
 --- !u!1 &8155758887353419079

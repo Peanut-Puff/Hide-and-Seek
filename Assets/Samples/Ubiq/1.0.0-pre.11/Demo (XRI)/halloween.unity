@@ -5041,6 +5041,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_Radius
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 8181680437625569136, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -12434,7 +12438,6 @@ MonoBehaviour:
   hiderScoreText: {fileID: 16642825}
   catcherScoreText: {fileID: 1380098183}
   timerText: {fileID: 1283254356}
-  isHost: 1
 --- !u!4 &673680965
 Transform:
   m_ObjectHideFlags: 0
