@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections;
+using Ubiq.Messaging;
 
-public class GameManager : MonoBehaviour, INetworkComponent
+public class GameManager : MonoBehaviour
 {
     private XRSimpleInteractable startGameButton;
     public TeamAssigner teamAssigner;
