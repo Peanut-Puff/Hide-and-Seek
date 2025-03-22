@@ -1,4 +1,4 @@
-# Hide-and-Seek
+# Identity IV
 COMP0113 coursework
 
 ## Rule
