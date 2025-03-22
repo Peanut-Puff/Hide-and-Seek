@@ -80,8 +80,10 @@ public class NetworkScoreboard : MonoBehaviour
 
     public void AddScore(string team, int amount)
     {
+        Debug.Log("score");
         if (team == "hider") hiderScore += amount;
         else if (team == "catcher") catcherScore += amount;
+        UpdateDisplay();
     }
 
     private struct ScoreMessage
