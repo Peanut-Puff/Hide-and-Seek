@@ -46,8 +46,9 @@ public class AvatarMirror : MonoBehaviour
 
     private void Update()
     {
+
         UpdatePlane(out var scaleMultiplier, out var eulerMultiplier);
-        
+        Vector3 mirrorSize = _transform.localScale;
         // Get avatars
         for (int ai = 0; ai < avatarManager.transform.childCount; ai++)
         {
@@ -102,6 +103,37 @@ public class AvatarMirror : MonoBehaviour
                 toMirror.y = 0;
                 mat = Matrix4x4.Translate(toMirror*2) * mat;
                 
+                
+                // my
+                Vector3 mirroredPos = rendererTransform.position + toMirror * 2;
+                Vector3 localPos = _transform.InverseTransformPoint(mirroredPos);
+
+                bool outOfBounds = false;
+
+                switch (plane)
+                {
+                    case Plane.XY:
+                        if (Mathf.Abs(localPos.x) > mirrorSize.x * 100.5f ||
+                            Mathf.Abs(localPos.y) > mirrorSize.y * 100.5f)
+                        {
+                            outOfBounds = true;
+                        }
+                        break;
+                    case Plane.YZ:
+                        if (Mathf.Abs(localPos.y) > mirrorSize.y * 100.5f ||
+                            Mathf.Abs(localPos.z) > mirrorSize.z * 100.5f)
+                        {
+                            outOfBounds = true;
+                        }
+                        break;
+                }
+
+                if (outOfBounds)
+                {
+                    continue; 
+                }
+
+
                 // Account for inverted matrix causing inverted winding order by
                 // rendering back and front faces
                 if (!materials.TryGetValue(renderer.sharedMaterial,out var material))
