@@ -14,10 +14,10 @@ public class NetworkScoreboard : MonoBehaviour
     private int catcherScore = 0;
     private float timeLeft;
 
-    public bool isHost;
 
     private void Start()
     {
+        enabled = false;
         context = NetworkScene.Register(this);
         UpdateDisplay();
     }
@@ -29,42 +29,30 @@ public class NetworkScoreboard : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0) timeLeft = 0;
 
-        SendScore(); // host 同步分数
         UpdateDisplay();
     }
 
     public void StartScoring(float duration = 300f)
     {
+        hiderScore = 0;
+        catcherScore = 0;
         timeLeft = duration;
-        isHost = true;
         enabled = true;
+        UpdateDisplay();
     }
 
     public void StopScoring()
     {
-        isHost = false;
         enabled = false;
-    }
-
-    private void SendScore()
-    {
-        var message = new ScoreMessage
-        {
-            hider = hiderScore,
-            catcher = catcherScore,
-            time = timeLeft
-        };
-        context.SendJson(message);
     }
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
+        if (!enabled) return;
+        Debug.Log("receive score");
         var data = message.FromJson<ScoreMessage>();
-
-        hiderScore = data.hider;
-        catcherScore = data.catcher;
-        timeLeft = data.time;
-
+        if (data.team == "hider") hiderScore += data.amount;
+        else if (data.team == "catcher") catcherScore += data.amount;
         UpdateDisplay();
     }
 
@@ -80,16 +68,24 @@ public class NetworkScoreboard : MonoBehaviour
 
     public void AddScore(string team, int amount)
     {
+        if (!enabled) return;
         Debug.Log("score");
         if (team == "hider") hiderScore += amount;
         else if (team == "catcher") catcherScore += amount;
+
+        var scoreMessage = new ScoreMessage
+        {
+            team = team,
+            amount=amount
+        };
+        context.SendJson(scoreMessage);
+
         UpdateDisplay();
     }
 
     private struct ScoreMessage
     {
-        public int hider;
-        public int catcher;
-        public float time;
+        public string team;
+        public int amount;
     }
 }
