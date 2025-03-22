@@ -264,10 +264,10 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\XR\XRMirrorView.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Utilities\TileLayoutUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\PostProcessing\LensFlareCommonSRP.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Utilities\CoreUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\RenderGraph\RenderGraphUtilsBlit.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Common\ComponentSingleton.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Debugging\DebugShapes.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Utilities\CoreUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Common\RemoveRange.Extensions.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\Stripping\RenderPipelineGraphicsSettingsStripperFetcher.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core\Runtime\RenderGraph\Compiler\PassesData.cs" />

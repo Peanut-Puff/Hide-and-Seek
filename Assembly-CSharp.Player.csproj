@@ -68,7 +68,6 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\30_Avatars\_30_JoinOther.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Prefabs\ChangeShapeMy.cs" />
-    <Compile Include="Assets\LongPress.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\13_NetworkedBehaviours\_13_LocalCube.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_EnableButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -103,7 +102,6 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_JoinRoomClients.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\21_SpawningCatalogues\_21_Spawner.cs" />
-    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\avatar-example\ChangeCostume.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\12_Properties\_12_JoinRandomOnStart.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_AnimateSpin.cs" />
@@ -118,7 +116,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\11_MessagesAndPersistence\_11_JoinOther.cs" />
-    <Compile Include="Assets\AvatarRole.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\30_Avatars\_30_JoinRandom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -128,14 +125,12 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\12_Properties\_12_JoinOther.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\12_Properties\_12_JoinRandom.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_PriorityButton.cs" />
-    <Compile Include="Assets\NetworkScoreboard.cs" />
     <Compile Include="Assets\avatar-example\SimpleShapeAvatar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\TeamAssigner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Pixel Guns 3D\Scripts\GunRotationDemo.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />

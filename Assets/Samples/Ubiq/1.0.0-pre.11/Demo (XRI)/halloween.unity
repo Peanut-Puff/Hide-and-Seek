@@ -5043,7 +5043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_Radius
-      value: 0.9
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8181680437625569136, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_IsActive
@@ -12415,7 +12415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 673680965}
-  - component: {fileID: 673680964}
+  - component: {fileID: 673680966}
   m_Layer: 0
   m_Name: ScoreboardRoot
   m_TagString: Untagged
@@ -12423,21 +12423,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &673680964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673680963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22cd383edd23d42b78ec1e49e44a8741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hiderScoreText: {fileID: 16642825}
-  catcherScoreText: {fileID: 1380098183}
-  timerText: {fileID: 1283254356}
 --- !u!4 &673680965
 Transform:
   m_ObjectHideFlags: 0
@@ -12454,6 +12439,21 @@ Transform:
   - {fileID: 1068067945}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &673680966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673680963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9882bf80bfba39b47984cdcb0825ffa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiderScoreText: {fileID: 16642825}
+  catcherScoreText: {fileID: 1380098183}
+  timerText: {fileID: 1283254356}
 --- !u!1001 &677529182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17819,8 +17819,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969129757}
-  - component: {fileID: 969129756}
-  - component: {fileID: 969129755}
+  - component: {fileID: 969129759}
+  - component: {fileID: 969129758}
   m_Layer: 0
   m_Name: TeamManager
   m_TagString: Untagged
@@ -17828,31 +17828,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &969129755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969129754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b048e48bd7345e38b2ca973b8ede52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  role: 
---- !u!114 &969129756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969129754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5053e889317894fed8d48d250d5f72ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &969129757
 Transform:
   m_ObjectHideFlags: 0
@@ -17868,6 +17843,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969129758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969129754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abddc1fdc07409b42812b538ceadc0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &969129759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969129754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e090b97e12257224d91cc31289cbfef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 
 --- !u!1 &972858587
 GameObject:
   m_ObjectHideFlags: 0
@@ -25080,7 +25080,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350424563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef70a8c130494e2380657c25f2d9100, type: 3}
+  m_Script: {fileID: 11500000, guid: 64600956cc6d6144a9690f997c7ed207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireworkPrefab: {fileID: 4511263541971767917, guid: 87221b841a51c2840bc5648fa3be6dfe, type: 3}
@@ -34580,7 +34580,7 @@ PrefabInstance:
       addedObject: {fileID: 1973893431}
     - targetCorrespondingSourceObject: {fileID: 4922582553321831162, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1973893430}
+      addedObject: {fileID: 1973893434}
   m_SourcePrefab: {fileID: 100100000, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
 --- !u!1001 &1964694970
 PrefabInstance:
@@ -34801,21 +34801,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4922582553321831162, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
   m_PrefabInstance: {fileID: 1962801761}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1973893430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973893429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a7755bf9df3f4ea692733d410edde8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamAssigner: {fileID: 969129756}
-  networkScoreboard: {fileID: 673680964}
-  gameStarted: 0
 --- !u!82 &1973893431
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34924,6 +34909,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1973893434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973893429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41722b980c1358a41bb363430d8fbbca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isstart: 0
+  teamAssigner: {fileID: 969129758}
+  networkScoreboard: {fileID: 673680966}
+  gameStarted: 0
 --- !u!1001 &1974506596
 PrefabInstance:
   m_ObjectHideFlags: 0
