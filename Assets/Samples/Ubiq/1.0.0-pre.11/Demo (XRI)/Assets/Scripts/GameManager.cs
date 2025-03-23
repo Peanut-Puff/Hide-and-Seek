@@ -4,6 +4,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections;
 using Ubiq.Messaging;
 using Ubiq.Rooms;
+using Ubiq.Avatars;
+using System.Collections.Generic;
 
 namespace Ubiq.Samples
 {
