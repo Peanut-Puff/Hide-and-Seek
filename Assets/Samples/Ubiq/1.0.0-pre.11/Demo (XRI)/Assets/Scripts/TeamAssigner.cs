@@ -12,10 +12,17 @@ namespace Ubiq.Samples
         {
             context = NetworkScene.Register(this);
         }
+        [System.Serializable]
+        public struct PlayerRole
+        {
+            public string uuid;
+            public string role;
+        }
 
+        [System.Serializable]
         private struct TeamAssignmentMessage
         {
-            public IDictionary<string, string> roleDic;
+            public List<PlayerRole> assignments;
         }
 
         public void AssignTeams()
@@ -24,27 +31,37 @@ namespace Ubiq.Samples
             Shuffle(avatars);
 
             int numCatchers = Mathf.Max(1, avatars.Count / 4);
-            IDictionary<string, string> roleDic = new Dictionary<string, string>();
+            var assignments = new List<PlayerRole>();
             for (int i = 0; i < avatars.Count; i++)
             {
                 string role = (i < numCatchers) ? "catcher" : "hider";
-                var roleComp = avatars[i].GetComponent<Ubiq.Samples.AvatarRole>() ?? avatars[i].gameObject.AddComponent<Ubiq.Samples.AvatarRole>();
+                var roleComp = avatars[i].GetComponent<AvatarRole>() ?? avatars[i].gameObject.AddComponent<AvatarRole>();
                 roleComp.role = role;
-                roleDic.Add(avatars[i].Peer?.uuid,role);
+
+                assignments.Add(new PlayerRole
+                {
+                    uuid = avatars[i].Peer?.uuid,
+                    role = role
+                });
             }
-            context.SendJson(new TeamAssignmentMessage
-            {
-                roleDic=roleDic
-            });
+            context.SendJson(new TeamAssignmentMessage { assignments = assignments });
         }
 
         public void ProcessMessage(Ubiq.Messaging.ReferenceCountedSceneGraphMessage message)
         {
-            IDictionary<string, string> roleDic = message.FromJson<TeamAssignmentMessage>().roleDic;
+            var msg = message.FromJson<TeamAssignmentMessage>();
             var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            for (int i = 0; i < avatars.Count; i++){
-                var roleComp = avatars[i].GetComponent<Ubiq.Samples.AvatarRole>() ?? avatars[i].gameObject.AddComponent<Ubiq.Samples.AvatarRole>();
-                roleComp.role = roleDic[avatars[i].Peer?.uuid];
+            foreach (var assignment in msg.assignments)
+            {
+                foreach (var avatar in avatars)
+                {
+                    if (avatar.Peer?.uuid == assignment.uuid)
+                    {
+                        var roleComp = avatar.GetComponent<Ubiq.Samples.AvatarRole>() ?? avatar.gameObject.AddComponent<Ubiq.Samples.AvatarRole>();
+                        roleComp.role = assignment.role;
+                        break;
+                    }
+                }
             }
         }
 
