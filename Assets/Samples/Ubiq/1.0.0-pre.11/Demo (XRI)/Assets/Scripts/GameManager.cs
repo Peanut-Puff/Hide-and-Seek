@@ -7,13 +7,12 @@ using Ubiq.Messaging;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isstart;
     private XRSimpleInteractable startGameButton;
     public TeamAssigner teamAssigner;
     public Ubiq.Samples.NetworkScoreboard networkScoreboard;
     public bool gameStarted = false;
 
-    private float duration=300f;
+    private float duration=60f;
     private NetworkContext context;
 
     private struct GameStartMessage
@@ -51,6 +50,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         gameStarted=false;
         startGameButton.enabled = true;
+        networkScoreboard.StopScoring();
     }
 
     private void OnDestroy()
