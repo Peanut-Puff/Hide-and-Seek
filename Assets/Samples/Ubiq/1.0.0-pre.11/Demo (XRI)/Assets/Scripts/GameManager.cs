@@ -16,7 +16,7 @@ namespace Ubiq.Samples
         public GunSpawner gunSpawner;
         public bool gameStarted = false;
 
-        private float duration=300f;
+        private float duration = 300f;
         private NetworkContext context;
         public string myRole;
         private struct GameStartMessage
@@ -33,6 +33,9 @@ namespace Ubiq.Samples
 
         private void OnStartButtonPressed(SelectEnterEventArgs args)
         {
+            var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            if (avatars.Count < 4)
+                return;
             Debug.Log("Start");
             StartGame();
         }
@@ -60,7 +63,7 @@ namespace Ubiq.Samples
                     break;
                 }
             }
-            
+
         }
 
         private IEnumerator EnableGunPick()
@@ -73,7 +76,7 @@ namespace Ubiq.Samples
         {
             startGameButton.enabled = false;
             yield return new WaitForSeconds(duration);
-            gameStarted=false;
+            gameStarted = false;
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
             gunSpawner.disableGunPick();
