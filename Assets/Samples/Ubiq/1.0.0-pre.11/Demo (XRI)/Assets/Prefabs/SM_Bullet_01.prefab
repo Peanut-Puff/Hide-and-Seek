@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0
+  hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
   vibrationIntensity: 0.5
   vibrationDuration: 0.2
   knockbackForce: 3
