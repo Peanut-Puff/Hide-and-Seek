@@ -19,6 +19,8 @@ namespace Ubiq.Samples
 
     public class Bullet : MonoBehaviour, INetworkSpawnable
     {
+        public bool ishitanything;
+        public Vector3 hitonSpot;
         public float force;
         public AudioClip hitSound; // Õœ»Î“Ù–ß
 
@@ -54,17 +56,16 @@ namespace Ubiq.Samples
 
             if (hitObjectTransform != null)
             {
-                ishit = true;
-
+                ishitanything = true;
                 Debug.Log("you do hit on :"+ hitObject.name);
             }
             if (hitObject.name == "XR Origin Hands (XR Rig)")//(hitObject.name == "shell")
             {
+                ishit = true;
                 Debug.Log("hit on avatar");
-
                 CharacterController rb = hitObject.GetComponent<CharacterController>();
                 XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
-
+                hitonSpot = hitObject.transform.position;
                 if (hitSound != null)
                 {
                     AudioSource.PlayClipAtPoint(hitSound, hitObject.transform.position);
@@ -94,7 +95,7 @@ namespace Ubiq.Samples
                 }
             }
 
-            explodeTime = Time.time;
+            explodeTime = Time.time+7f;
         }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
@@ -188,8 +189,24 @@ namespace Ubiq.Samples
         private void FixedUpdate()
         {
             SendMessage();
-            if(ishit == true && Time.time > explodeTime)
+            if (ishitanything)
             {
+                GetComponent<MeshRenderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+                GetComponent<Rigidbody>().isKinematic = true;
+            }
+            if (ishit == true)
+            {
+                if (hitSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
+                }
+                ishit = false;
+            }
+
+            if (ishitanything == true && Time.time > explodeTime)
+            {
+                Debug.Log("destory");
                 var spawner = NetworkSpawnManager.Find(this);
                 if (spawner == null)
                 {
@@ -203,12 +220,14 @@ namespace Ubiq.Samples
         {
             public Pose pose;
             public bool ishit;
+            public Vector3 hitonSpot;
         }
         private void SendMessage()
         {
             var message = new Message();
             message.pose = Transforms.ToLocal(transform, context.Scene.transform);
             message.ishit = ishit;
+            message.hitonSpot = hitonSpot;
             context.SendJson(message);
         }
 
@@ -219,6 +238,7 @@ namespace Ubiq.Samples
             transform.position = pose.position;
             transform.rotation = pose.rotation;
             ishit = msg.ishit;
+            hitonSpot = msg.hitonSpot;
         }
 
     }
