@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Ubiq.Avatars;
 using Ubiq.Messaging;
 using Ubiq.Rooms;
+using Ubiq.Spawning;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -15,101 +19,123 @@ using Random = UnityEngine.Random;
 ///
 /// SimpleShapeAvatar has extensive comments, go have a look!
 /// </summary>
-public class ChangeShapeMy : MonoBehaviour
+namespace Ubiq.Samples
 {
-    public GameObject prefab;
-
-    private XRSimpleInteractable interactable;
-    private RoomClient roomClient;
-    private AvatarManager avatarManager;
-
-    private void Start()
+    public class ChangeShapeMy : MonoBehaviour
     {
-        // Connect up the event for the XRI button.
-        interactable = GetComponent<XRSimpleInteractable>();
-        interactable.selectEntered.AddListener(Interactable_SelectEntered);
+        public GameObject prefab;
+        public AudioClip ClickSound;
+        private AudioSource audioSource;
 
-        var networkScene = NetworkScene.Find(this);
-        roomClient = networkScene.GetComponentInChildren<RoomClient>();
-        avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
-    }
+        private XRSimpleInteractable interactable;
+        private RoomClient roomClient;
+        private AvatarManager avatarManager;
 
-    private void OnDestroy()
-    {
-        // Cleanup the event for the XRI button so it does not get called after
-        // we have been destroyed.
-        if (interactable)
+        private void Start()
         {
-            interactable.selectEntered.RemoveListener(Interactable_SelectEntered);
+            //AudioSource
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+
+
+            // Connect up the event for the XRI button.
+            interactable = GetComponent<XRSimpleInteractable>();
+            interactable.selectEntered.AddListener(Interactable_SelectEntered);
+
+            var networkScene = NetworkScene.Find(this);
+            roomClient = networkScene.GetComponentInChildren<RoomClient>();
+            avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
         }
-    }
 
-    private void Interactable_SelectEntered(SelectEnterEventArgs arg0)
-    {
-        // The button has been pressed.
-
-        // Change the local avatar prefab to the simple example prefab. The
-        // AvatarManager will do the work of letting other peers know about the
-        // prefab change.
-        avatarManager.avatarPrefab = prefab;
-
-        // Also, set the shape to a new, random one. We use a coroutine to
-        // wait one frame to allow the AvatarManager time to spawn the new
-        // prefab.
-        StartCoroutine(SetRandomShape());
-    }
-
-    // This is a coroutine. They can be used in Unity to spread work out over 
-    // multiple frames. They can be paused with a 'yield' instruction. When
-    // the yield ends, they will pick up again wherever they left off.
-    private IEnumerator SetRandomShape()
-    {
-        // We wait a few frames to allow the prefab to be spawned and to
-        // initialise itself.
-        yield return null;
-        yield return null;
-
-        while (true)
+        private void OnDestroy()
         {
-            if (!avatarManager)
+            // Cleanup the event for the XRI button so it does not get called after
+            // we have been destroyed.
+            if (interactable)
             {
-                // Yield break ends the coroutine.
-                yield break;
+                interactable.selectEntered.RemoveListener(Interactable_SelectEntered);
             }
+        }
 
-            var avatar = avatarManager.FindAvatar(roomClient.Me);
-            if (avatar)
+        private void Interactable_SelectEntered(SelectEnterEventArgs arg0)
+        {
+            // The button has been pressed.
+
+            // Change the local avatar prefab to the simple example prefab. The
+            // AvatarManager will do the work of letting other peers know about the
+            // prefab change.
+
+
+            // Also, set the shape to a new, random one. We use a coroutine to
+            // wait one frame to allow the AvatarManager time to spawn the new
+            // prefab.
+            var role = FindObjectOfType<AvatarRole>().role;
+            if (role != "catcher")
             {
-                var shapeAvatar = avatar.GetComponentInChildren<SimpleShapeAvatar>();
-                if (shapeAvatar)
+                // play the sound
+                if (ClickSound && audioSource)
                 {
-                    if (shapeAvatar.shapes.Length <= 1)
-                    {
-                        yield break;
-                    }
-
-
-                    // Set the random shape.
-                    var randomShape = shapeAvatar.shapes[
-                        Random.Range(0, shapeAvatar.shapes.Length)];
-                    while (randomShape == shapeAvatar.currentShape)
-                    {
-                        randomShape = shapeAvatar.shapes[
-                            Random.Range(0, shapeAvatar.shapes.Length)];
-                    }
-
-                    shapeAvatar.SetShape(randomShape);
-
-                    // End the coroutine.
-                    yield break;
+                    audioSource.PlayOneShot(ClickSound);
                 }
-            }
 
-            // Yield return null pauses the coroutine until the next frame. We
-            // wait a few frames to allow the prefab to be spawned and to
+
+                avatarManager.avatarPrefab = prefab;
+                StartCoroutine(SetRandomShape());
+            }
+        }
+
+        // This is a coroutine. They can be used in Unity to spread work out over 
+        // multiple frames. They can be paused with a 'yield' instruction. When
+        // the yield ends, they will pick up again wherever they left off.
+        private IEnumerator SetRandomShape()
+        {
+            // We wait a few frames to allow the prefab to be spawned and to
             // initialise itself.
             yield return null;
             yield return null;
+
+            while (true)
+            {
+                if (!avatarManager)
+                {
+                    // Yield break ends the coroutine.
+                    yield break;
+                }
+
+                var avatar = avatarManager.FindAvatar(roomClient.Me);
+                if (avatar)
+                {
+                    var shapeAvatar = avatar.GetComponentInChildren<SimpleShapeAvatar>();
+                    if (shapeAvatar)
+                    {
+                        if (shapeAvatar.shapes.Length <= 1)
+                        {
+                            yield break;
+                        }
+
+
+                        // Set the random shape.
+                        var randomShape = shapeAvatar.shapes[
+                            Random.Range(0, shapeAvatar.shapes.Length)];
+                        while (randomShape == shapeAvatar.currentShape)
+                        {
+                            randomShape = shapeAvatar.shapes[
+                                Random.Range(0, shapeAvatar.shapes.Length)];
+                        }
+
+                        shapeAvatar.SetShape(randomShape);
+
+                        // End the coroutine.
+                        yield break;
+                    }
+                }
+
+                // Yield return null pauses the coroutine until the next frame. We
+                // wait a few frames to allow the prefab to be spawned and to
+                // initialise itself.
+                yield return null;
+                yield return null;
+            }
         }
     }
 }
