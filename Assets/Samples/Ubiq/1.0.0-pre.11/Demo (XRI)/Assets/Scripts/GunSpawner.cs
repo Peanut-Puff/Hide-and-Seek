@@ -42,7 +42,7 @@ namespace Ubiq.Samples
 
         private void Gun_XRGrabInteractable_SelectEntered(SelectEnterEventArgs eventArgs)
         {
-            var role=FindObjectOfType<AvatarRole>().role;
+            var role=FindObjectOfType<GameManager>().myRole;
             if (role=="hider"){
                 return;
             }
