@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections;
 using Ubiq.Messaging;
-
+using Ubiq.Rooms;
 namespace Ubiq.Samples
 {
     public class GameManager : MonoBehaviour
@@ -43,11 +43,17 @@ namespace Ubiq.Samples
             teamAssigner.AssignTeams();
             networkScoreboard.StartScoring(duration);
             context.SendJson(new GameStartMessage { duration = duration });
-            var role=FindObjectOfType<AvatarRole>().role;
-            if (role=="catcher")
-                Debug.Log("catcher");
-            else
-                Debug.Log("hider");
+            var myUuid = RoomClient.Find(this).Me.uuid;
+            var avatars = FindObjectsOfType<Ubiq.Avatars.Avatar>();
+            foreach (var avatar in avatars)
+            {
+                if (avatar.Peer?.uuid == myUuid)
+                {
+                    var roleComp = avatar.GetComponent<AvatarRole>();
+                    Debug.Log($"I am {roleComp.role}");
+                    break;
+                }
+            }
         }
 
         private IEnumerator DisableButtonTemporarily()
