@@ -56,6 +56,10 @@ namespace Ubiq.Samples
 
         private void Update()
         {
+            var role=FindObjectOfType<AvatarRole>().role;
+            if (role=="catcher"){
+                Debug.Log("catcher cannot fix machine");
+            }
             if (currentInteractor != null)
             {
                 var interactorTransform = (currentInteractor as MonoBehaviour)?.transform;
