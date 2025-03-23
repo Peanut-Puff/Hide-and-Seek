@@ -36,7 +36,7 @@ namespace Ubiq.Samples
         private void OnStartButtonPressed(SelectEnterEventArgs args)
         {
             var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            if (avatars.Count < 4)
+            if (avatars.Count > 4)
                 return;
             Debug.Log("Start");
             StartGame();
