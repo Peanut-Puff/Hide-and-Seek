@@ -59,6 +59,7 @@ namespace Ubiq.Samples
             var role=FindObjectOfType<AvatarRole>().role;
             if (role=="catcher"){
                 Debug.Log("catcher cannot fix machine");
+                return;
             }
             if (currentInteractor != null)
             {
