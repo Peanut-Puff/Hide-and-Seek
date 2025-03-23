@@ -13,6 +13,7 @@ namespace Ubiq.Samples
     {
         public GameObject fireworkPrefab;
         public UnityEngine.UI.Image holdProgressImage;
+        public float maxInteractionDistance = 2f;
         private float selectTimer = 0f;
         private float selectThreshold = 2f;
         private bool isSelecting = false;
@@ -39,18 +40,15 @@ namespace Ubiq.Samples
 
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
-            Debug.Log("1111");
+            Debug.Log("select");
             isSelecting = true;
             selectTimer = 0f;
             currentInteractor = args.interactorObject as IXRSelectInteractor;
-            if (currentInteractor != null)
-                print("get!");
-
         }
 
         private void OnSelectExited(SelectExitEventArgs args)
         {
-            Debug.Log("2222");
+            Debug.Log("select exit");
             isSelecting = false;
             selectTimer = 0f;
             currentInteractor = null;
@@ -58,6 +56,22 @@ namespace Ubiq.Samples
 
         private void Update()
         {
+            if (currentInteractor != null)
+            {
+                var interactorTransform = (currentInteractor as MonoBehaviour)?.transform;
+                if (interactorTransform != null)
+                {
+                    float distance = Vector3.Distance(interactorTransform.position, transform.position);
+                    if (distance > maxInteractionDistance)
+                    {
+                        isSelecting = false;
+                        selectTimer = 0f;
+                        holdProgressImage.fillAmount = 0f;
+                        return;
+                    }
+                    Debug.Log("close");
+                }
+            }
             if (isSelecting)
             {
                 selectTimer += Time.deltaTime;
