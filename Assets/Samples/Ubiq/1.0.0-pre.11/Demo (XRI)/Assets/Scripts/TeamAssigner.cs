@@ -37,6 +37,7 @@ namespace Ubiq.Samples
                     avatarId = avatars[i].Peer?.uuid,
                     role = role
                 });
+                Debug.Log($"id:{avatars[i].Peer?.uuid},role:{role}");
             }
         }
 
@@ -45,6 +46,7 @@ namespace Ubiq.Samples
             var msg = message.FromJson<TeamAssignmentMessage>();
             foreach (var avatar in FindObjectsOfType<Ubiq.Avatars.Avatar>())
             {
+                Debug.Log($"msgid:{msg.avatarId},msgrole:{msg.role},avatarid;{avatar.Peer?.uuid}");
                 if (avatar.Peer?.uuid == msg.avatarId)
                 {
                     var roleComp = avatar.GetComponent<Ubiq.Samples.AvatarRole>() ?? avatar.gameObject.AddComponent<Ubiq.Samples.AvatarRole>();
