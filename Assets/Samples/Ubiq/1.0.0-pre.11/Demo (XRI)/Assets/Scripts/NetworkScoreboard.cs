@@ -52,10 +52,17 @@ namespace Ubiq.Samples
             enabled = true;
             UpdateDisplay();
         }
-
+        private void FinalDisplay()
+        {
+            var team = "Catcher";
+            if (hiderScore>catcherScore) 
+                team="Hider";
+            timerText.text = $"{team} Team Wins!";
+        }
         public void StopScoring()
         {
             enabled = false;
+            FinalDisplay();
         }
 
         public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
