@@ -11,6 +11,7 @@ namespace Ubiq.Samples
     {
         private XRSimpleInteractable startGameButton;
         public TeamAssigner teamAssigner;
+        public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
         public bool gameStarted = false;
@@ -44,6 +45,7 @@ namespace Ubiq.Samples
             StartCoroutine(DisableButtonTemporarily());
             StartCoroutine(EnableGunPick());
             teamAssigner.AssignTeams();
+            showname.StartLink();
             networkScoreboard.StartScoring(duration);
             context.SendJson(new GameStartMessage { duration = duration });
             var myUuid = RoomClient.Find(this).Me.uuid;

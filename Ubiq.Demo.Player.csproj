@@ -66,7 +66,6 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\NetworkScoreboard.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\showName.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\showNamePanel.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\GunSpawner.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\TeamAssigner.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\TexturedAvatar.cs" />

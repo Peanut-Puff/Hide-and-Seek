@@ -20,8 +20,9 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            nameText.text = "waiting for start";
             context = NetworkScene.Register(this);
-            avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            avatars = new List<Avatars.Avatar>(FindObjectsOfType<Avatars.Avatar>());
             if (avatars != null || avatars.Count == 0)
             {
                 Debug.Log("avatars 是一个空列表，但不是 null");
