@@ -42,6 +42,10 @@ namespace Ubiq.Samples
 
         private void Gun_XRGrabInteractable_SelectEntered(SelectEnterEventArgs eventArgs)
         {
+            var role=FindObjectOfType<AvatarRole>().role;
+            if (role=="hider"){
+                return;
+            }
             var go = spawnManager.SpawnWithPeerScope(gunPrefeb);
             var firework = go.GetComponent<Gun>();
             firework.transform.position = transform.position;
