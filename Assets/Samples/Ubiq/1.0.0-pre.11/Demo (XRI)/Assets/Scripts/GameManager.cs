@@ -73,6 +73,11 @@ namespace Ubiq.Samples
                 StartCoroutine(DisableButtonTemporarily());
                 // teamAssigner.AssignTeams();
                 networkScoreboard.StartScoring(msg.duration);
+                var role=FindObjectOfType<AvatarRole>().role;
+                if (role=="catcher")
+                    Debug.Log("catcher");
+                else
+                    Debug.Log("hider");
             }
         }
     }
