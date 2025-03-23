@@ -37,7 +37,7 @@ namespace Ubiq.Samples
                 string role = (i < numCatchers) ? "catcher" : "hider";
                 var roleComp = avatars[i].GetComponent<AvatarRole>() ?? avatars[i].gameObject.AddComponent<AvatarRole>();
                 roleComp.role = role;
-
+                Debug.Log($"id:{avatars[i].Peer?.uuid},role:{role}");
                 assignments.Add(new PlayerRole
                 {
                     uuid = avatars[i].Peer?.uuid,
@@ -59,6 +59,7 @@ namespace Ubiq.Samples
                     {
                         var roleComp = avatar.GetComponent<Ubiq.Samples.AvatarRole>() ?? avatar.gameObject.AddComponent<Ubiq.Samples.AvatarRole>();
                         roleComp.role = assignment.role;
+                        Debug.Log($"id:{avatar.Peer?.uuid},role:{assignment.role}");
                         break;
                     }
                 }
