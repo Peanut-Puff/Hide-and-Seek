@@ -71,7 +71,7 @@ namespace Ubiq.Samples
                 }
 
                 //FindFirstObjectByType<NetworkScoreboard>().AddScore("hider", 1);
-                //FindFirstObjectByType<NetworkScoreboard>().AddScore("catcher", 1);
+                FindFirstObjectByType<NetworkScoreboard>().AddScore("catcher", 1);
                 if (controllers.Length > 0)
                 {
                     foreach (XRDirectInteractor controller in controllers)
