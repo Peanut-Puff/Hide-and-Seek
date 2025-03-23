@@ -24,12 +24,16 @@ namespace Ubiq.Samples
     public class ChangeShapeMy : MonoBehaviour
     {
         public GameObject prefab;
+        public float maxInteractionDistance = 2f;
         public AudioClip ClickSound;
         private AudioSource audioSource;
 
         private XRSimpleInteractable interactable;
         private RoomClient roomClient;
         private AvatarManager avatarManager;
+        private IXRSelectInteractor currentInteractor;
+
+
 
         private void Start()
         {
@@ -69,9 +73,22 @@ namespace Ubiq.Samples
             // Also, set the shape to a new, random one. We use a coroutine to
             // wait one frame to allow the AvatarManager time to spawn the new
             // prefab.
-            var role = FindObjectOfType<AvatarRole>().role;
+            var role = FindObjectOfType<GameManager>().myRole;
             if (role != "catcher")
             {
+                currentInteractor = arg0.interactorObject;
+                var interactorTransform = (currentInteractor as MonoBehaviour)?.transform;
+
+                if (interactorTransform != null)
+                {
+                    float distance = Vector3.Distance(interactorTransform.position, transform.position);
+                    if (distance > maxInteractionDistance)
+                    {
+                        Debug.Log("Too far to interact.");
+                        return;
+                    }
+                }
+
                 // play the sound
                 if (ClickSound && audioSource)
                 {

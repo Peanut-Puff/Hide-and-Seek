@@ -49,7 +49,7 @@ namespace Ubiq.Samples
         private void Update()
         {
 
-            var role = FindObjectOfType<AvatarRole>().role;
+            var role = FindObjectOfType<GameManager>().myRole;
             if (role == "catcher")
             {
                 return;
