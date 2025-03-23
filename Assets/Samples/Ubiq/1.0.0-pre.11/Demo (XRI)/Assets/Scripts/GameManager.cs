@@ -11,7 +11,8 @@ namespace Ubiq.Samples
     {
         private XRSimpleInteractable startGameButton;
         public TeamAssigner teamAssigner;
-        public Ubiq.Samples.NetworkScoreboard networkScoreboard;
+        public NetworkScoreboard networkScoreboard;
+        public GunSpawner gunSpawner;
         public bool gameStarted = false;
 
         private float duration=300f;
@@ -41,6 +42,7 @@ namespace Ubiq.Samples
 
             gameStarted = true;
             StartCoroutine(DisableButtonTemporarily());
+            StartCoroutine(EnableGunPick());
             teamAssigner.AssignTeams();
             networkScoreboard.StartScoring(duration);
             context.SendJson(new GameStartMessage { duration = duration });
@@ -59,6 +61,12 @@ namespace Ubiq.Samples
             
         }
 
+        private IEnumerator EnableGunPick()
+        {
+            yield return new WaitForSeconds(20f);
+            gunSpawner.enableGunPick();
+        }
+
         private IEnumerator DisableButtonTemporarily()
         {
             startGameButton.enabled = false;
@@ -66,6 +74,7 @@ namespace Ubiq.Samples
             gameStarted=false;
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
+            gunSpawner.disableGunPick();
         }
 
         private void OnDestroy()
@@ -80,6 +89,7 @@ namespace Ubiq.Samples
             {
                 gameStarted = true;
                 StartCoroutine(DisableButtonTemporarily());
+                StartCoroutine(EnableGunPick());
                 // teamAssigner.AssignTeams();
                 networkScoreboard.StartScoring(msg.duration);
                 var myUuid = RoomClient.Find(this).Me.uuid;

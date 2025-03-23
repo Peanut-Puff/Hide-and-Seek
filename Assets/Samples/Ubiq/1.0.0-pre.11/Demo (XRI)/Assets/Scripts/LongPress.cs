@@ -15,15 +15,16 @@ namespace Ubiq.Samples
         public UnityEngine.UI.Image holdProgressImage;
         public float maxInteractionDistance = 2f;
         private float selectTimer = 0f;
-        private float selectThreshold = 2f;
+        private float selectThreshold = 10f;
         private bool isSelecting = false;
         private NetworkSpawnManager spawnManager;
         private IXRSelectInteractor currentInteractor;
         private XRSimpleInteractable interactable;
         private XRInteractionManager interactionManager;
-
+        public GameManager gameManager;
         private void Start()
         {
+            holdProgressImage.fillAmount=0;
             spawnManager = NetworkSpawnManager.Find(this);
             interactable = GetComponent<XRSimpleInteractable>();
             interactionManager = interactable.interactionManager;
@@ -40,22 +41,28 @@ namespace Ubiq.Samples
 
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
+            if(!gameManager.gameStarted)
+                return;
             Debug.Log("select");
             isSelecting = true;
-            selectTimer = 0f;
+            // selectTimer = 0f;
             currentInteractor = args.interactorObject as IXRSelectInteractor;
         }
 
         private void OnSelectExited(SelectExitEventArgs args)
         {
+            if(!gameManager.gameStarted)
+                return;
             Debug.Log("select exit");
             isSelecting = false;
-            selectTimer = 0f;
+            // selectTimer = 0f;
             currentInteractor = null;
         }
 
         private void Update()
         {
+            if(!gameManager.gameStarted)
+                return;
             var role=FindObjectOfType<GameManager>().myRole;
             if (role=="catcher"){
                 return;
@@ -69,8 +76,8 @@ namespace Ubiq.Samples
                     if (distance > maxInteractionDistance)
                     {
                         isSelecting = false;
-                        selectTimer = 0f;
-                        holdProgressImage.fillAmount = 0f;
+                        // selectTimer = 0f;
+                        // holdProgressImage.fillAmount = 0f;
                         return;
                     }
                     Debug.Log("close");
@@ -111,13 +118,13 @@ namespace Ubiq.Samples
                     }
                 }
             }
-            else
-            {
-                if (holdProgressImage != null)
-                {
-                    holdProgressImage.fillAmount = 0f;
-                }
-            }
+            // else
+            // {
+            //     if (holdProgressImage != null)
+            //     {
+            //         holdProgressImage.fillAmount = 0f;
+            //     }
+            // }
         }
     }
 }
