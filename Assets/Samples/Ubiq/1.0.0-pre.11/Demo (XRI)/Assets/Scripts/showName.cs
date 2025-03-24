@@ -37,7 +37,7 @@ namespace Ubiq.Samples
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             foreach (var avatar in avatars)
             {
-                Debug.Log(avatar.Peer); // Êä³öÃ¿¸ö Avatar µÄÃû×Ö
+                Debug.Log(avatar.Peer); // ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ Avatar ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             }
 
             foreach (var avatar in avatars)
@@ -51,14 +51,22 @@ namespace Ubiq.Samples
             {
                 foreach (var avatar in avatars)
                 {
-                    if (avatar != null) // ·ÀÖ¹ NullReferenceException
+                    if (avatar != null) // ï¿½ï¿½Ö¹ NullReferenceException
                     {
                         avatar.OnPeerUpdated.RemoveListener(Avatar_OnPeerUpdated);
                     }
                 }
             }
         }
+        public void ResetNameBoard()
+        {
+            nameTexts[0].text = "waiting for start";
+            for (int i =1; i < nameTexts.Count; i++)
+            {
 
+                nameTexts[i].gameObject.SetActive(false);
+            }
+        }
         private void Avatar_OnPeerUpdated(IPeer peer)
         {
             UpdateName();

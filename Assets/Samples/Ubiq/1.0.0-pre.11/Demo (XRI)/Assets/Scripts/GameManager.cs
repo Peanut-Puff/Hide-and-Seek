@@ -112,6 +112,7 @@ namespace Ubiq.Samples
         private void DisableAll()
         {
             gameStarted = false;
+            showname.ResetNameBoard();
             startGameButton.enabled = true;
             gunSpawner.enabled = false;
             laserGunSpawner.enabled = false;
