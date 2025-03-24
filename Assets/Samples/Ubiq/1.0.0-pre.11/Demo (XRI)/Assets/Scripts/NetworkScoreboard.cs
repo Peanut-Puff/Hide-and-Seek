@@ -68,7 +68,6 @@ namespace Ubiq.Samples
 
         public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
         {
-            if (!enabled) return;
             Debug.Log("receive score");
             var data = message.FromJson<ScoreMessage>();
             if (data.team == "hider") hiderScore += data.amount;
@@ -88,7 +87,6 @@ namespace Ubiq.Samples
 
         public void AddScore(string team, int amount)
         {
-            if (!enabled) {Debug.Log("score not enabled");}
             Debug.Log("score");
             if (team == "hider") hiderScore += amount;
             else if (team == "catcher") catcherScore += amount;
