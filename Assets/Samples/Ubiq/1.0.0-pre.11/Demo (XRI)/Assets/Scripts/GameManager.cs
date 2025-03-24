@@ -5,8 +5,6 @@ using System.Collections;
 using Ubiq.Messaging;
 using Ubiq.Rooms;
 using Ubiq.Avatars;
-using Ubiq.Spawning;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Ubiq.Samples
@@ -19,7 +17,6 @@ namespace Ubiq.Samples
         public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
-        public GetPosition AvatrPositionEnd;
         public LaserGunSpawner laserGunSpawner;
         public LongPress fixMachine1;
         public LongPress fixMachine2;
@@ -27,16 +24,6 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        private float duration = 23f;
-        private NetworkContext context;
-        public string myRole;
-        
-        //
-        private AvatarManager avatarManager;
-        public GameObject PrefabOrigin;
-
-
-        private struct GameStartMessage
         public float gameDuration;
         public float waitTime;
         private NetworkContext context;
@@ -47,15 +34,14 @@ namespace Ubiq.Samples
             public float duration;
         }
 
+
+        public GetPosition AvatrPositionEnd;
+        private AvatarManager avatarManager;
+        public GameObject PrefabOrigin;
+
         private void Start()
         {
             context = NetworkScene.Register(this);
-            startGameButton = GetComponent<XRSimpleInteractable>();
-            startGameButton.selectEntered.AddListener(OnStartButtonPressed);
-
-            //
-            var networkScene = NetworkScene.Find(this);
-            avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
 
             var interactables = GetComponentsInChildren<XRSimpleInteractable>();
             foreach (var interactable in interactables)
@@ -71,6 +57,9 @@ namespace Ubiq.Samples
                     resetGameButton.selectEntered.AddListener(OnResetButtonPressed);
                 }
             }
+            var networkScene = NetworkScene.Find(this);
+            avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
+
         }
 
         private void OnStartButtonPressed(SelectEnterEventArgs args)
@@ -131,24 +120,21 @@ namespace Ubiq.Samples
         private void DisableAll()
         {
             gameStarted = false;
+            
 
-            //AvatrPositionEnd.targetPosition = transform.position;
-            //Vector3 mm = AvatrPositionEnd.targetPosition
-            //Vector3 NowPosition = AvatrPositionEnd.getTargetPosition();
-            //(0,0,-2.25)
+            showname.ResetNameBoard();
+            startGameButton.enabled = true;
 
             AvatrPositionEnd.transform.position = new Vector3(0f, 0f, -2.25f);
             avatarManager.avatarPrefab = PrefabOrigin;
 
-
-            showname.ResetNameBoard();
-            startGameButton.enabled = true;
             gunSpawner.enabled = false;
             laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
             fixMachine4.enabled = false;
+            
 
         }
         private IEnumerator DisableButtonTemporarily()
