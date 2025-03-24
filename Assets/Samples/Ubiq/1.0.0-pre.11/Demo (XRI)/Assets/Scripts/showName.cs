@@ -14,12 +14,10 @@ namespace Ubiq.Samples
 {
     public class ShowName : MonoBehaviour
     {
-        private NetworkContext context;
         public List<TextMeshProUGUI> nameTexts;
         private List<Ubiq.Avatars.Avatar> avatars;
         public GameObject nameTextPrefab;
         public Transform namePanel;  
-        private Dictionary<string, GameObject> nameObjects = new Dictionary<string, GameObject>(); 
 
         private void Start()
         {
@@ -29,32 +27,14 @@ namespace Ubiq.Samples
 
                 nameTexts[i].gameObject.SetActive(false);
             }
-            context = NetworkScene.Register(this);
-
         }
         public void StartLink()
         {
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             UpdateName();
 
-            //foreach (var avatar in avatars)
-            //{
-            //    avatar.OnPeerUpdated.AddListener(Avatar_OnPeerUpdated);
-            //}
         }
-        private void OnDestroy()
-        {
-            //if (avatars != null)
-            //{
-            //    foreach (var avatar in avatars)
-            //    {
-            //        if (avatar != null) // ��ֹ NullReferenceException
-            //        {
-            //            avatar.OnPeerUpdated.RemoveListener(Avatar_OnPeerUpdated);
-            //        }
-            //    }
-            //}
-        }
+
         public void ResetNameBoard()
         {
             nameTexts[0].text = "waiting for start";
@@ -64,10 +44,6 @@ namespace Ubiq.Samples
                 nameTexts[i].gameObject.SetActive(false);
             }
         }
-        //private void Avatar_OnPeerUpdated(IPeer peer)
-        //{
-        //    UpdateName();
-        //}
 
         private void UpdateName()
         {
@@ -113,12 +89,6 @@ namespace Ubiq.Samples
             {
                 nameTexts[i].gameObject.SetActive(false);
             }
-        }
-
-        public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
-        {
-            if (!enabled) return;
-            //UpdateName();
         }
     }
 }
