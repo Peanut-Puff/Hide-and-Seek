@@ -77,6 +77,7 @@ namespace Ubiq.Samples
 
         private void UpdateDisplay()
         {
+            if (!enabled) return;
             hiderScoreText.text = $"Hider\n{hiderScore}";
             catcherScoreText.text = $"Catcher\n{catcherScore}";
 
