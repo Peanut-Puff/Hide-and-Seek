@@ -102,6 +102,7 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_JoinRoomClients.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\21_SpawningCatalogues\_21_Spawner.cs" />
+    <Compile Include="Assets\DoorRotate.cs" />
     <Compile Include="Assets\avatar-example\ChangeCostume.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\12_Properties\_12_JoinRandomOnStart.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_AnimateSpin.cs" />

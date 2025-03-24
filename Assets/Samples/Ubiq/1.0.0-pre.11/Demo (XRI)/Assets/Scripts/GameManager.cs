@@ -16,6 +16,7 @@ namespace Ubiq.Samples
         public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
+        public LaserGunSpawner laserGunSpawner;
         public LongPress fixMachine1;
         public LongPress fixMachine2;
         public LongPress fixMachine3;
@@ -84,6 +85,7 @@ namespace Ubiq.Samples
         {
             yield return new WaitForSeconds(20f);
             gunSpawner.enabled = true;
+            laserGunSpawner.enabled = true;
         }
 
         private IEnumerator DisableButtonTemporarily()
@@ -94,6 +96,7 @@ namespace Ubiq.Samples
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
             gunSpawner.enabled = false;
+            laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
