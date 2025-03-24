@@ -6,6 +6,8 @@ using Ubiq.Messaging;
 using Ubiq.Spawning;
 using Ubiq.Geometry;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
+
 #if XRI_3_0_7_OR_NEWER
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -20,6 +22,7 @@ namespace Ubiq.Samples
         public float cooltime;
         private float lastFireTime;
         //shooting part
+        Vector3 laserEnd;
         public bool isfiring;
         public Vector3 firePoint;
         public GameObject laserBeam; 
@@ -122,7 +125,7 @@ namespace Ubiq.Samples
             while (Time.time < startTime + laserDuration)
             {
                 // ned point of ray
-                Vector3 laserEnd = transform.position + transform.forward * laserRange;
+                laserEnd = transform.position + transform.forward * laserRange;
                 firePoint = transform.position;// + transform.forward * 0.6f;
                                                //laserLine.SetPosition(0, firePoint);
                 laserBeam.transform.position = (firePoint + laserEnd) / 2; 
@@ -298,8 +301,8 @@ namespace Ubiq.Samples
         {
             if (isfiring) //
             {
-                Vector3 firePoint = transform.position;// + transform.forward * 0.6f;
-                Vector3 laserEnd = firePoint + transform.forward * laserRange;
+                firePoint = transform.position;// + transform.forward * 0.6f;
+                laserEnd = firePoint + transform.forward * laserRange;
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
                 laserBeam.transform.position = (firePoint + laserEnd) / 2;
@@ -328,6 +331,9 @@ namespace Ubiq.Samples
             public bool iscatched;
             public bool ishit;
             public Vector3 hitonSpot;
+            public bool isfiring;
+            public Vector3 firePoint;
+            public Vector3 laserEnd;
         }
 
         private void SendMessage()
@@ -336,7 +342,10 @@ namespace Ubiq.Samples
             message.pose = Transforms.ToLocal(transform, context.Scene.transform);
             message.iscatched = iscatched;
             message.ishit = ishit;
+            message.isfiring = isfiring;
             message.hitonSpot = hitonSpot;
+            message.firePoint = firePoint;
+            message.laserEnd = laserEnd;
             context.SendJson(message);
         }
 
@@ -348,7 +357,10 @@ namespace Ubiq.Samples
             transform.rotation = pose.rotation;
             iscatched = msg.iscatched;
             ishit = msg.ishit;
+            isfiring = msg.isfiring;
             hitonSpot = msg.hitonSpot;
+            firePoint = msg.firePoint;
+            laserEnd = msg.laserEnd;
         }
 
 #endif
