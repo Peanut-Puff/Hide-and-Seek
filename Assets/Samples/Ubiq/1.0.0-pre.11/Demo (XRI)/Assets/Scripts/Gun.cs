@@ -21,7 +21,7 @@ namespace Ubiq.Samples
         private float lastFireTime;
         //shooting part
         public GameObject bulletPrefab;
-        public float bulletSpeed = 50f; // 
+        //public float bulletSpeed = 50f; // 
         public InputActionReference MyLeftTrigger;
         public InputActionReference MyRightTrigger;
         private InputAction spaceAction;
@@ -88,16 +88,18 @@ namespace Ubiq.Samples
             {
                 var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
                 var bullet = go.GetComponent<Bullet>();
-                bullet.transform.position = transform.position + transform.forward * 0.6f;
-                bullet.owner = true;
-                Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                Transform bulletTransform = bullet.GetComponent<Transform>();
-                bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
+                bullet.shoot(transform.position + transform.forward * 0.6f,transform.forward);
+                //bullet.transform.position = transform.position + transform.forward * 0.6f;
+                //bullet.owner = true;
+                //Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                //Transform bulletTransform = bullet.GetComponent<Transform>();
+                //bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
 
-                if (rb != null)
-                {
-                    rb.linearVelocity = transform.forward * bulletSpeed;
-                }
+                //if (rb != null)
+                //{
+                //    rb.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
+                //    //rb.linearVelocity = transform.forward * bulletSpeed;
+                //}
                 lastFireTime = Time.time;
             }
         }

@@ -19,6 +19,7 @@ namespace Ubiq.Samples
 
     public class Bullet : MonoBehaviour, INetworkSpawnable
     {
+        public float bulletspeed;
         public bool ishitanything;
         public Vector3 hitonSpot;
         public float force;
@@ -47,7 +48,20 @@ namespace Ubiq.Samples
         {
             context = NetworkScene.Register(this);
         }
+        public void shoot(Vector3 hitposition,Vector3 forward)
+        {
+            transform.position = hitposition;
 
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Transform bulletTransform = GetComponent<Transform>();
+            bulletTransform.rotation = Quaternion.LookRotation(forward);
+
+            if (rb != null)
+            {
+                rb.AddForce(forward * bulletspeed, ForceMode.Impulse);
+            }
+
+        }
         private void OnCollisionEnter(Collision collision)
         {
             GameObject hitObject = collision.gameObject;
@@ -57,7 +71,7 @@ namespace Ubiq.Samples
             if (hitObjectTransform != null)
             {
                 ishitanything = true;
-                Debug.Log("you do hit on :"+ hitObject.name);
+                Debug.Log("hit on :"+ hitObject.name);
             }
             if (hitObject.name == "XR Origin Hands (XR Rig)")//(hitObject.name == "shell")
             {
@@ -95,7 +109,7 @@ namespace Ubiq.Samples
                 }
             }
 
-            explodeTime = Time.time+7f;
+            explodeTime = Time.time+2f;
         }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
@@ -206,7 +220,6 @@ namespace Ubiq.Samples
 
             if (ishitanything == true && Time.time > explodeTime)
             {
-                Debug.Log("destory");
                 var spawner = NetworkSpawnManager.Find(this);
                 if (spawner == null)
                 {
