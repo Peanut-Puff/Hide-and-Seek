@@ -16,6 +16,10 @@ namespace Ubiq.Samples
         public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
+        public LongPress fixMachine1;
+        public LongPress fixMachine2;
+        public LongPress fixMachine3;
+        public LongPress fixMachine4;
         public bool gameStarted = false;
 
         private float duration = 300f;
@@ -49,6 +53,7 @@ namespace Ubiq.Samples
             gameStarted = true;
             StartCoroutine(DisableButtonTemporarily());
             StartCoroutine(EnableGunPick());
+            StartCoroutine(EnableFix());
             teamAssigner.AssignTeams();
             showname.StartLink();
             networkScoreboard.StartScoring(duration);
@@ -67,7 +72,14 @@ namespace Ubiq.Samples
             }
 
         }
-
+        private IEnumerator EnableFix()
+        {
+            yield return new WaitForSeconds(20f);
+            fixMachine1.enableFix();
+            fixMachine2.enableFix();
+            fixMachine3.enableFix();
+            fixMachine4.enableFix();
+        }
         private IEnumerator EnableGunPick()
         {
             yield return new WaitForSeconds(20f);
@@ -82,6 +94,10 @@ namespace Ubiq.Samples
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
             gunSpawner.disableGunPick();
+            fixMachine1.disableFix();
+            fixMachine2.disableFix();
+            fixMachine3.disableFix();
+            fixMachine4.disableFix();        
         }
 
         private void OnDestroy()
@@ -97,6 +113,7 @@ namespace Ubiq.Samples
                 gameStarted = true;
                 StartCoroutine(DisableButtonTemporarily());
                 StartCoroutine(EnableGunPick());
+                StartCoroutine(EnableFix());
                 // teamAssigner.AssignTeams();
                 networkScoreboard.StartScoring(msg.duration);
                 var myUuid = RoomClient.Find(this).Me.uuid;

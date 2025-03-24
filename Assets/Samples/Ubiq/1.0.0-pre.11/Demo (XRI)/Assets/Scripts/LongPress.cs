@@ -24,6 +24,7 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            enabled = false;
             spawnManager = NetworkSpawnManager.Find(this);
             interactable = GetComponent<XRSimpleInteractable>();
             interactionManager = interactable.interactionManager;
@@ -31,7 +32,14 @@ namespace Ubiq.Samples
             interactable.selectEntered.AddListener(OnSelectEntered);
             interactable.selectExited.AddListener(OnSelectExited);
         }
-
+        public void enableFix()
+        {
+            enabled = true;
+        }
+        public void disableFix()
+        {
+            enabled = false;
+        }
         private void OnDestroy()
         {
             interactable.selectEntered.RemoveListener(OnSelectEntered);
@@ -40,6 +48,8 @@ namespace Ubiq.Samples
 
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
+            if (!enabled)
+                return;
             Debug.Log("select");
             isSelecting = true;
             selectTimer = 0f;
@@ -48,6 +58,8 @@ namespace Ubiq.Samples
 
         private void OnSelectExited(SelectExitEventArgs args)
         {
+            if (!enabled)
+                return;
             Debug.Log("select exit");
             isSelecting = false;
             selectTimer = 0f;
@@ -56,10 +68,11 @@ namespace Ubiq.Samples
 
         private void Update()
         {
-            var role=FindObjectOfType<GameManager>().myRole;
-            if (role=="catcher"){
+            if (!enabled)
                 return;
-            }
+            var role = FindObjectOfType<GameManager>().myRole;
+            if (role == "catcher")
+                return;
             if (currentInteractor != null)
             {
                 var interactorTransform = (currentInteractor as MonoBehaviour)?.transform;
