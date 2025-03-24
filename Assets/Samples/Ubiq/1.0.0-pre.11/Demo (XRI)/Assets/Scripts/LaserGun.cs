@@ -83,7 +83,12 @@ namespace Ubiq.Samples
                 MyLeftButton_X_Action.performed -= OnMyRightButton_X_Action;
             }
         }
-
+        private void CylinderChangeBack()
+        {
+            laserBeam.transform.position = firePoint;
+            float laserLength = 0.02f;
+            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
+        }
         private void OnMyLeftButton_X_Action(InputAction.CallbackContext context)
         {
             Fire();
@@ -110,7 +115,7 @@ namespace Ubiq.Samples
         }
         private IEnumerator FireLaser()
         {
-            laserBeam.SetActive(true);
+            //laserBeam.SetActive(true);
             isfiring = true;
             float startTime = Time.time;
 
@@ -191,7 +196,8 @@ namespace Ubiq.Samples
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
                 yield return null; // update every frame
             }
-            laserBeam.SetActive(false);
+            CylinderChangeBack();
+            //laserBeam.SetActive(false);
             //laserLine.enabled = false;
             isfiring = false;
         }
@@ -247,7 +253,7 @@ namespace Ubiq.Samples
         private void Start()
         {
             //network
-            laserBeam.SetActive(false);
+            //laserBeam.SetActive(false);
             //laserLine.enabled = false; //hide
             body.isKinematic = true;
             context = NetworkScene.Register(this);
