@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "F:\\gitproject\\Insight\\Hide-and-Seek\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,17 +58,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "LaserGun.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAAAPYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkBAAAAAAAAAAAmwB8BAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T03:08:05.246Z",
               "EditorCaption": ""
@@ -83,12 +83,11 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
               "ViewState": "AgIAAOEAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T23:14:00.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T23:14:00.497Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LaserGunSpawner.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGunSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGunSpawner.cs",
@@ -109,12 +108,11 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GunWithBullet.cs",
               "ViewState": "AgIAAKUAAAAAAAAAAAAmwMcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T02:40:26.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T02:40:26.813Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
@@ -122,8 +120,7 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAAAWwGIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T02:27:44.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T02:27:44.784Z"
             },
             {
               "$type": "Document",
@@ -135,8 +132,7 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\showName.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T22:53:37.641Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T22:53:37.641Z"
             },
             {
               "$type": "Document",
@@ -148,8 +144,7 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
               "ViewState": "AgIAALcAAAAAAAAAAAAmwOUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T22:42:04.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T22:42:04.733Z"
             },
             {
               "$type": "Document",

@@ -21,10 +21,11 @@ namespace Ubiq.Samples
         private float lastFireTime;
         //shooting part
         public bool isfiring;
-        public Vector3 firePoint; // 激光发射点（枪口）
-        public LineRenderer laserLine; // 激光光束
-        public float laserDuration = 0.1f; // 激光显示时间
-        public float laserRange = 50f; // 最大射程
+        public Vector3 firePoint;
+        public GameObject laserBeam; 
+        //public LineRenderer laserLine; 
+        public float laserDuration = 0.1f; 
+        public float laserRange = 50f; 
 
         public InputActionReference MyLeftTrigger;
         public InputActionReference MyRightTrigger;
@@ -43,8 +44,8 @@ namespace Ubiq.Samples
         public Vector3 hitonSpot;
         public float force;
         public AudioClip hitSound;
-        public float knockbackForce = 3f; // 击退力度
-        public float knockbackDuration = 0.3f; // 击退持续时间
+        public float knockbackForce = 3f; // HIT BACK
+        public float knockbackDuration = 0.3f; 
 
         private void OnEnable()
         {
@@ -109,23 +110,28 @@ namespace Ubiq.Samples
         }
         private IEnumerator FireLaser()
         {
-            laserLine.enabled = true;
+            laserBeam.SetActive(true);
             isfiring = true;
             float startTime = Time.time;
 
             while (Time.time < startTime + laserDuration)
             {
-                firePoint = transform.position + transform.forward * 0.6f;
-                // 设定激光起点
-                laserLine.SetPosition(0, firePoint);
-
-                // 设定激光终点（假设没有击中物体）
+                // ned point of ray
                 Vector3 laserEnd = transform.position + transform.forward * laserRange;
+                firePoint = transform.position;// + transform.forward * 0.6f;
+                                               //laserLine.SetPosition(0, firePoint);
+                laserBeam.transform.position = (firePoint + laserEnd) / 2; 
+                laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0);;
 
-                // 进行 Raycast 检测
+
+                float laserLength = Vector3.Distance(firePoint, laserEnd);
+                laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
+
+
+                // Raycast
                 if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, laserRange))
                 {
-                    laserEnd = hit.point; // 激光终点为碰撞点
+                    laserEnd = hit.point; //end of ray
 
                     GameObject hitObject = hit.collider.gameObject;
 
@@ -153,17 +159,17 @@ namespace Ubiq.Samples
                         {
                             foreach (XRDirectInteractor controller in controllers)
                             {
-                                // 获取对应的手柄设备
+                                // get xr
                                 UnityEngine.XR.InputDevice device = GetXRDevice(controller);
 
-                                // 触发手柄震动（震动强度 0.5，持续 0.2 秒）
+                                // shake controller
                                 SendHapticFeedback(device, 0.5f, 0.2f);
                             }
                         }
                         if (rb != null)
                         {
                             Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
-                            knockbackDirection.y = 0; // 保持水平方向，不让角色飞起来
+                            knockbackDirection.y = 0; 
 
                             StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
                             //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
@@ -172,17 +178,21 @@ namespace Ubiq.Samples
                     }
                 }
 
-                //// 更新 `LineRenderer` 终点
+                ////`LineRenderer
                 //laserLine.SetPosition(1, laserEnd);
 
-                //yield return new WaitForSeconds(laserDuration); // 激光持续一小段时间
-                //laserLine.enabled = false; // 关闭激光
-                laserLine.SetPosition(0, firePoint);
-                laserLine.SetPosition(1, laserEnd);
-
-                yield return null; // 每帧更新
+                //yield return new WaitForSeconds(laserDuration); 
+                //laserLine.enabled = false; 
+                //laserLine.SetPosition(0, firePoint);
+                //laserLine.SetPosition(1, laserEnd);
+                laserLength = Vector3.Distance(firePoint, laserEnd);
+                laserBeam.transform.position = (firePoint + laserEnd) / 2;
+                laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
+                laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
+                yield return null; // update every frame
             }
-            laserLine.enabled = false;
+            laserBeam.SetActive(false);
+            //laserLine.enabled = false;
             isfiring = false;
         }
 
@@ -237,7 +247,8 @@ namespace Ubiq.Samples
         private void Start()
         {
             //network
-            laserLine.enabled = false; // 开始时隐藏激光
+            laserBeam.SetActive(false);
+            //laserLine.enabled = false; //hide
             body.isKinematic = true;
             context = NetworkScene.Register(this);
             var grab = GetComponent<XRGrabInteractable>();
@@ -279,13 +290,17 @@ namespace Ubiq.Samples
 
         private void FixedUpdate()
         {
-            if (isfiring) // 在激光持续期间，每帧更新位置
+            if (isfiring) //
             {
-                Vector3 firePoint = transform.position + transform.forward * 0.6f;
+                Vector3 firePoint = transform.position;// + transform.forward * 0.6f;
                 Vector3 laserEnd = firePoint + transform.forward * laserRange;
+                float laserLength = Vector3.Distance(firePoint, laserEnd);
+                laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
+                laserBeam.transform.position = (firePoint + laserEnd) / 2;
+                laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
-                laserLine.SetPosition(0, firePoint);
-                laserLine.SetPosition(1, laserEnd);
+                //laserLine.SetPosition(0, firePoint);
+                //laserLine.SetPosition(1, laserEnd);
             }
             if (owner)
             {

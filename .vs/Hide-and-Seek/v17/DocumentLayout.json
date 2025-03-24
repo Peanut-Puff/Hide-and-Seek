@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "F:\\gitproject\\Insight\\Hide-and-Seek\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
-              "ViewState": "AgIAADkBAAAAAAAAAAAmwB8BAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAH4AAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T03:08:05.246Z",
               "EditorCaption": ""
@@ -95,8 +95,7 @@
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGunSpawner.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T03:06:37.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T03:06:37.941Z"
             },
             {
               "$type": "Document",
