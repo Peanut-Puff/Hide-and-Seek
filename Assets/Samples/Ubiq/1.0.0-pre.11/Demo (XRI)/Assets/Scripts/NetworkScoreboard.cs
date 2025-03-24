@@ -53,6 +53,12 @@ namespace Ubiq.Samples
             enabled = true;
             UpdateDisplay();
         }
+        private void InitialDisplay()
+        {
+            hiderScoreText.text = "Hider\n0";
+            catcherScoreText.text = "Catcher\n0";
+            timerText.text = "00:00";
+        }
         private void FinalDisplay()
         {
             var team = "Catcher";
@@ -60,10 +66,13 @@ namespace Ubiq.Samples
                 team="Hider";
             timerText.text = $"{team} Team Wins!";
         }
-        public void StopScoring()
+        public void StopScoring(bool mode=true)
         {
             enabled = false;
-            FinalDisplay();
+            if(mode)
+                FinalDisplay();
+            else
+                InitialDisplay();
         }
 
         public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
