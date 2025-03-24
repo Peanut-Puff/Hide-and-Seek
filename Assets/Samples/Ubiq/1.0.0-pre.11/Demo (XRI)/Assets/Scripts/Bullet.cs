@@ -57,7 +57,7 @@ namespace Ubiq.Samples
             if (hitObjectTransform != null)
             {
                 ishitanything = true;
-                Debug.Log("you do hit on :"+ hitObject.name);
+                Debug.Log("hit on :"+ hitObject.name);
             }
             if (hitObject.name == "XR Origin Hands (XR Rig)")//(hitObject.name == "shell")
             {
@@ -95,7 +95,7 @@ namespace Ubiq.Samples
                 }
             }
 
-            explodeTime = Time.time+7f;
+            explodeTime = Time.time+2f;
         }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
@@ -206,7 +206,6 @@ namespace Ubiq.Samples
 
             if (ishitanything == true && Time.time > explodeTime)
             {
-                Debug.Log("destory");
                 var spawner = NetworkSpawnManager.Find(this);
                 if (spawner == null)
                 {
