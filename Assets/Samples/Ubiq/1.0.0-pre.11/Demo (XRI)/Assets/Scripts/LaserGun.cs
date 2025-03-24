@@ -175,6 +175,7 @@ namespace Ubiq.Samples
                 //    }
                 //}
                 List<GameObject> originHandObjects = GetObjectsWithName("Origin Hand");
+                Debug.Log("origin hand count£º"+originHandObjects.Count);
                 for (int i = 0; i < originHandObjects.Count; i++)
                 {
                     Debug.Log(originHandObjects[i].name);

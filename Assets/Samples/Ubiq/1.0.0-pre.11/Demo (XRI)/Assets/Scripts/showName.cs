@@ -35,28 +35,25 @@ namespace Ubiq.Samples
         public void StartLink()
         {
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            foreach (var avatar in avatars)
-            {
-                Debug.Log("avatar count when start game"+avatars.Count);
-            }
+            UpdateName();
 
-            foreach (var avatar in avatars)
-            {
-                avatar.OnPeerUpdated.AddListener(Avatar_OnPeerUpdated);
-            }
+            //foreach (var avatar in avatars)
+            //{
+            //    avatar.OnPeerUpdated.AddListener(Avatar_OnPeerUpdated);
+            //}
         }
         private void OnDestroy()
         {
-            if (avatars != null)
-            {
-                foreach (var avatar in avatars)
-                {
-                    if (avatar != null) // ��ֹ NullReferenceException
-                    {
-                        avatar.OnPeerUpdated.RemoveListener(Avatar_OnPeerUpdated);
-                    }
-                }
-            }
+            //if (avatars != null)
+            //{
+            //    foreach (var avatar in avatars)
+            //    {
+            //        if (avatar != null) // ��ֹ NullReferenceException
+            //        {
+            //            avatar.OnPeerUpdated.RemoveListener(Avatar_OnPeerUpdated);
+            //        }
+            //    }
+            //}
         }
         public void ResetNameBoard()
         {
@@ -67,10 +64,10 @@ namespace Ubiq.Samples
                 nameTexts[i].gameObject.SetActive(false);
             }
         }
-        private void Avatar_OnPeerUpdated(IPeer peer)
-        {
-            UpdateName();
-        }
+        //private void Avatar_OnPeerUpdated(IPeer peer)
+        //{
+        //    UpdateName();
+        //}
 
         private void UpdateName()
         {
@@ -89,14 +86,21 @@ namespace Ubiq.Samples
                 if (avatar != null && avatar.Peer != null)
                 {
                     var roleComp = avatar.GetComponent<AvatarRole>();
-                    var myRole = roleComp.role;
+                    if (roleComp != null)
+                    {
+                        var myRole = roleComp.role;
 
-                    string name = avatar.Peer[DisplayNameManager.KEY];
+                        string name = avatar.Peer[DisplayNameManager.KEY];
 
-                    nameTexts[count].gameObject.SetActive(true);
-                    nameTexts[count].text = name+" : "+myRole;
-                    //nameTexts[count].enabled = true;
-                    count += 1;
+                        nameTexts[count].gameObject.SetActive(true);
+                        nameTexts[count].text = name + " : " + myRole;
+                        //nameTexts[count].enabled = true;
+                        count += 1;
+                    }
+                    else
+                    {
+                        Debug.Log("roleComp:"+roleComp);
+                    }
                 }
                 else
                 {
