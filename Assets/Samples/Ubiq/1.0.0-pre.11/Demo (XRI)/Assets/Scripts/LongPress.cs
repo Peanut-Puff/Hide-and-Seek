@@ -25,6 +25,7 @@ namespace Ubiq.Samples
         private void Start()
         {
             enabled = false;
+            holdProgressImage.fillAmount = 0f;
             spawnManager = NetworkSpawnManager.Find(this);
             interactable = GetComponent<XRSimpleInteractable>();
             interactionManager = interactable.interactionManager;
