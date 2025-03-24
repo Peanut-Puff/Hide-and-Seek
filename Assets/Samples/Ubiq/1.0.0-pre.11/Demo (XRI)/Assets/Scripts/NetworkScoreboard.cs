@@ -88,7 +88,7 @@ namespace Ubiq.Samples
 
         public void AddScore(string team, int amount)
         {
-            if (!enabled) return;
+            if (!enabled) {Debug.Log("score not enabled")};
             Debug.Log("score");
             if (team == "hider") hiderScore += amount;
             else if (team == "catcher") catcherScore += amount;
