@@ -115,6 +115,7 @@ namespace Ubiq.Samples
                 StartCoroutine(EnableGunPick());
                 StartCoroutine(EnableFix());
                 // teamAssigner.AssignTeams();
+                showname.StartLink();
                 networkScoreboard.StartScoring(msg.duration);
                 var myUuid = RoomClient.Find(this).Me.uuid;
                 var avatars = FindObjectsOfType<Ubiq.Avatars.Avatar>();
