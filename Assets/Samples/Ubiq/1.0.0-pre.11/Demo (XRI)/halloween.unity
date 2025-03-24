@@ -1521,6 +1521,8 @@ MonoBehaviour:
   fixMachine3: {fileID: 1274984828}
   fixMachine4: {fileID: 8906590872650212343}
   gameStarted: 0
+  gameDuration: 300
+  waitTime: 20
   myRole: 
 --- !u!4 &40154329
 Transform:
@@ -36019,6 +36021,10 @@ PrefabInstance:
       propertyPath: m_Renderer
       value: 
       objectReference: {fileID: 1985034925}
+    - target: {fileID: 7570054883501488236, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 749169b54d08d824e828e6b055ae52d9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6466978200123571623, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}

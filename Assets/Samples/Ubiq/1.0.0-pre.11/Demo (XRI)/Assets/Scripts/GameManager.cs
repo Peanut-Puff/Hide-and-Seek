@@ -24,14 +24,15 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        private float duration = 300f;
+        public float gameDuration = 300f;
+        public float waitTime = 20f;
         private NetworkContext context;
         public string myRole;
-        private struct GameStartMessage
+        private struct GameMessage
         {
+            public string type;
             public float duration;
         }
-        private struct GameResetMessage { }
 
         private void Start()
         {
@@ -60,14 +61,28 @@ namespace Ubiq.Samples
                 return;
             Debug.Log("Start");
             if (gameStarted) return;
+            teamAssigner.AssignTeams();
+            context.SendJson(new GameMessage { type = "start", duration = gameDuration });
+            StartGame();
+        }
+
+        private void OnResetButtonPressed(SelectEnterEventArgs args)
+        {
+            Debug.Log("Resetting game state...");
+            context.SendJson(new GameMessage { type = "reset" });
+            StopAllCoroutines();
+            DisableAll();
+            networkScoreboard.StopScoring(false);
+        }
+        private void StartGame()
+        {
+            var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             gameStarted = true;
             StartCoroutine(DisableButtonTemporarily());
             StartCoroutine(EnableGunPick());
             StartCoroutine(EnableFix());
-            teamAssigner.AssignTeams();
             showname.StartLink();
-            networkScoreboard.StartScoring(duration);
-            context.SendJson(new GameStartMessage { duration = duration });
+            networkScoreboard.StartScoring(gameDuration);
             var myUuid = RoomClient.Find(this).Me.uuid;
             foreach (var avatar in avatars)
             {
@@ -80,27 +95,9 @@ namespace Ubiq.Samples
                 }
             }
         }
-
-        private void OnResetButtonPressed(SelectEnterEventArgs args)
-        {
-            Debug.Log("Resetting game state...");
-            context.SendJson(new GameResetMessage());
-            StopAllCoroutines();
-            gameStarted = false;
-            networkScoreboard.StopScoring(false);
-
-            startGameButton.enabled = true;
-            gunSpawner.enabled = false;
-            laserGunSpawner.enabled = false;
-            fixMachine1.enabled = false;
-            fixMachine2.enabled = false;
-            fixMachine3.enabled = false;
-            fixMachine4.enabled = false;
-        }
-
         private IEnumerator EnableFix()
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(waitTime);
             fixMachine1.enabled = true;
             fixMachine2.enabled = true;
             fixMachine3.enabled = true;
@@ -108,24 +105,27 @@ namespace Ubiq.Samples
         }
         private IEnumerator EnableGunPick()
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(waitTime);
             gunSpawner.enabled = true;
             laserGunSpawner.enabled = true;
         }
-
-        private IEnumerator DisableButtonTemporarily()
+        private void DisableAll()
         {
-            startGameButton.enabled = false;
-            yield return new WaitForSeconds(duration);
             gameStarted = false;
             startGameButton.enabled = true;
-            networkScoreboard.StopScoring();
             gunSpawner.enabled = false;
             laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
             fixMachine4.enabled = false;
+        }
+        private IEnumerator DisableButtonTemporarily()
+        {
+            startGameButton.enabled = false;
+            yield return new WaitForSeconds(gameDuration);
+            DisableAll();
+            networkScoreboard.StopScoring();
         }
 
         private void OnDestroy()
@@ -139,48 +139,21 @@ namespace Ubiq.Samples
 
         public void ProcessMessage(Ubiq.Messaging.ReferenceCountedSceneGraphMessage message)
         {
-            var msg = message.FromJson<GameStartMessage>();
-            var json = message.ToString();
-            if (!gameStarted)
+            var msg = message.FromJson<GameMessage>();
+
+            if (msg.type == "start" && !gameStarted)
             {
                 var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
                 if (avatars.Count > 4)
                     return;
-                gameStarted = true;
-                StartCoroutine(DisableButtonTemporarily());
-                StartCoroutine(EnableGunPick());
-                StartCoroutine(EnableFix());
-                // teamAssigner.AssignTeams();
-                showname.StartLink();
-                networkScoreboard.StartScoring(msg.duration);
-                var myUuid = RoomClient.Find(this).Me.uuid;
-                foreach (var avatar in avatars)
-                {
-                    if (avatar.Peer?.uuid == myUuid)
-                    {
-                        var roleComp = avatar.GetComponent<AvatarRole>();
-                        Debug.Log($"I am {roleComp.role}");
-                        myRole = roleComp.role;
-                        break;
-                    }
-                }
+                StartGame();
             }
-            else if (json.Contains("GameResetMessage"))
+            else if (msg.type == "reset")
             {
                 StopAllCoroutines();
-                gameStarted = false;
-                networkScoreboard.StopScoring();
-
-                startGameButton.enabled = true;
-                gunSpawner.enabled = false;
-                laserGunSpawner.enabled = false;
-                fixMachine1.enabled = false;
-                fixMachine2.enabled = false;
-                fixMachine3.enabled = false;
-                fixMachine4.enabled = false;
-
+                DisableAll();
+                networkScoreboard.StopScoring(false);
                 Debug.Log("Game reset by network message");
-                return;
             }
         }
     }
