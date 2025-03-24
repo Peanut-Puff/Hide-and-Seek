@@ -75,15 +75,15 @@ namespace Ubiq.Samples
         private IEnumerator EnableFix()
         {
             yield return new WaitForSeconds(20f);
-            fixMachine1.enableFix();
-            fixMachine2.enableFix();
-            fixMachine3.enableFix();
-            fixMachine4.enableFix();
+            fixMachine1.enabled = true;
+            fixMachine2.enabled = true;
+            fixMachine3.enabled = true;
+            fixMachine4.enabled = true;
         }
         private IEnumerator EnableGunPick()
         {
             yield return new WaitForSeconds(20f);
-            gunSpawner.enableGunPick();
+            gunSpawner.enabled = true;
         }
 
         private IEnumerator DisableButtonTemporarily()
@@ -93,11 +93,11 @@ namespace Ubiq.Samples
             gameStarted = false;
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
-            gunSpawner.disableGunPick();
-            fixMachine1.disableFix();
-            fixMachine2.disableFix();
-            fixMachine3.disableFix();
-            fixMachine4.disableFix();        
+            gunSpawner.enabled = false;
+            fixMachine1.enabled = false;
+            fixMachine2.enabled = false;
+            fixMachine3.enabled = false;
+            fixMachine4.enabled = false;        
         }
 
         private void OnDestroy()

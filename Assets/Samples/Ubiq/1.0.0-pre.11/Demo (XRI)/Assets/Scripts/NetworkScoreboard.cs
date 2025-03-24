@@ -46,6 +46,7 @@ namespace Ubiq.Samples
 
         public void StartScoring(float duration = 300f)
         {
+            Debug.Log("start scoring");
             hiderScore = 0;
             catcherScore = 0;
             timeLeft = duration;

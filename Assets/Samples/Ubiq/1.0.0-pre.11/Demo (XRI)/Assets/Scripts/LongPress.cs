@@ -33,14 +33,7 @@ namespace Ubiq.Samples
             interactable.selectEntered.AddListener(OnSelectEntered);
             interactable.selectExited.AddListener(OnSelectExited);
         }
-        public void enableFix()
-        {
-            enabled = true;
-        }
-        public void disableFix()
-        {
-            enabled = false;
-        }
+        
         private void OnDestroy()
         {
             interactable.selectEntered.RemoveListener(OnSelectEntered);

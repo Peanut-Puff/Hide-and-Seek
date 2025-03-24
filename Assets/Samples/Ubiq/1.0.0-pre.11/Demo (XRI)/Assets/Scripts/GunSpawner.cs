@@ -35,12 +35,7 @@ namespace Ubiq.Samples
 
             interactable.selectEntered.AddListener(Gun_XRGrabInteractable_SelectEntered);
         }
-        public void enableGunPick(){
-            enabled=true;
-        }
-        public void disableGunPick(){
-            enabled=false;
-        }
+
         private void OnDestroy()
         {
             interactable.selectEntered.RemoveListener(Gun_XRGrabInteractable_SelectEntered);
