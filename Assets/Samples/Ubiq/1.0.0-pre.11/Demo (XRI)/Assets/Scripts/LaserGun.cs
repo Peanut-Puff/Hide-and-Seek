@@ -7,6 +7,8 @@ using Ubiq.Spawning;
 using Ubiq.Geometry;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
+using System.Linq;
+
 
 #if XRI_3_0_7_OR_NEWER
 using UnityEngine.XR.Interaction.Toolkit;
@@ -22,13 +24,15 @@ namespace Ubiq.Samples
         public float cooltime;
         private float lastFireTime;
         //shooting part
+        public float laserRadius;
         Vector3 laserEnd;
         public bool isfiring;
         public Vector3 firePoint;
         public GameObject laserBeam; 
         //public LineRenderer laserLine; 
         public float laserDuration = 0.1f; 
-        public float laserRange = 50f; 
+        public float laserRange = 50f;
+        private List<Avatars.Avatar> avatars;
 
         public InputActionReference MyLeftTrigger;
         public InputActionReference MyRightTrigger;
@@ -116,12 +120,34 @@ namespace Ubiq.Samples
                 lastFireTime = Time.time;
             }
         }
+
+        private bool DistancePointToLineSegment(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
+        {
+            Vector3 lineVec = lineEnd - lineStart;
+            Vector3 pointVec = point - lineStart;
+
+            float lineLength = lineVec.magnitude;
+            if (lineLength == 0) return Vector3.Distance(point, lineStart) <= laserRadius; 
+
+            float t = Mathf.Clamp01(Vector3.Dot(pointVec, lineVec) / (lineLength * lineLength));
+            Vector3 projection = lineStart + t * lineVec;
+            float distance = Vector3.Distance(point, projection);
+            return  distance <= laserRadius;
+        }
+
+        private List<GameObject> GetObjectsWithName(string keyword)
+        {
+            return FindObjectsOfType<GameObject>()
+                .Where(obj => obj.name.Contains(keyword))
+                .ToList();
+        }
+
         private IEnumerator FireLaser()
         {
             //laserBeam.SetActive(true);
             isfiring = true;
             float startTime = Time.time;
-
+            avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             while (Time.time < startTime + laserDuration)
             {
                 // ned point of ray
@@ -135,8 +161,25 @@ namespace Ubiq.Samples
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
-
+                bool ishitAvatar = false;
+                
                 // Raycast
+                //foreach (var avatar in avatars)
+                //{
+                //    if (avatar == null) continue;
+
+                //    if (DistancePointToLineSegment(avatar.transform.position,firePoint,laserEnd))
+                //    {
+                //        Debug.Log($"Avatar {avatar.Peer[DisplayNameManager.KEY]} is hit by laser!");
+                //        ishitAvatar = true;
+                //    }
+                //}
+                List<GameObject> originHandObjects = GetObjectsWithName("Origin Hand");
+                for (int i = 0; i < originHandObjects.Count; i++)
+                {
+                    Debug.Log(originHandObjects[i].name);
+                    //Debug.Log(originHandObjects[i].transform.position);
+                }
                 if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, laserRange))
                 {
                     laserEnd = hit.point; //end of ray

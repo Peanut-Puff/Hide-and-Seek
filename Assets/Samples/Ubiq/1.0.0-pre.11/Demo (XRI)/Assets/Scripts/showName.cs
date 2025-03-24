@@ -74,9 +74,13 @@ namespace Ubiq.Samples
 
         private void UpdateName()
         {
+            avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             if (avatars == null || avatars.Count == 0)
             {
-                nameTexts[0].enabled = false;
+                for (int i = 0; i < nameTexts.Count; i++)
+                {
+                    nameTexts[i].enabled = false;
+                }
                 return;
             }
             int count = 0;
@@ -110,7 +114,7 @@ namespace Ubiq.Samples
         public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
         {
             if (!enabled) return;
-            UpdateName();
+            //UpdateName();
         }
     }
 }
