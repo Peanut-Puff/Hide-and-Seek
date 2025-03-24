@@ -19,6 +19,7 @@ namespace Ubiq.Samples
 
     public class Bullet : MonoBehaviour, INetworkSpawnable
     {
+        public float bulletspeed;
         public bool ishitanything;
         public Vector3 hitonSpot;
         public float force;
@@ -47,7 +48,20 @@ namespace Ubiq.Samples
         {
             context = NetworkScene.Register(this);
         }
+        public void shoot(Vector3 hitposition,Vector3 forward)
+        {
+            transform.position = hitposition;
 
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Transform bulletTransform = GetComponent<Transform>();
+            bulletTransform.rotation = Quaternion.LookRotation(forward);
+
+            if (rb != null)
+            {
+                rb.AddForce(forward * bulletspeed, ForceMode.Impulse);
+            }
+
+        }
         private void OnCollisionEnter(Collision collision)
         {
             GameObject hitObject = collision.gameObject;

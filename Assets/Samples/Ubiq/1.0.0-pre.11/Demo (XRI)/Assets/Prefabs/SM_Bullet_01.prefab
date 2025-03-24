@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d731ebfc6109e4a810fbc0a815ecb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletspeed: 0.5
   ishitanything: 0
   hitonSpot: {x: 0, y: 0, z: 0}
   force: 0
