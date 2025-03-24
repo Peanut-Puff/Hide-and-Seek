@@ -96,7 +96,6 @@
     <Compile Include="Assets\NetworkedScript_my.cs" />
     <Compile Include="Assets\avatar-example\FloatingAvatar.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\21_SpawningCatalogues\_21_JoinRoomClients.cs" />
-    <Compile Include="Assets\avatar-example\AvatarMirror.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\11_MessagesAndPersistence\_11_RoomText.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Examples\Assets\32_AvatarInput\_32_JoinRoomClients.cs" />
