@@ -5,6 +5,8 @@ using System.Collections;
 using Ubiq.Messaging;
 using Ubiq.Rooms;
 using Ubiq.Avatars;
+using Ubiq.Spawning;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Ubiq.Samples
@@ -23,9 +25,15 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        private float duration = 300f;
+        private float duration = 23f;
         private NetworkContext context;
         public string myRole;
+        
+        //
+        private AvatarManager avatarManager;
+        public GameObject PrefabOrigin;
+
+
         private struct GameStartMessage
         {
             public float duration;
@@ -36,6 +44,10 @@ namespace Ubiq.Samples
             context = NetworkScene.Register(this);
             startGameButton = GetComponent<XRSimpleInteractable>();
             startGameButton.selectEntered.AddListener(OnStartButtonPressed);
+
+            //
+            var networkScene = NetworkScene.Find(this);
+            avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
         }
 
         private void OnStartButtonPressed(SelectEnterEventArgs args)
@@ -99,6 +111,8 @@ namespace Ubiq.Samples
             //(0,0,-2.25)
 
             AvatrPositionEnd.transform.position = new Vector3(0f, 0f, -2.25f);
+            avatarManager.avatarPrefab = PrefabOrigin;
+
 
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
@@ -107,8 +121,6 @@ namespace Ubiq.Samples
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
             fixMachine4.enabled = false;
-
-            
 
         }
 

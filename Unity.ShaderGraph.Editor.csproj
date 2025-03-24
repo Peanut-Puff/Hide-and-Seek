@@ -419,9 +419,9 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Generation\Descriptors\RenderStateDescriptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Nodes\Math\Basic\SubtractNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Drawing\Inspector\PropertyDrawers\Texture2DPropertyDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Generation\Descriptors\StencilDescriptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Drawing\Views\GraphEditorView.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Nodes\Input\Scene\EyeIndexNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Generation\Descriptors\StencilDescriptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Generation\Enumerations\PropertyType.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Legacy\SlotReference0.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph\Editor\Data\Nodes\Artistic\Normal\NormalReconstructZNode.cs" />

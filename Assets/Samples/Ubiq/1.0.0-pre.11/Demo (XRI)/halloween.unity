@@ -368,23 +368,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1 &7509392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 87455352211682769, guid: 4fbb73eab94f01f4d9dd58da66aa409a, type: 3}
-  m_PrefabInstance: {fileID: 1969120518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7509394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aeac9ac10c1f20438b17dae6c57e02a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8642971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35778,10 +35761,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 87455352211682769, guid: 4fbb73eab94f01f4d9dd58da66aa409a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7509394}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbb73eab94f01f4d9dd58da66aa409a, type: 3}
 --- !u!1001 &1970500621
 PrefabInstance:
@@ -35989,6 +35969,7 @@ MonoBehaviour:
   fixMachine4: {fileID: 8906590872650212343}
   gameStarted: 0
   myRole: 
+  PrefabOrigin: {fileID: 3172939939781028348, guid: f2313622d63f00144b9d6ccde89e1683, type: 3}
 --- !u!1001 &1974506596
 PrefabInstance:
   m_ObjectHideFlags: 0
