@@ -88,7 +88,7 @@ namespace Ubiq.Samples
         }
         private void CylinderChangeBack()
         {
-            laserBeam.transform.position = firePoint;
+            laserBeam.transform.position = transform.position;
             float laserLength = 0.02f;
             laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
         }
@@ -310,6 +310,10 @@ namespace Ubiq.Samples
 
                 //laserLine.SetPosition(0, firePoint);
                 //laserLine.SetPosition(1, laserEnd);
+            }
+            else
+            {
+                CylinderChangeBack();
             }
             if (owner)
             {

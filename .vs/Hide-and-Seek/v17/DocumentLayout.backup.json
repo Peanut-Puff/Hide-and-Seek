@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\lasergunspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\showname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -68,26 +68,39 @@
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGun.cs",
-              "ViewState": "AgIAABEBAAAAAAAAAAAcwCkBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAAJoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T03:08:05.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAAAOAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T22:42:04.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Bullet.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAABkAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T23:14:00.497Z"
+              "WhenOpened": "2025-03-22T23:14:00.497Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "LaserGunSpawner.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGunSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\LaserGunSpawner.cs",
@@ -111,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "GameManager.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
@@ -132,18 +145,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T22:53:37.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Gun.cs",
-              "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAmwOUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T22:42:04.733Z"
             },
             {
               "$type": "Document",

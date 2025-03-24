@@ -37,7 +37,7 @@ namespace Ubiq.Samples
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             foreach (var avatar in avatars)
             {
-                Debug.Log(avatar.Peer); // ���ÿ�� Avatar ������
+                Debug.Log("avatar count when start game"+avatars.Count);
             }
 
             foreach (var avatar in avatars)
@@ -95,6 +95,7 @@ namespace Ubiq.Samples
                     count += 1;
                 }
             }
+            Debug.Log("current avatar:"+count);
             for (int i=count; i < nameTexts.Count; i++)
             {
                 nameTexts[i].gameObject.SetActive(false);
