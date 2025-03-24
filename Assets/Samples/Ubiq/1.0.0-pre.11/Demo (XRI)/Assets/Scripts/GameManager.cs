@@ -23,7 +23,7 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        private float duration = 25f;
+        private float duration = 300f;
         private NetworkContext context;
         public string myRole;
         private struct GameStartMessage
