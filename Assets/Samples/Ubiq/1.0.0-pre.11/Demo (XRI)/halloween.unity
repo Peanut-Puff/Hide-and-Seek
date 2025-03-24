@@ -1521,8 +1521,8 @@ MonoBehaviour:
   fixMachine3: {fileID: 1274984828}
   fixMachine4: {fileID: 8906590872650212343}
   gameStarted: 0
-  gameDuration: 300
-  waitTime: 20
+  gameDuration: 60
+  waitTime: 1
   myRole: 
 --- !u!4 &40154329
 Transform:

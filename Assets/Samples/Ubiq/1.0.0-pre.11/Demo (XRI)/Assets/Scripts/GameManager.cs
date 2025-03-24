@@ -24,8 +24,8 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        public float gameDuration = 300f;
-        public float waitTime = 20f;
+        public float gameDuration;
+        public float waitTime;
         private NetworkContext context;
         public string myRole;
         private struct GameMessage
