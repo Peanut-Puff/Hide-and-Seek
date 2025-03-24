@@ -33,7 +33,7 @@ namespace Ubiq.Samples
             interactable.selectEntered.AddListener(OnSelectEntered);
             interactable.selectExited.AddListener(OnSelectExited);
         }
-        
+
         private void OnDestroy()
         {
             interactable.selectEntered.RemoveListener(OnSelectEntered);
@@ -44,7 +44,7 @@ namespace Ubiq.Samples
         {
             if (!enabled)
                 return;
-            Debug.Log("select");
+            // Debug.Log("select");
             isSelecting = true;
             selectTimer = 0f;
             currentInteractor = args.interactorObject as IXRSelectInteractor;
@@ -54,7 +54,7 @@ namespace Ubiq.Samples
         {
             if (!enabled)
                 return;
-            Debug.Log("select exit");
+            // Debug.Log("select exit");
             isSelecting = false;
             selectTimer = 0f;
             currentInteractor = null;
@@ -80,7 +80,7 @@ namespace Ubiq.Samples
                         holdProgressImage.fillAmount = 0f;
                         return;
                     }
-                    Debug.Log("close");
+                    // Debug.Log("close");
                 }
             }
             if (isSelecting)
