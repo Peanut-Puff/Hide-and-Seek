@@ -94,6 +94,11 @@ namespace Ubiq.Samples
                     //nameTexts[count].enabled = true;
                     count += 1;
                 }
+                else
+                {
+                    Debug.Log("avatar:"+avatar);
+                    Debug.Log("abatar.peer:"+avatar.Peer);
+                }
             }
             Debug.Log("current avatar:"+count);
             for (int i=count; i < nameTexts.Count; i++)
