@@ -96,8 +96,7 @@ namespace Ubiq.Samples
 
                 if (rb != null)
                 {
-                    rb.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
-                    //rb.linearVelocity = transform.forward * bulletSpeed;
+                    rb.linearVelocity = transform.forward * bulletSpeed;
                 }
                 lastFireTime = Time.time;
             }

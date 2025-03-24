@@ -4,8 +4,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections;
 using Ubiq.Messaging;
 using Ubiq.Rooms;
-using Ubiq.Avatars;
-using System.Collections.Generic;
 
 namespace Ubiq.Samples
 {
@@ -13,16 +11,10 @@ namespace Ubiq.Samples
     {
         private XRSimpleInteractable startGameButton;
         public TeamAssigner teamAssigner;
-        public ShowName showname;
-        public NetworkScoreboard networkScoreboard;
-        public GunSpawner gunSpawner;
-        public LongPress fixMachine1;
-        public LongPress fixMachine2;
-        public LongPress fixMachine3;
-        public LongPress fixMachine4;
+        public Ubiq.Samples.NetworkScoreboard networkScoreboard;
         public bool gameStarted = false;
 
-        private float duration = 300f;
+        private float duration=300f;
         private NetworkContext context;
         public string myRole;
         private struct GameStartMessage
@@ -39,9 +31,6 @@ namespace Ubiq.Samples
 
         private void OnStartButtonPressed(SelectEnterEventArgs args)
         {
-            var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            if (avatars.Count > 4)
-                return;
             Debug.Log("Start");
             StartGame();
         }
@@ -52,10 +41,7 @@ namespace Ubiq.Samples
 
             gameStarted = true;
             StartCoroutine(DisableButtonTemporarily());
-            StartCoroutine(EnableGunPick());
-            StartCoroutine(EnableFix());
             teamAssigner.AssignTeams();
-            showname.StartLink();
             networkScoreboard.StartScoring(duration);
             context.SendJson(new GameStartMessage { duration = duration });
             var myUuid = RoomClient.Find(this).Me.uuid;
@@ -70,34 +56,16 @@ namespace Ubiq.Samples
                     break;
                 }
             }
-
-        }
-        private IEnumerator EnableFix()
-        {
-            yield return new WaitForSeconds(20f);
-            fixMachine1.enabled = true;
-            fixMachine2.enabled = true;
-            fixMachine3.enabled = true;
-            fixMachine4.enabled = true;
-        }
-        private IEnumerator EnableGunPick()
-        {
-            yield return new WaitForSeconds(20f);
-            gunSpawner.enabled = true;
+            
         }
 
         private IEnumerator DisableButtonTemporarily()
         {
             startGameButton.enabled = false;
             yield return new WaitForSeconds(duration);
-            gameStarted = false;
+            gameStarted=false;
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
-            gunSpawner.enabled = false;
-            fixMachine1.enabled = false;
-            fixMachine2.enabled = false;
-            fixMachine3.enabled = false;
-            fixMachine4.enabled = false;        
         }
 
         private void OnDestroy()
@@ -112,8 +80,6 @@ namespace Ubiq.Samples
             {
                 gameStarted = true;
                 StartCoroutine(DisableButtonTemporarily());
-                StartCoroutine(EnableGunPick());
-                StartCoroutine(EnableFix());
                 // teamAssigner.AssignTeams();
                 networkScoreboard.StartScoring(msg.duration);
                 var myUuid = RoomClient.Find(this).Me.uuid;
