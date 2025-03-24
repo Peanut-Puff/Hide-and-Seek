@@ -10237,6 +10237,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c5fc92d8611bf48be5489ab16b1219, type: 3}
+--- !u!114 &458961397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3189841246562181392, guid: d3c5fc92d8611bf48be5489ab16b1219, type: 3}
+  m_PrefabInstance: {fileID: 458961396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d69be8fab925a488114c6a34cd04d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &463589358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16650,6 +16661,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1945887857921874249, guid: 950546bbd95467b4b8397fa5f9314dc7, type: 3}
   m_PrefabInstance: {fileID: 826336438}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &826336440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6752796744613106478, guid: 950546bbd95467b4b8397fa5f9314dc7, type: 3}
+  m_PrefabInstance: {fileID: 826336438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1df40b18dc4304d8f7f98918528f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &829122970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24086,6 +24108,7 @@ MonoBehaviour:
   fireworkPrefab: {fileID: 4511263541971767917, guid: 87221b841a51c2840bc5648fa3be6dfe, type: 3}
   holdProgressImage: {fileID: 1597307822}
   maxInteractionDistance: 2
+  gameManager: {fileID: 1973893434}
 --- !u!1001 &1278779748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25845,6 +25868,7 @@ MonoBehaviour:
   fireworkPrefab: {fileID: 4511263541971767917, guid: 87221b841a51c2840bc5648fa3be6dfe, type: 3}
   holdProgressImage: {fileID: 335608367}
   maxInteractionDistance: 2
+  gameManager: {fileID: 1973893434}
 --- !u!1 &1359824377
 GameObject:
   m_ObjectHideFlags: 0
@@ -35702,7 +35726,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamAssigner: {fileID: 969129758}
+  showname: {fileID: 458961397}
   networkScoreboard: {fileID: 673680966}
+  gunSpawner: {fileID: 826336440}
   gameStarted: 0
   myRole: 
 --- !u!1001 &1974506596
@@ -36746,6 +36772,7 @@ MonoBehaviour:
   fireworkPrefab: {fileID: 4511263541971767917, guid: 87221b841a51c2840bc5648fa3be6dfe, type: 3}
   holdProgressImage: {fileID: 1411917732}
   maxInteractionDistance: 2
+  gameManager: {fileID: 1973893434}
 --- !u!1001 &2020692065
 PrefabInstance:
   m_ObjectHideFlags: 0

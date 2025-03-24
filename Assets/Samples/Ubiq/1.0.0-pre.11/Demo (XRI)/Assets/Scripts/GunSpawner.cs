@@ -28,13 +28,19 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            enabled=false;
             spawnManager = NetworkSpawnManager.Find(this);
             interactable = GetComponent<XRSimpleInteractable>();
             interactionManager = interactable.interactionManager;
 
             interactable.selectEntered.AddListener(Gun_XRGrabInteractable_SelectEntered);
         }
-
+        public void enableGunPick(){
+            enabled=true;
+        }
+        public void disableGunPick(){
+            enabled=false;
+        }
         private void OnDestroy()
         {
             interactable.selectEntered.RemoveListener(Gun_XRGrabInteractable_SelectEntered);
@@ -42,6 +48,8 @@ namespace Ubiq.Samples
 
         private void Gun_XRGrabInteractable_SelectEntered(SelectEnterEventArgs eventArgs)
         {
+            if(!enabled)
+                return;
             var role=FindObjectOfType<GameManager>().myRole;
             if (role=="hider"){
                 return;
