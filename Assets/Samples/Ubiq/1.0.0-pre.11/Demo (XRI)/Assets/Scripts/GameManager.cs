@@ -14,11 +14,13 @@ namespace Ubiq.Samples
     public class GameManager : MonoBehaviour
     {
         private XRSimpleInteractable startGameButton;
+        private XRSimpleInteractable resetGameButton;
         public TeamAssigner teamAssigner;
         public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
         public GetPosition AvatrPositionEnd;
+        public LaserGunSpawner laserGunSpawner;
         public LongPress fixMachine1;
         public LongPress fixMachine2;
         public LongPress fixMachine3;
@@ -35,7 +37,13 @@ namespace Ubiq.Samples
 
 
         private struct GameStartMessage
+        public float gameDuration;
+        public float waitTime;
+        private NetworkContext context;
+        public string myRole;
+        private struct GameMessage
         {
+            public string type;
             public float duration;
         }
 
@@ -48,6 +56,21 @@ namespace Ubiq.Samples
             //
             var networkScene = NetworkScene.Find(this);
             avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
+
+            var interactables = GetComponentsInChildren<XRSimpleInteractable>();
+            foreach (var interactable in interactables)
+            {
+                if (interactable.gameObject.name == "StartButton")
+                {
+                    startGameButton = interactable;
+                    startGameButton.selectEntered.AddListener(OnStartButtonPressed);
+                }
+                if (interactable.gameObject.name == "ResetButton")
+                {
+                    resetGameButton = interactable;
+                    resetGameButton.selectEntered.AddListener(OnResetButtonPressed);
+                }
+            }
         }
 
         private void OnStartButtonPressed(SelectEnterEventArgs args)
@@ -56,23 +79,30 @@ namespace Ubiq.Samples
             if (avatars.Count > 4)
                 return;
             Debug.Log("Start");
+            if (gameStarted) return;
+            teamAssigner.AssignTeams();
+            context.SendJson(new GameMessage { type = "start", duration = gameDuration });
             StartGame();
         }
 
-        public void StartGame()
+        private void OnResetButtonPressed(SelectEnterEventArgs args)
         {
-            if (gameStarted) return;
-
+            Debug.Log("Resetting game state...");
+            context.SendJson(new GameMessage { type = "reset" });
+            StopAllCoroutines();
+            DisableAll();
+            networkScoreboard.StopScoring(false);
+        }
+        private void StartGame()
+        {
+            var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             gameStarted = true;
             StartCoroutine(DisableButtonTemporarily());
             StartCoroutine(EnableGunPick());
             StartCoroutine(EnableFix());
-            teamAssigner.AssignTeams();
             showname.StartLink();
-            networkScoreboard.StartScoring(duration);
-            context.SendJson(new GameStartMessage { duration = duration });
+            networkScoreboard.StartScoring(gameDuration);
             var myUuid = RoomClient.Find(this).Me.uuid;
-            var avatars = FindObjectsOfType<Ubiq.Avatars.Avatar>();
             foreach (var avatar in avatars)
             {
                 if (avatar.Peer?.uuid == myUuid)
@@ -83,11 +113,10 @@ namespace Ubiq.Samples
                     break;
                 }
             }
-
         }
         private IEnumerator EnableFix()
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(waitTime);
             fixMachine1.enabled = true;
             fixMachine2.enabled = true;
             fixMachine3.enabled = true;
@@ -95,14 +124,12 @@ namespace Ubiq.Samples
         }
         private IEnumerator EnableGunPick()
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(waitTime);
             gunSpawner.enabled = true;
+            laserGunSpawner.enabled = true;
         }
-
-        private IEnumerator DisableButtonTemporarily()
+        private void DisableAll()
         {
-            startGameButton.enabled = false;
-            yield return new WaitForSeconds(duration);
             gameStarted = false;
 
             //AvatrPositionEnd.targetPosition = transform.position;
@@ -114,45 +141,50 @@ namespace Ubiq.Samples
             avatarManager.avatarPrefab = PrefabOrigin;
 
 
+            showname.ResetNameBoard();
             startGameButton.enabled = true;
-            networkScoreboard.StopScoring();
             gunSpawner.enabled = false;
+            laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
             fixMachine4.enabled = false;
 
         }
+        private IEnumerator DisableButtonTemporarily()
+        {
+            startGameButton.enabled = false;
+            yield return new WaitForSeconds(gameDuration);
+            DisableAll();
+            networkScoreboard.StopScoring();
+        }
 
         private void OnDestroy()
         {
             startGameButton.selectEntered.RemoveListener(OnStartButtonPressed);
+            if (resetGameButton != null)
+            {
+                resetGameButton.selectEntered.RemoveListener(OnResetButtonPressed);
+            }
         }
 
         public void ProcessMessage(Ubiq.Messaging.ReferenceCountedSceneGraphMessage message)
         {
-            var msg = message.FromJson<GameStartMessage>();
-            if (!gameStarted)
+            var msg = message.FromJson<GameMessage>();
+
+            if (msg.type == "start" && !gameStarted)
             {
-                gameStarted = true;
-                StartCoroutine(DisableButtonTemporarily());
-                StartCoroutine(EnableGunPick());
-                StartCoroutine(EnableFix());
-                // teamAssigner.AssignTeams();
-                showname.StartLink();
-                networkScoreboard.StartScoring(msg.duration);
-                var myUuid = RoomClient.Find(this).Me.uuid;
-                var avatars = FindObjectsOfType<Ubiq.Avatars.Avatar>();
-                foreach (var avatar in avatars)
-                {
-                    if (avatar.Peer?.uuid == myUuid)
-                    {
-                        var roleComp = avatar.GetComponent<AvatarRole>();
-                        Debug.Log($"I am {roleComp.role}");
-                        myRole = roleComp.role;
-                        break;
-                    }
-                }
+                var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+                if (avatars.Count > 4)
+                    return;
+                StartGame();
+            }
+            else if (msg.type == "reset")
+            {
+                StopAllCoroutines();
+                DisableAll();
+                networkScoreboard.StopScoring(false);
+                Debug.Log("Game reset by network message");
             }
         }
     }
