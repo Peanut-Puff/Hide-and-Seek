@@ -7,7 +7,7 @@ namespace Ubiq.Samples
     public class TeamAssigner : MonoBehaviour
     {
         private NetworkContext context;
-
+        public List<PlayerRole> assignments;
         private void Start()
         {
             context = NetworkScene.Register(this);
@@ -31,7 +31,7 @@ namespace Ubiq.Samples
             Shuffle(avatars);
 
             int numCatchers = Mathf.Max(1, avatars.Count / 4);
-            var assignments = new List<PlayerRole>();
+            //var assignments = new List<PlayerRole>();
             for (int i = 0; i < avatars.Count; i++)
             {
                 string role = (i < numCatchers) ? "catcher" : "hider";

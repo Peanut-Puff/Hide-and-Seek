@@ -15,27 +15,21 @@ namespace Ubiq.Samples
     public class ShowName : MonoBehaviour
     {
         private NetworkContext context;
-        public TextMeshProUGUI nameText;
+        public List<TextMeshProUGUI> nameTexts;
         private List<Ubiq.Avatars.Avatar> avatars;
+        public GameObject nameTextPrefab;
+        public Transform namePanel;  
+        private Dictionary<string, GameObject> nameObjects = new Dictionary<string, GameObject>(); 
 
         private void Start()
         {
-            nameText.text = "waiting for start";
-            context = NetworkScene.Register(this);
-            avatars = new List<Avatars.Avatar>(FindObjectsOfType<Avatars.Avatar>());
-            if (avatars != null || avatars.Count == 0)
+            nameTexts[0].text = "waiting for start";
+            for (int i =1; i < nameTexts.Count; i++)
             {
-                Debug.Log("avatars 是一个空列表，但不是 null");
-            }
-            foreach (var avatar in avatars)
-            {
-                Debug.Log(avatar.Peer); // 输出每个 Avatar 的名字
-            }
 
-            foreach (var avatar in avatars)
-            {
-                avatar.OnPeerUpdated.AddListener(Avatar_OnPeerUpdated);
+                nameTexts[i].gameObject.SetActive(false);
             }
+            context = NetworkScene.Register(this);
 
         }
         public void StartLink()
@@ -74,26 +68,29 @@ namespace Ubiq.Samples
         {
             if (avatars == null || avatars.Count == 0)
             {
-                nameText.enabled = false;
+                nameTexts[0].enabled = false;
                 return;
             }
-
+            int count = 0;
             foreach (var avatar in avatars)
             {
                 if (avatar != null && avatar.Peer != null)
                 {
+                    var roleComp = avatar.GetComponent<AvatarRole>();
+                    var myRole = roleComp.role;
+
                     string name = avatar.Peer[DisplayNameManager.KEY];
 
-                    if (!string.IsNullOrEmpty(name))
-                    {
-                        nameText.text = name;
-                        nameText.enabled = true;
-                        return; 
-                    }
+                    nameTexts[count].gameObject.SetActive(true);
+                    nameTexts[count].text = name+" : "+myRole;
+                    //nameTexts[count].enabled = true;
+                    count += 1;
                 }
             }
-
-            nameText.enabled = false; 
+            for (int i=count; i < nameTexts.Count; i++)
+            {
+                nameTexts[i].gameObject.SetActive(false);
+            }
         }
 
         public void ProcessMessage(ReferenceCountedSceneGraphMessage message)

@@ -10,12 +10,10 @@ namespace Ubiq.Samples
     public class WallChange : MonoBehaviour
     {
         private GameManager gameManager;
-        private NetworkContext context;
 
 
         private void Start()
         {
-            context = NetworkScene.Register(this);
             gameManager = FindObjectOfType<GameManager>();
         }
 

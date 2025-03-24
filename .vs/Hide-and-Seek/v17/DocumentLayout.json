@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "F:\\gitproject\\Insight\\Hide-and-Seek\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\showname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\showname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\showname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\showname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|f:\\gitproject\\insight\\hide-and-seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\teamassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\teamassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\teamassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\teamassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\avatarrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\avatarrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\networkscoreboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +31,8 @@
       "RelativeMoniker": "D:0:0:{CE26CDF0-7E95-B11D-2D51-09732A1AD23D}|Ubiq.csproj|solutionrelative:library\\packagecache\\com.ucl.ubiq\\runtime\\ui\\scripts\\peerspanelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\avatarrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\avatarrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|solutionrelative:assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11EEE5B7-1EF0-B9AE-569E-39CDB2FF8E7A}|Ubiq.Demo.csproj|F:\\gitproject\\Insight\\Hide-and-Seek\\assets\\samples\\ubiq\\1.0.0-pre.11\\demo (xri)\\assets\\scripts\\firework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,30 +46,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GameManager.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\GameManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAqwGUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T22:57:44.828Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "showName.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\showName.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\showName.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\showName.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\showName.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAFkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T22:53:37.641Z",
               "EditorCaption": ""
@@ -77,6 +77,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T22:42:04.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PeersPanelController.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Library\\PackageCache\\com.ucl.ubiq\\Runtime\\UI\\Scripts\\PeersPanelController.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.ucl.ubiq\\Runtime\\UI\\Scripts\\PeersPanelController.cs",
@@ -94,26 +106,27 @@
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\TeamAssigner.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\TeamAssigner.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\TeamAssigner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T23:29:20.038Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "AvatarRole.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\AvatarRole.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\AvatarRole.cs",
               "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\AvatarRole.cs",
               "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\AvatarRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T23:21:20.211Z"
+              "WhenOpened": "2025-03-22T23:21:20.211Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Bullet.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Bullet.cs",
@@ -125,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "NetworkScoreboard.cs",
               "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\NetworkScoreboard.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\NetworkScoreboard.cs",
@@ -134,18 +147,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T23:12:42.424Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Gun.cs",
-              "DocumentMoniker": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "RelativeDocumentMoniker": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "ToolTip": "F:\\gitproject\\Insight\\Hide-and-Seek\\Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "RelativeToolTip": "Assets\\Samples\\Ubiq\\1.0.0-pre.11\\Demo (XRI)\\Assets\\Scripts\\Gun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T22:42:04.733Z"
             },
             {
               "$type": "Document",
