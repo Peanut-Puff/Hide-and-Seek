@@ -37,7 +37,7 @@ namespace Ubiq.Samples
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             foreach (var avatar in avatars)
             {
-                Debug.Log(avatar.Peer); // 输出每个 Avatar 的名字
+                Debug.Log(avatar.Peer);
             }
 
             foreach (var avatar in avatars)
@@ -51,7 +51,7 @@ namespace Ubiq.Samples
             {
                 foreach (var avatar in avatars)
                 {
-                    if (avatar != null) // 防止 NullReferenceException
+                    if (avatar != null) // NullReferenceException
                     {
                         avatar.OnPeerUpdated.RemoveListener(Avatar_OnPeerUpdated);
                     }

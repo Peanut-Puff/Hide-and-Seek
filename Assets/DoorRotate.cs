@@ -4,53 +4,69 @@ using Ubiq.Avatars;
 using Ubiq.Messaging;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Ubiq.Rooms;
 
 namespace Ubiq.Samples
 {
     public class DoorRotate : MonoBehaviour
     {
-        private GameManager gameManager;
-        private Quaternion initialRotation;
-        private Quaternion targetRotation;
-        private bool rotating = false;
+        private Quaternion closedRotation;          
+        private Quaternion openRotation;          
+        public float rotationAngle = -150f;        
+        public float rotationSpeed = 90f;        
 
-        public float rotationSpeed = 90f;
-        public float rotationAngle = -150f;
+        private GameManager gameManager;
+        private AvatarManager avatarManager;
+
+        private bool lastGameStarted = true;
+        private List<Ubiq.Avatars.Avatar> avatars;
+        private int count = 0;
+        private RoomClient roomClient;
+
 
         private void Start()
         {
+            closedRotation = transform.rotation;
+            openRotation = closedRotation * Quaternion.Euler(0f, rotationAngle, 0f);
+
             gameManager = FindObjectOfType<GameManager>();
-            initialRotation = transform.rotation;
-            targetRotation = initialRotation * Quaternion.Euler(0, rotationAngle, 0); 
+            avatarManager = FindObjectOfType<AvatarManager>();
+
+
         }
 
         private void Update()
         {
-            if (!gameManager)
+            if (gameManager == null || avatarManager == null)
             {
                 return;
             }
+            bool currentGameStarted = gameManager.gameStarted;
 
-            if (gameManager.gameStarted && !rotating)
+            Quaternion targetRotation = gameManager.gameStarted ? openRotation : closedRotation;
+            if (gameManager.gameStarted)
             {
-                rotating = true;
+                count = 1;
             }
 
-            if (rotating)
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
+            if (lastGameStarted && !currentGameStarted && count!=0)
             {
-
-                transform.rotation = Quaternion.RotateTowards(
-                    transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime);
-
-
-                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
-                {
-                    transform.rotation = targetRotation;
-                    rotating = false;
-                }
+                LogAllAvatarPositions();
             }
+            lastGameStarted = currentGameStarted;
+
+
         }
+        private void LogAllAvatarPositions()
+        {
+            
+         
+        }
+
     }
 }

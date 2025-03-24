@@ -16,13 +16,14 @@ namespace Ubiq.Samples
         public ShowName showname;
         public NetworkScoreboard networkScoreboard;
         public GunSpawner gunSpawner;
+        public GetPosition AvatrPositionEnd;
         public LongPress fixMachine1;
         public LongPress fixMachine2;
         public LongPress fixMachine3;
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
-        private float duration = 300f;
+        private float duration = 25f;
         private NetworkContext context;
         public string myRole;
         private struct GameStartMessage
@@ -91,13 +92,24 @@ namespace Ubiq.Samples
             startGameButton.enabled = false;
             yield return new WaitForSeconds(duration);
             gameStarted = false;
+
+            //AvatrPositionEnd.targetPosition = transform.position;
+            //Vector3 mm = AvatrPositionEnd.targetPosition
+            //Vector3 NowPosition = AvatrPositionEnd.getTargetPosition();
+            //(0,0,-2.25)
+
+            AvatrPositionEnd.transform.position = new Vector3(0f, 0f, -2.25f);
+
             startGameButton.enabled = true;
             networkScoreboard.StopScoring();
             gunSpawner.enabled = false;
             fixMachine1.enabled = false;
             fixMachine2.enabled = false;
             fixMachine3.enabled = false;
-            fixMachine4.enabled = false;        
+            fixMachine4.enabled = false;
+
+            
+
         }
 
         private void OnDestroy()
