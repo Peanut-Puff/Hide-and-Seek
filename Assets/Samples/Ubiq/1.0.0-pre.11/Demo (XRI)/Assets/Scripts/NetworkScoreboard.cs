@@ -61,10 +61,14 @@ namespace Ubiq.Samples
         }
         private void FinalDisplay()
         {
+            if (hiderScore==catcherScore){
+                timerText.text = "Draw";
+                return;
+            }
             var team = "Catcher";
             if (hiderScore>catcherScore) 
                 team="Hider";
-            timerText.text = $"{team} Team Wins!";
+            timerText.text = $"{team} Team Wins";
         }
         public void StopScoring(bool mode=true)
         {
