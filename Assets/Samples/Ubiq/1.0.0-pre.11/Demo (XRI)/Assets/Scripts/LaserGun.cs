@@ -53,6 +53,7 @@ namespace Ubiq.Samples
         public AudioClip hitSound;
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f; 
+        private GameManager gameManager;
 
         private void OnEnable()
         {
@@ -175,7 +176,7 @@ namespace Ubiq.Samples
                 //    }
                 //}
                 List<GameObject> originHandObjects = GetObjectsWithName("Origin Hand");
-                Debug.Log("origin hand count£º"+originHandObjects.Count);
+                Debug.Log("origin hand countï¿½ï¿½"+originHandObjects.Count);
                 for (int i = 0; i < originHandObjects.Count; i++)
                 {
                     Debug.Log(originHandObjects[i].name);
@@ -302,6 +303,7 @@ namespace Ubiq.Samples
             //network
             //laserBeam.SetActive(false);
             //laserLine.enabled = false; //hide
+            gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
             context = NetworkScene.Register(this);
             var grab = GetComponent<XRGrabInteractable>();
@@ -370,6 +372,17 @@ namespace Ubiq.Samples
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
                 }
                 ishit = false;
+            }
+            if (!gameManager.gameStarted)
+            {
+
+               var spawner = NetworkSpawnManager.Find(this);
+               if (spawner == null)
+               {
+                   Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+               }
+               NetworkSpawnManager.Find(this).Despawn(gameObject);
+               return;
             }
         }
 

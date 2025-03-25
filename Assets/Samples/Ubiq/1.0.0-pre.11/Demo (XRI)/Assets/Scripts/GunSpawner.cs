@@ -50,17 +50,17 @@ namespace Ubiq.Samples
                 return;
             }
             var go = spawnManager.SpawnWithPeerScope(gunPrefeb);
-            var firework = go.GetComponent<Gun>();
-            firework.transform.position = transform.position;
-            firework.owner = true;            
-            firework.iscatched = true;
+            var gun = go.GetComponent<Gun>();
+            gun.transform.position = transform.position;
+            gun.owner = true;            
+            gun.iscatched = true;
 
             if (!interactionManager)
             {
                 return;
             }
 
-            // Force the interactor(hand) to stop selecting the box and select the firework
+            // Force the interactor(hand) to stop selecting the box and select the gun
             var selectInteractor = eventArgs.interactorObject;
             if (selectInteractor != null)
             {
@@ -69,7 +69,7 @@ namespace Ubiq.Samples
                     this.interactable);
                 interactionManager.SelectEnter(
                     selectInteractor,
-                    firework.GetComponent<XRGrabInteractable>());
+                    gun.GetComponent<XRGrabInteractable>());
             }
         }
 #endif

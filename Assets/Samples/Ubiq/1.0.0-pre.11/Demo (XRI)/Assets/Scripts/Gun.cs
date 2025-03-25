@@ -32,7 +32,7 @@ namespace Ubiq.Samples
         public bool iscatched;
         public bool owner;
         public bool fired;
-
+        private GameManager gameManager;
         private void OnEnable()
         {
             SetupInteractorEvents();
@@ -127,7 +127,7 @@ namespace Ubiq.Samples
         {
             //network
             spawnManager = NetworkSpawnManager.Find(this);
-
+            gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
             context = NetworkScene.Register(this);
             var grab = GetComponent<XRGrabInteractable>();
@@ -182,24 +182,24 @@ namespace Ubiq.Samples
             {
                 SendMessage();
             }
-            //if (owner && fired)
-            //{
+            if (!gameManager.gameStarted)
+            {
 
-            //    var spawner = NetworkSpawnManager.Find(this);
-            //    if (spawner == null)
-            //    {
-            //        Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
-            //    }
-            //    NetworkSpawnManager.Find(this).Despawn(gameObject);
-            //    return;
-            //}
-            //if (!owner && fired)
-            //{
+               var spawner = NetworkSpawnManager.Find(this);
+               if (spawner == null)
+               {
+                   Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+               }
+               NetworkSpawnManager.Find(this).Despawn(gameObject);
+               return;
+            }
+            // if (!owner && fired)
+            // {
             //    if (!particles.isPlaying)
             //    {
             //        particles.Play();
             //    }
-            //}
+            // }
         }
 
         private struct Message
