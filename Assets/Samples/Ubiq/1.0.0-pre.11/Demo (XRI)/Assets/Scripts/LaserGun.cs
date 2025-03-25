@@ -39,6 +39,7 @@ namespace Ubiq.Samples
         public InputActionReference MyLeftTrigger;
         public InputActionReference MyRightTrigger;
         private InputAction spaceAction;
+        private InputAction yAction;
 
         private Rigidbody body;
         //private ParticleSystem particles;
@@ -333,12 +334,19 @@ namespace Ubiq.Samples
             spaceAction = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/space");
             spaceAction.performed += OnSpacePressed;
             spaceAction.Enable();
-        }
 
+            yAction = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/y");
+            yAction.performed += OnYPressed;
+            yAction.Enable();
+        }
+        private void OnYPressed(InputAction.CallbackContext context)
+        {
+            ForceToDrop(GetComponent<XRGrabInteractable>());
+
+        }
         private void OnSpacePressed(InputAction.CallbackContext context)
         {
             Fire();
-
         }
 
         private void Interactable_SelectEntered(SelectEnterEventArgs eventArgs)
@@ -359,6 +367,10 @@ namespace Ubiq.Samples
             {
                 interactable.interactionManager.SelectExit(interactable.firstInteractorSelecting, interactable);
             }
+        }
+        private IEnumerator Wait2Second()
+        {
+            yield return new WaitForSeconds(2f); 
         }
         private void FixedUpdate()
         {
@@ -397,6 +409,7 @@ namespace Ubiq.Samples
             if (!gameManager.gameStarted)
             {
                 ForceToDrop(GetComponent<XRGrabInteractable>());
+                StartCoroutine(Wait2Second());
                 var spawner = NetworkSpawnManager.Find(this);
                if (spawner == null)
                {
