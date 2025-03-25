@@ -23,18 +23,18 @@ namespace Ubiq.Samples
         public bool ishitanything;
         public Vector3 hitonSpot;
         public float force;
-        public AudioClip hitSound; // 拖入音效
+        public AudioClip hitSound; 
 
-        public float vibrationIntensity = 0.5f; // 震动强度 (0~1)
-        public float vibrationDuration = 0.2f; // 震动时长 (秒)
+        public float vibrationIntensity = 0.5f; 
+        public float vibrationDuration = 0.2f; 
 
-        public float knockbackForce = 3f; // 击退力度
-        public float knockbackDuration = 0.3f; // 击退持续时间
+        public float knockbackForce = 3f; 
+        public float knockbackDuration = 0.3f; 
 
-        public float tiltAngle = 20f; // 后仰角度
-        public float tiltDuration = 0.15f; // 后仰持续时间
-        private bool isTilting = false; // 标记是否正在后仰
-        private Quaternion originalRotation= Quaternion.identity; // 记录初始旋转角度
+        public float tiltAngle = 20f; 
+        public float tiltDuration = 0.15f; 
+        private bool isTilting = false; 
+        private Quaternion originalRotation= Quaternion.identity; 
 
         public bool owner;
         public bool ishit = false;
@@ -62,55 +62,7 @@ namespace Ubiq.Samples
             }
 
         }
-        private void OnCollisionEnter(Collision collision)
-        {
-            GameObject hitObject = collision.gameObject;
 
-            Transform hitObjectTransform = hitObject.GetComponent<Transform>();
-
-            if (hitObjectTransform != null)
-            {
-                ishitanything = true;
-                Debug.Log("hit on :"+ hitObject.name);
-            }
-            if (hitObject.name == "XR Origin Hands (XR Rig)")//(hitObject.name == "shell")
-            {
-                ishit = true;
-                Debug.Log("hit on avatar");
-                CharacterController rb = hitObject.GetComponent<CharacterController>();
-                XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
-                hitonSpot = hitObject.transform.position;
-                if (hitSound != null)
-                {
-                    AudioSource.PlayClipAtPoint(hitSound, hitObject.transform.position);
-                }
-
-                //FindFirstObjectByType<NetworkScoreboard>().AddScore("hider", 1);
-                FindFirstObjectByType<NetworkScoreboard>().AddScore("catcher", 1);
-                if (controllers.Length > 0)
-                {
-                    foreach (XRDirectInteractor controller in controllers)
-                    {
-                        // 获取对应的手柄设备
-                        UnityEngine.XR.InputDevice device = GetXRDevice(controller);
-
-                        // 触发手柄震动（震动强度 0.5，持续 0.2 秒）
-                        SendHapticFeedback(device, 0.5f, 0.2f);
-                    }
-                }
-                if (rb != null)
-                {
-                    Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
-                    knockbackDirection.y = 0; // 保持水平方向，不让角色飞起来
-
-                    StartCoroutine(KnockbackRoutine(rb,knockbackDirection));
-                    //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
-
-                }
-            }
-
-            explodeTime = Time.time+2f;
-        }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
             string name = interactor.gameObject.name.ToLower();
@@ -134,11 +86,9 @@ namespace Ubiq.Samples
             Vector3 tiltAxis = Vector3.Cross(Vector3.up, knockbackDirection).normalized;
 
             Debug.Log(originalRotation);
-            // **目标后仰角度**
             Quaternion targetRotation = Quaternion.AngleAxis(tiltAngle, tiltAxis) * originalRotation;
 
 
-            // **前半段：后仰**
             while (timer < tiltDuration)
             {
                 hitObject.transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, timer / tiltDuration);
@@ -146,7 +96,6 @@ namespace Ubiq.Samples
                 yield return null;
             }
 
-            // **后半段：恢复**
             timer = 0f;
             while (timer < tiltDuration)
             {
@@ -155,7 +104,7 @@ namespace Ubiq.Samples
                 yield return null;
             }
 
-            hitObject.transform.rotation = Quaternion.identity; // 确保完全恢复
+            hitObject.transform.rotation = Quaternion.identity; 
             isTilting = false;
         }
 
@@ -170,35 +119,6 @@ namespace Ubiq.Samples
                 yield return null;
             }
         }
-
-        //private IEnumerator KnockbackRotation(Transform target)
-        //{
-        //    Quaternion originalRotation = target.rotation; // 记录原始旋转
-        //    Quaternion knockbackRotation = originalRotation * Quaternion.Euler(-20f, 0f, 0f); // 向后仰 20 度
-
-        //    // 0.3s 内逐渐向后仰
-        //    float duration = hittime/2;
-        //    float elapsedTime = 0f;
-        //    while (elapsedTime < duration)
-        //    {
-        //        target.rotation = Quaternion.Slerp(originalRotation, knockbackRotation, elapsedTime / duration);
-        //        elapsedTime += Time.deltaTime;
-        //        yield return null;
-        //    }
-        //    target.rotation = knockbackRotation; // 确保完全旋转到目标角度
-
-        //    yield return new WaitForSeconds(hittime/2); // 停留 0.3s
-
-        //    // 0.3s 内恢复到原始角度
-        //    elapsedTime = 0f;
-        //    while (elapsedTime < duration)
-        //    {
-        //        target.rotation = Quaternion.Slerp(knockbackRotation, originalRotation, elapsedTime / duration);
-        //        elapsedTime += Time.deltaTime;
-        //        yield return null;
-        //    }
-        //    target.rotation = originalRotation; // 确保完全恢复
-        //}
 
         private void FixedUpdate()
         {
