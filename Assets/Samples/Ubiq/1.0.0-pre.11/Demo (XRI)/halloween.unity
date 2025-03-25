@@ -1411,6 +1411,8 @@ MonoBehaviour:
   fixMachine3: {fileID: 1274984828}
   fixMachine4: {fileID: 8906590872650212343}
   gameStarted: 0
+  GameOverSound: {fileID: 8300000, guid: fea35d8be286fe44fab2d3f9276a6d80, type: 3}
+  TeleportEffectPrefab: {fileID: 125752170245797012, guid: 9b8f44c1817dd8e4aa841db50831dee5, type: 3}
   gameDuration: 60
   waitTime: 1
   myRole: 
@@ -13905,7 +13907,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 1422e0ce5b6579944ae91ea448bd721c, type: 3}
   m_Resource: {fileID: 8300000, guid: 1422e0ce5b6579944ae91ea448bd721c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14726,6 +14728,14 @@ PrefabInstance:
     - target: {fileID: 5102332842789988672, guid: 1999262d1fedc8d4387aadd4d6909428, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812077699794191075, guid: 1999262d1fedc8d4387aadd4d6909428, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701564121816989638, guid: 1999262d1fedc8d4387aadd4d6909428, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -129.69
       objectReference: {fileID: 0}
     - target: {fileID: 7421935205451943197, guid: 1999262d1fedc8d4387aadd4d6909428, type: 3}
       propertyPath: m_Name

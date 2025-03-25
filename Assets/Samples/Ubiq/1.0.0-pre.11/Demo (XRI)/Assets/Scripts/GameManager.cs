@@ -27,12 +27,16 @@ namespace Ubiq.Samples
         public AudioClip GameOverSound;
         private AudioSource audioSource;
 
+        //return effect
+        public GameObject TeleportEffectPrefab;
+
         private RoomClient roomClient;
 
         public float gameDuration;
         public float waitTime;
         private NetworkContext context;
         public string myRole;
+
         private struct GameMessage
         {
             public string type;
@@ -141,25 +145,8 @@ namespace Ubiq.Samples
                 audioSource.PlayOneShot(GameOverSound);
             }
 
+            StartCoroutine(ReturnBack());
 
-
-            //var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            //var number_avatar = avatars.Count;
-
-            string myName = roomClient.Me[DisplayNameManager.KEY];
-            var avatars_all = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            for (int i = 0; i < avatars_all.Count; i++)
-            {
-                var avatar0 = avatars_all[i];
-                var name = avatar0.Peer[DisplayNameManager.KEY];
-                if (name == myName)
-                {
-                    float fi = (float)i - 3f;
-                    AvatrPositionEnd.transform.position = new Vector3(fi, 0f, -3.25f);
-                    avatarManager.avatarPrefab = PrefabOrigin;
-                }
-            }
-          
             gunSpawner.enabled = false;
             laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
@@ -169,6 +156,38 @@ namespace Ubiq.Samples
             
 
         }
+
+        private IEnumerator ReturnBack()
+        {
+            string myName = roomClient.Me[DisplayNameManager.KEY];
+            var avatars_all = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            for (int i = 0; i < avatars_all.Count; i++)
+            {
+                var avatar0 = avatars_all[i];
+                var name = avatar0.Peer[DisplayNameManager.KEY];
+                if (name == myName)
+                {
+                    Vector3 effectPosition = AvatrPositionEnd.transform.position;
+
+                    float timer = 0f;
+                    GameObject effect = Instantiate(TeleportEffectPrefab, effectPosition, Quaternion.Euler(-90f, 0f, 0f));
+                    while (timer < 2f)
+                    {
+                        AvatrPositionEnd.transform.position = effectPosition;
+                        timer += Time.deltaTime;
+                        yield return null;
+                    }
+                    Destroy(effect);
+
+                    float fi = (float)i - 3f;
+                    AvatrPositionEnd.transform.position = new Vector3(fi, 0f, -3.25f);
+                    avatarManager.avatarPrefab = PrefabOrigin;
+                    break;
+                }
+            }     
+        }
+
+
         private IEnumerator DisableButtonTemporarily()
         {
             startGameButton.enabled = false;
