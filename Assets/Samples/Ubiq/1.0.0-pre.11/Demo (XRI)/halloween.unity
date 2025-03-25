@@ -1413,7 +1413,7 @@ MonoBehaviour:
   gameStarted: 0
   GameOverSound: {fileID: 8300000, guid: fea35d8be286fe44fab2d3f9276a6d80, type: 3}
   TeleportEffectPrefab: {fileID: 125752170245797012, guid: 9b8f44c1817dd8e4aa841db50831dee5, type: 3}
-  WallPrefab: {fileID: 0}
+  WallPrefab: {fileID: 1192087584}
   gameDuration: 60
   waitTime: 1
   myRole: 
