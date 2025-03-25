@@ -215,6 +215,15 @@ namespace Ubiq.Samples
                     return;
                 }
             }
+            if (ishit == true)
+            {
+
+                if (hitSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
+                }
+                ishit = false;
+            }
             if (isflying) //
             {
                 //firePoint = transform.position;// + transform.forward * 0.6f;
