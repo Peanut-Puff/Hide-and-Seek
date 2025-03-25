@@ -282,6 +282,7 @@ MonoBehaviour:
   Radius: 0.5
   hitonSpot: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
+  FireSound: {fileID: 8300000, guid: 3fb922b3e1a582541ace24d3da1fa86e, type: 3}
   knockbackForce: 3
   knockbackDuration: 0.3
   LocalPosition: {x: 0, y: 0, z: 0}

@@ -30,6 +30,7 @@ namespace Ubiq.Samples
 
         public Vector3 hitonSpot;
         public AudioClip hitSound;
+        public AudioClip FireSound;
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f;
 
@@ -103,6 +104,10 @@ namespace Ubiq.Samples
         }
         private IEnumerator FireLaser()
         {
+            if (FireSound != null)
+            {
+                AudioSource.PlayClipAtPoint(FireSound, transform.position);
+            }
             float startTime = Time.time;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             List<GameObject> objectList = new List<GameObject>();
@@ -136,6 +141,7 @@ namespace Ubiq.Samples
         }
         public void GotHitReaction(GameObject hitObject)
         {
+            Debug.Log("got hit and start to reaction");
             ishit = true;
             CharacterController rb = hitObject.GetComponent<CharacterController>();
             XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
