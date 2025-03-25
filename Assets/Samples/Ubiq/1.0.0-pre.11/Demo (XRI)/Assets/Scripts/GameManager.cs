@@ -24,6 +24,8 @@ namespace Ubiq.Samples
         public LongPress fixMachine4;
         public bool gameStarted = false;
 
+        private RoomClient roomClient;
+
         public float gameDuration;
         public float waitTime;
         private NetworkContext context;
@@ -59,6 +61,7 @@ namespace Ubiq.Samples
             }
             var networkScene = NetworkScene.Find(this);
             avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
+            roomClient = networkScene.GetComponentInChildren<RoomClient>();
 
         }
 
@@ -125,9 +128,25 @@ namespace Ubiq.Samples
             showname.ResetNameBoard();
             startGameButton.enabled = true;
 
-            AvatrPositionEnd.transform.position = new Vector3(0f, 0f, -2.25f);
-            avatarManager.avatarPrefab = PrefabOrigin;
 
+
+            //var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            //var number_avatar = avatars.Count;
+            
+            string myName = roomClient.Me[DisplayNameManager.KEY];
+            var avatars_all = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            for (int i = 0; i < avatars_all.Count; i++)
+            {
+                var avatar0 = avatars_all[i];
+                var name = avatar0.Peer[DisplayNameManager.KEY];
+                if (name == myName)
+                {
+                    float fi = (float)i - 3f;
+                    AvatrPositionEnd.transform.position = new Vector3(fi, 0f, -3.25f);
+                    avatarManager.avatarPrefab = PrefabOrigin;
+                }
+            }
+          
             gunSpawner.enabled = false;
             laserGunSpawner.enabled = false;
             fixMachine1.enabled = false;
