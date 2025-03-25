@@ -175,7 +175,13 @@ namespace Ubiq.Samples
             //}
             //NetworkSpawnManager.Find(this).Despawn(gameObject);
         }
-
+        private void ForceToDrop(XRGrabInteractable interactable)
+        {
+            if (interactable.interactionManager && interactable.isSelected)
+            {
+                interactable.interactionManager.SelectExit(interactable.firstInteractorSelecting, interactable);
+            }
+        }
         private void FixedUpdate()
         {
             if (owner)
@@ -184,7 +190,7 @@ namespace Ubiq.Samples
             }
             if (!gameManager.gameStarted)
             {
-
+               ForceToDrop(GetComponent<XRGrabInteractable>());
                var spawner = NetworkSpawnManager.Find(this);
                if (spawner == null)
                {

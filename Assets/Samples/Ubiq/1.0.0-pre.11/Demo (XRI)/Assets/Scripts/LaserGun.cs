@@ -353,7 +353,13 @@ namespace Ubiq.Samples
 
             iscatched = false;
         }
-
+        private void ForceToDrop(XRGrabInteractable interactable)
+        {
+            if (interactable.interactionManager && interactable.isSelected)
+            {
+                interactable.interactionManager.SelectExit(interactable.firstInteractorSelecting, interactable);
+            }
+        }
         private void FixedUpdate()
         {
             if (Time.time>laserHitCoolTime+laserHitCoolRange)
@@ -390,8 +396,8 @@ namespace Ubiq.Samples
             }
             if (!gameManager.gameStarted)
             {
-
-               var spawner = NetworkSpawnManager.Find(this);
+                ForceToDrop(GetComponent<XRGrabInteractable>());
+                var spawner = NetworkSpawnManager.Find(this);
                if (spawner == null)
                {
                    Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
