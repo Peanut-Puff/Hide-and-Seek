@@ -15,7 +15,6 @@ namespace Ubiq.Samples
     public class BulletTest : MonoBehaviour, INetworkSpawnable
     {
         private Rigidbody body;
-        private ParticleSystem particles;
 
         public NetworkId NetworkId { get; set; }
         public float bulletSpeed;
@@ -32,7 +31,7 @@ namespace Ubiq.Samples
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
-            particles = GetComponentInChildren<ParticleSystem>();
+            //particles = GetComponentInChildren<ParticleSystem>();
             owner = false;
         }
 
@@ -59,6 +58,9 @@ namespace Ubiq.Samples
                 body.AddForce(forward * bulletSpeed, ForceMode.Impulse);
 
             }
+            explodeTime = Time.time+3f;
+            isflying = true;
+            owner = true;
 
         }
         private void FixedUpdate()
@@ -70,25 +72,12 @@ namespace Ubiq.Samples
             if (owner && isflying)
             {
                 body.isKinematic = false;
-                body.AddForce(flightForce, ForceMode.Force);
-
-                if (!particles.isPlaying)
-                {
-                    particles.Play();
-                    //body.AddForce(transform.up * 2.0f, ForceMode.Impulse);
-                }
+                //body.AddForce(flightForce, ForceMode.Force); /
 
                 if (Time.time > explodeTime)
                 {
                     NetworkSpawnManager.Find(this).Despawn(gameObject);
                     return;
-                }
-            }
-            if (!owner && isflying)
-            {
-                if (!particles.isPlaying)
-                {
-                    particles.Play();
                 }
             }
         }
