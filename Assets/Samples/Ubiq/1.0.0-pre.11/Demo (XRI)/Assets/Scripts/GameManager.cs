@@ -23,6 +23,9 @@ namespace Ubiq.Samples
         public LongPress fixMachine3;
         public LongPress fixMachine4;
         public bool gameStarted = false;
+        //Audio
+        public AudioClip GameOverSound;
+        private AudioSource audioSource;
 
         private RoomClient roomClient;
 
@@ -62,6 +65,9 @@ namespace Ubiq.Samples
             var networkScene = NetworkScene.Find(this);
             avatarManager = networkScene.GetComponentInChildren<AvatarManager>();
             roomClient = networkScene.GetComponentInChildren<RoomClient>();
+            //AudioSource
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
 
         }
 
@@ -128,11 +134,18 @@ namespace Ubiq.Samples
             showname.ResetNameBoard();
             startGameButton.enabled = true;
 
+            // play the sound
+            if (GameOverSound && audioSource)
+            {
+                audioSource.volume = 1.0f;
+                audioSource.PlayOneShot(GameOverSound);
+            }
+
 
 
             //var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             //var number_avatar = avatars.Count;
-            
+
             string myName = roomClient.Me[DisplayNameManager.KEY];
             var avatars_all = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             for (int i = 0; i < avatars_all.Count; i++)
