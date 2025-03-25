@@ -262,6 +262,9 @@ namespace Ubiq.Samples
                 //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
             }
         }
+
+
+
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
             string name = interactor.gameObject.name.ToLower();
@@ -370,7 +373,13 @@ namespace Ubiq.Samples
         }
         private IEnumerator Wait2Second()
         {
-            yield return new WaitForSeconds(2f); 
+            yield return new WaitForSeconds(2f);
+            var spawner = NetworkSpawnManager.Find(this);
+            if (spawner == null)
+            {
+                Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+            }
+            NetworkSpawnManager.Find(this).Despawn(gameObject);
         }
         private void FixedUpdate()
         {
@@ -400,6 +409,7 @@ namespace Ubiq.Samples
             }
             if (ishit == true)
             {
+
                 if (hitSound != null)
                 {
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
@@ -410,12 +420,6 @@ namespace Ubiq.Samples
             {
                 ForceToDrop(GetComponent<XRGrabInteractable>());
                 StartCoroutine(Wait2Second());
-                var spawner = NetworkSpawnManager.Find(this);
-               if (spawner == null)
-               {
-                   Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
-               }
-               NetworkSpawnManager.Find(this).Despawn(gameObject);
                return;
             }
         }

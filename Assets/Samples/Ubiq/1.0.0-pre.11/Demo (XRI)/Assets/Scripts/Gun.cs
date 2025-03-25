@@ -182,6 +182,16 @@ namespace Ubiq.Samples
                 interactable.interactionManager.SelectExit(interactable.firstInteractorSelecting, interactable);
             }
         }
+        private IEnumerator Wait2Second()
+        {
+            yield return new WaitForSeconds(2f);
+            var spawner = NetworkSpawnManager.Find(this);
+            if (spawner == null)
+            {
+                Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
+            }
+            NetworkSpawnManager.Find(this).Despawn(gameObject);
+        }
         private void FixedUpdate()
         {
             if (owner)
@@ -191,12 +201,7 @@ namespace Ubiq.Samples
             if (!gameManager.gameStarted)
             {
                ForceToDrop(GetComponent<XRGrabInteractable>());
-               var spawner = NetworkSpawnManager.Find(this);
-               if (spawner == null)
-               {
-                   Debug.LogError("NetworkSpawnManager is null. Cannot despawn object.");
-               }
-               NetworkSpawnManager.Find(this).Despawn(gameObject);
+               StartCoroutine(Wait2Second());
                return;
             }
             // if (!owner && fired)
