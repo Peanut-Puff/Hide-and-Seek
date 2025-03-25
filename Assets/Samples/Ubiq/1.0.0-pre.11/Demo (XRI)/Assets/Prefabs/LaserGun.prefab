@@ -438,21 +438,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooltime: 0
+  laserRadius: 1
   isfiring: 0
   firePoint: {x: 0, y: 0, z: 0}
   laserBeam: {fileID: 5632313627448983379}
-  laserDuration: 1
+  laserDuration: 5
   laserRange: 50
   MyLeftTrigger: {fileID: 664593973374250958, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   MyRightTrigger: {fileID: -4396522540001259471, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   iscatched: 0
   owner: 0
   fired: 1
+  laserScoreCool: 0
+  laserHitCoolTime: 0
+  laserHitCoolRange: 1
   hitonSpot: {x: 0, y: 0, z: 0}
   force: 0
   hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
   knockbackForce: 3
   knockbackDuration: 0.3
+  AvatrPositionEnd: {fileID: 0}
 --- !u!1001 &6128342872853179997
 PrefabInstance:
   m_ObjectHideFlags: 0
