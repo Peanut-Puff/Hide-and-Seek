@@ -29,6 +29,8 @@ namespace Ubiq.Samples
 
         //return effect
         public GameObject TeleportEffectPrefab;
+        //wall
+        public GameObject WallPrefab;
 
         private RoomClient roomClient;
 
@@ -112,10 +114,24 @@ namespace Ubiq.Samples
                     var roleComp = avatar.GetComponent<AvatarRole>();
                     Debug.Log($"I am {roleComp.role}");
                     myRole = roleComp.role;
+                    // here
+
+                    if (myRole == "catcher")
+                    {
+                        StartCoroutine(EnableWallTemporarily());
+                    }
+
                     break;
                 }
             }
         }
+        private IEnumerator EnableWallTemporarily()
+        {
+            WallPrefab.SetActive(true);
+            yield return new WaitForSeconds(waitTime);
+            WallPrefab.SetActive(false);
+        }
+
         private IEnumerator EnableFix()
         {
             yield return new WaitForSeconds(waitTime);
@@ -133,7 +149,7 @@ namespace Ubiq.Samples
         private void DisableAll()
         {
             gameStarted = false;
-            
+            WallPrefab.SetActive(false);
 
             showname.ResetNameBoard();
             startGameButton.enabled = true;
