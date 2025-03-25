@@ -8,6 +8,8 @@ using Ubiq.Geometry;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 using System.Linq;
+using UnityEngine.UIElements;
+
 
 
 #if XRI_3_0_7_OR_NEWER
@@ -46,6 +48,9 @@ namespace Ubiq.Samples
         public bool fired;
 
         //laser
+        public bool laserScoreCool;
+        public float laserHitCoolTime;
+        public float laserHitCoolRange;
         private bool ishitanything;
         private bool ishit;
         public Vector3 hitonSpot;
@@ -54,6 +59,7 @@ namespace Ubiq.Samples
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f; 
         private GameManager gameManager;
+        public GetPosition AvatrPositionEnd;
 
         private void OnEnable()
         {
@@ -136,22 +142,48 @@ namespace Ubiq.Samples
             return  distance <= laserRadius;
         }
 
-        private List<GameObject> GetObjectsWithName(string keyword)
+        Transform GetActiveChild(GameObject parent)
         {
-            return FindObjectsOfType<GameObject>()
-                .Where(obj => obj.name.Contains(keyword))
-                .ToList();
+            foreach (Transform child in parent.transform) 
+            {
+                if (child.gameObject.activeSelf) 
+                {
+                    return child;
+                }
+            }
+            return null; 
         }
-
+        Transform GetFloatingBody(GameObject parent)
+        {
+            foreach (Transform child in parent.transform)
+            {
+                if (child.name.Contains("Floating_Torso_A"))
+                {
+                    return child;
+                }
+            }
+            return null;
+        }
         private IEnumerator FireLaser()
         {
             //laserBeam.SetActive(true);
             isfiring = true;
             float startTime = Time.time;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
-            while (Time.time < startTime + laserDuration)
+            List<GameObject> objectList = new List<GameObject>();
+            int avatarcount = 0;
+            foreach (var avatar in avatars)
             {
-                // ned point of ray
+                //Debug.Log($"Found Avatar on: {avatar.gameObject.transform.position}");
+                Transform activeChild = GetActiveChild(avatar.gameObject);
+                //if (activeChild.name.Contains("Body"))
+                Transform floatingBody = GetFloatingBody(activeChild.gameObject);
+                Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
+                objectList.Add(floatingBody.gameObject);
+            }
+            while (Time.time < startTime + laserDuration && laserScoreCool)
+            {
+                // need point of ray
                 laserEnd = transform.position + transform.forward * laserRange;
                 firePoint = transform.position;// + transform.forward * 0.6f;
                                                //laserLine.SetPosition(0, firePoint);
@@ -163,16 +195,36 @@ namespace Ubiq.Samples
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
                 bool ishitAvatar = false;
-                
-                // Raycast
-                //foreach (var avatar in avatars)
-                //{
-                //    if (avatar == null) continue;
 
-                //    if (DistancePointToLineSegment(avatar.transform.position,firePoint,laserEnd))
+                // Raycast
+                foreach (GameObject obj in objectList)
+                {
+                    if (obj == null) continue;
+                    //Debug.Log("avatar name:"+avatar.Position);
+
+                    if (DistancePointToLineSegment(obj.transform.position, firePoint, laserEnd))
+                    {
+                        Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        ishitAvatar = true;
+                        GotHitReaction(obj.gameObject);
+                        laserScoreCool = false;
+                        laserHitCoolTime = Time.time;
+                    }
+                }
+
+
+                //if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, laserRange))
+                //{
+                //    laserEnd = hit.point; //end of ray
+
+                //    GameObject hitObject = hit.collider.gameObject;
+
+                //    Transform hitObjectTransform = hitObject.GetComponent<Transform>();
+
+                //    if (hitObjectTransform != null)
                 //    {
-                //        Debug.Log($"Avatar {avatar.Peer[DisplayNameManager.KEY]} is hit by laser!");
-                //        ishitAvatar = true;
+                //        ishitanything = true;
+                //        //Debug.Log("hit on :" + hitObject.name);
                 //    }
                 //}
                 List<GameObject> originHandObjects = GetObjectsWithName("Origin Hand");
@@ -249,7 +301,38 @@ namespace Ubiq.Samples
             //laserLine.enabled = false;
             isfiring = false;
         }
+        public void GotHitReaction(GameObject hitObject)
+        {
+            ishit = true;
+            CharacterController rb = hitObject.GetComponent<CharacterController>();
+            XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
+            hitonSpot = hitObject.transform.position;
+            if (hitSound != null)
+            {
+                AudioSource.PlayClipAtPoint(hitSound, hitObject.transform.position);
+            }
 
+            FindFirstObjectByType<NetworkScoreboard>().AddScore("catcher", 1);
+            if (controllers.Length > 0)
+            {
+                foreach (XRDirectInteractor controller in controllers)
+                {
+                    // get xr
+                    UnityEngine.XR.InputDevice device = GetXRDevice(controller);
+
+                    // shake controller
+                    SendHapticFeedback(device, 0.5f, 0.2f);
+                }
+            }
+            if (rb != null)
+            {
+                Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
+                knockbackDirection.y = 0;
+
+                StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
+                //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
+            }
+        }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
         {
             string name = interactor.gameObject.name.ToLower();
@@ -345,6 +428,10 @@ namespace Ubiq.Samples
 
         private void FixedUpdate()
         {
+            if (Time.time>laserHitCoolTime+laserHitCoolRange)
+            {
+                laserScoreCool = true;
+            }
             if (isfiring) //
             {
                 firePoint = transform.position;// + transform.forward * 0.6f;
