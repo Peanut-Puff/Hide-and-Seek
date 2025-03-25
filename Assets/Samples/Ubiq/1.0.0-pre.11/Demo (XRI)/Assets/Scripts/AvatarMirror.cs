@@ -62,6 +62,12 @@ namespace Ubiq.Samples
             {
                 var avatar = avatarManager.transform.GetChild(ai);
 
+                var roleComp = avatar.GetComponent<AvatarRole>();
+                if (roleComp && roleComp.role == "catcher")
+                {
+                    continue;
+                }
+
                 // Get every renderer on each avatar and queue it up to be rendered
                 // again in the mirror. 
                 // 
@@ -121,14 +127,14 @@ namespace Ubiq.Samples
                     switch (plane)
                     {
                         case Plane.XY:
-                            if (Mathf.Abs(localPos.x) > mirrorSize.x * 60.5f ||
-                                Mathf.Abs(localPos.y) > mirrorSize.y * 60.5f)
+                            if (Mathf.Abs(localPos.x) > mirrorSize.x * 80.5f ||
+                                Mathf.Abs(localPos.y) > mirrorSize.y * 80.5f)
                             {
                                 outOfBounds = true;
                             }
                             break;
                         case Plane.YZ:
-                            if (Mathf.Abs(localPos.y) > mirrorSize.y * 60.5f ||
+                            if (Mathf.Abs(localPos.y) > mirrorSize.y * 80.5f ||
                                 Mathf.Abs(localPos.z) > mirrorSize.z * 60.5f)
                             {
                                 outOfBounds = true;
