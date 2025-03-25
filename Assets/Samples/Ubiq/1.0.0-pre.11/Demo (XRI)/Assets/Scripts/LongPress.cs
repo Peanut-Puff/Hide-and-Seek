@@ -21,6 +21,7 @@ namespace Ubiq.Samples
         private IXRSelectInteractor currentInteractor;
         private XRSimpleInteractable interactable;
         private XRInteractionManager interactionManager;
+        public float duration=20f;
 
         private void Start()
         {
@@ -97,6 +98,7 @@ namespace Ubiq.Samples
                     FindObjectOfType<NetworkScoreboard>().AddScore("hider", 1);
                     isSelecting = false;
                     selectTimer = 0f;
+                    StartCoroutine(DisableMachineTemporarily());
 
                     if (holdProgressImage != null)
                     {
@@ -125,6 +127,12 @@ namespace Ubiq.Samples
                     holdProgressImage.fillAmount = 0f;
                 }
             }
+        }
+        private IEnumerator DisableMachineTemporarily()
+        {
+            enabled = false;
+            yield return new WaitForSeconds(duration);
+            enabled = true;
         }
     }
 }
