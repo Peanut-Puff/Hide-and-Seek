@@ -455,6 +455,7 @@ MonoBehaviour:
   hitonSpot: {x: 0, y: 0, z: 0}
   force: 0
   hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
+  SoundOfLaser: {fileID: 8300000, guid: fef53a5c6274c1541a1dfb1c745d7460, type: 3}
   knockbackForce: 3
   knockbackDuration: 0.3
   AvatrPositionEnd: {fileID: 0}

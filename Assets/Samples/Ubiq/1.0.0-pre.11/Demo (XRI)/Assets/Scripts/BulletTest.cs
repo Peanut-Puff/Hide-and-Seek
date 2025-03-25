@@ -33,6 +33,10 @@ namespace Ubiq.Samples
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f;
 
+        public Vector3 LocalPosition;
+        public Vector3 LocalRotation;
+        public bool istrail;
+
 #if XRI_3_0_7_OR_NEWER
 
         private NetworkContext context;
@@ -42,6 +46,7 @@ namespace Ubiq.Samples
         {
             body = GetComponent<Rigidbody>();
             GetComponent<TrailRenderer>().enabled = false;
+            istrail = false;
             owner = false;
         }
 
@@ -66,6 +71,7 @@ namespace Ubiq.Samples
             isflying = true;
             owner = true;
             GetComponent<TrailRenderer>().enabled = true;
+            istrail = true;
             StartCoroutine(FireLaser());
         }
         Transform GetActiveChild(GameObject parent)
@@ -204,7 +210,11 @@ namespace Ubiq.Samples
                     return;
                 }
             }
-            if(ishit && !isflying)
+            if (isflying) //
+            {
+                //firePoint = transform.position;// + transform.forward * 0.6f;
+            }
+            if (ishit && !isflying)
             {
                 body.isKinematic = false;
                 if (Time.time > explodeTime)
@@ -220,6 +230,7 @@ namespace Ubiq.Samples
             public Pose pose;
             public bool isflying;
             public bool ishit;
+            public bool istrail;
 
         }
 
@@ -229,6 +240,7 @@ namespace Ubiq.Samples
             message.pose = Transforms.ToLocal(transform, context.Scene.transform);
             message.ishit = ishit;
             message.isflying = isflying;
+            message.istrail = istrail;
             context.SendJson(message);
         }
 
@@ -238,6 +250,11 @@ namespace Ubiq.Samples
             var pose = Transforms.ToWorld(msg.pose, context.Scene.transform);
             transform.position = pose.position;
             transform.rotation = pose.rotation;
+            istrail = msg.istrail;
+            if (istrail)
+            {
+                GetComponent<TrailRenderer>().enabled = true;
+            }
             ishit = msg.ishit;
             isflying = msg.isflying;
         }

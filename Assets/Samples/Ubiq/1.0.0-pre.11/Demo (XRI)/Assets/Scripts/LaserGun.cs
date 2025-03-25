@@ -56,6 +56,7 @@ namespace Ubiq.Samples
         public Vector3 hitonSpot;
         public float force;
         public AudioClip hitSound;
+        public AudioClip SoundOfLaser;
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f; 
         private GameManager gameManager;
@@ -167,6 +168,11 @@ namespace Ubiq.Samples
         private IEnumerator FireLaser()
         {
             //laserBeam.SetActive(true);
+
+            if (SoundOfLaser != null)
+            {
+                AudioSource.PlayClipAtPoint(SoundOfLaser,transform.position);
+            }
             isfiring = true;
             float startTime = Time.time;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
