@@ -46,8 +46,8 @@ namespace Ubiq.Samples
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
-            GetComponent<TrailRenderer>().enabled = false;
-            istrail = false;
+            //GetComponent<TrailRenderer>().enabled = false;
+            //istrail = false;
             owner = false;
         }
 
@@ -69,11 +69,10 @@ namespace Ubiq.Samples
 
             }
             explodeTime = Time.time+3f;
-            isflying = true;
             owner = true;
-            GetComponent<TrailRenderer>().enabled = true;
-            istrail = true;
-            StartCoroutine(FireLaser());
+            //GetComponent<TrailRenderer>().enabled = true;
+            //istrail = true;
+            FireLaser();
         }
         Transform GetActiveChild(GameObject parent)
         {
@@ -102,16 +101,10 @@ namespace Ubiq.Samples
             float distance = Vector3.Distance(pointA, pointB);
             return distance <= Radius;
         }
-        private IEnumerator FireLaser()
+        private IEnumerator CheckIfHiton()
         {
-            if (FireSound != null)
-            {
-                AudioSource.PlayClipAtPoint(FireSound, transform.position);
-            }
-            float startTime = Time.time;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             List<GameObject> objectList = new List<GameObject>();
-            int avatarcount = 0;
             foreach (var avatar in avatars)
             {
                 //Debug.Log($"Found Avatar on: {avatar.gameObject.transform.position}");
@@ -139,8 +132,19 @@ namespace Ubiq.Samples
                 yield return null; // update every frame
             }
         }
+        private void FireLaser()
+        {
+            if (FireSound != null)
+            {
+                AudioSource.PlayClipAtPoint(FireSound, transform.position);
+            }
+            float startTime = Time.time;
+            isflying = true;
+            StartCoroutine(CheckIfHiton());
+        }
         public void GotHitReaction(GameObject hitObject)
         {
+            istrail = true;
             Debug.Log("got hit and start to reaction");
             ishit = true;
             CharacterController rb = hitObject.GetComponent<CharacterController>();
@@ -215,15 +219,15 @@ namespace Ubiq.Samples
                     return;
                 }
             }
-            if (ishit == true)
-            {
+            //if (ishit == true)
+            //{
 
-                if (hitSound != null)
-                {
-                    AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
-                }
-                ishit = false;
-            }
+            //    if (hitSound != null)
+            //    {
+            //        AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
+            //    }
+            //    ishit = false;
+            //}
             if (isflying) //
             {
                 //firePoint = transform.position;// + transform.forward * 0.6f;
@@ -265,12 +269,16 @@ namespace Ubiq.Samples
             transform.position = pose.position;
             transform.rotation = pose.rotation;
             istrail = msg.istrail;
-            if (istrail)
-            {
-                GetComponent<TrailRenderer>().enabled = true;
-            }
+            //if (istrail)
+            //{
+            //    GetComponent<TrailRenderer>().enabled = true;
+            //}
             ishit = msg.ishit;
             isflying = msg.isflying;
+            if (isflying && istrail)
+            {
+                StartCoroutine(CheckIfHiton());
+            }
         }
 
 #endif
