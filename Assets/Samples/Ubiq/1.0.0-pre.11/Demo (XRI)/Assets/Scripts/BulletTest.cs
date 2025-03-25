@@ -111,7 +111,7 @@ namespace Ubiq.Samples
                 Transform activeChild = GetActiveChild(avatar.gameObject);
                 //if (activeChild.name.Contains("Body"))
                 Transform floatingBody = GetFloatingBody(activeChild.gameObject);
-                Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
+                //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
                 objectList.Add(floatingBody.gameObject);
             }
             while (isflying)
@@ -140,11 +140,12 @@ namespace Ubiq.Samples
             }
             float startTime = Time.time;
             isflying = true;
+            istrail = true;
             StartCoroutine(CheckIfHiton());
         }
         public void GotHitReaction(GameObject hitObject)
         {
-            istrail = true;
+            istrail = false;
             Debug.Log("got hit and start to reaction");
             ishit = true;
             CharacterController rb = hitObject.GetComponent<CharacterController>();
@@ -277,6 +278,7 @@ namespace Ubiq.Samples
             isflying = msg.isflying;
             if (isflying && istrail)
             {
+                Debug.Log("start coroutine in local");
                 StartCoroutine(CheckIfHiton());
             }
         }

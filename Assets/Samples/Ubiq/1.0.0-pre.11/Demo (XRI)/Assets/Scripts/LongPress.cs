@@ -13,7 +13,7 @@ namespace Ubiq.Samples
     {
         public GameObject fireworkPrefab;
         public UnityEngine.UI.Image holdProgressImage;
-        public float maxInteractionDistance = 2f;
+        public float maxInteractionDistance = 4f;
         private float selectTimer = 0f;
         private float selectThreshold = 5f;
         private bool isSelecting = false;
