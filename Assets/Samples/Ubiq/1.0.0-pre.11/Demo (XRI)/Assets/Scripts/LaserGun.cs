@@ -62,6 +62,7 @@ namespace Ubiq.Samples
         public float knockbackDuration = 0.3f; 
         private GameManager gameManager;
         public GetPosition AvatrPositionEnd;
+        private float lastSoundTime = 0f;
 
         private void OnEnable()
         {
@@ -123,10 +124,10 @@ namespace Ubiq.Samples
             {
                 //bulletPrefab.transform.position = transform.position + transform.forward * 0.6f;
 
-                StartCoroutine(FireLaser());
+                FireLaser();
                 //bulletTransform.rotation = Quaternion.LookRotation(transform.forward);
 
-                lastFireTime = Time.time;
+                
             }
         }
 
@@ -166,53 +167,43 @@ namespace Ubiq.Samples
             }
             return null;
         }
-        private IEnumerator FireLaser()
+        private IEnumerator CheckIfHiton()
         {
-            //laserBeam.SetActive(true);
-
-            if (SoundOfLaser != null)
-            {
-                AudioSource.PlayClipAtPoint(SoundOfLaser,transform.position);
-            }
-            isfiring = true;
-            float startTime = Time.time;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             List<GameObject> objectList = new List<GameObject>();
-            int avatarcount = 0;
+
             foreach (var avatar in avatars)
             {
                 //Debug.Log($"Found Avatar on: {avatar.gameObject.transform.position}");
                 Transform activeChild = GetActiveChild(avatar.gameObject);
                 //if (activeChild.name.Contains("Body"))
                 Transform floatingBody = GetFloatingBody(activeChild.gameObject);
-                Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
+                //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
                 objectList.Add(floatingBody.gameObject);
             }
-            while (Time.time < startTime + laserDuration && laserScoreCool)
+            while (Time.time < lastFireTime + laserDuration && laserScoreCool)
             {
+
                 // need point of ray
                 laserEnd = transform.position + transform.forward * laserRange;
                 firePoint = transform.position;// + transform.forward * 0.6f;
                                                //laserLine.SetPosition(0, firePoint);
-                laserBeam.transform.position = (firePoint + laserEnd) / 2; 
-                laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0);;
+                laserBeam.transform.position = (firePoint + laserEnd) / 2;
+                laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
 
 
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
-                bool ishitAvatar = false;
-
                 // Raycast
                 foreach (GameObject obj in objectList)
                 {
                     if (obj == null) continue;
-                    //Debug.Log("avatar name:"+avatar.Position);
+                    //Debug.Log("avatar name:"+ obj.transform.position);
 
                     if (DistancePointToLineSegment(obj.transform.position, firePoint, laserEnd))
                     {
-                        Debug.Log($"Avatar {obj.name} is hit by laser!");
-                        ishitAvatar = true;
+                        //Debug.Log($"Avatar {obj.name} is hit by laser!");
                         GotHitReaction(obj.gameObject);
                         laserScoreCool = false;
                         laserHitCoolTime = Time.time;
@@ -229,6 +220,18 @@ namespace Ubiq.Samples
             //laserBeam.SetActive(false);
             //laserLine.enabled = false;
             isfiring = false;
+        }
+        private void FireLaser()
+        {
+            //laserBeam.SetActive(true);
+            lastFireTime = Time.time;
+            if (SoundOfLaser != null)
+            {
+                AudioSource.PlayClipAtPoint(SoundOfLaser,transform.position);
+            }
+            isfiring = true;
+            StartCoroutine(CheckIfHiton());
+
         }
         public void GotHitReaction(GameObject hitObject)
         {
@@ -253,14 +256,14 @@ namespace Ubiq.Samples
                     SendHapticFeedback(device, 0.5f, 0.2f);
                 }
             }
-            if (rb != null)
-            {
-                Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
-                knockbackDirection.y = 0;
+            //if (rb != null)
+            //{
+            //    Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
+            //    knockbackDirection.y = 0;
 
-                StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
-                //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
-            }
+            //    StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
+            //    //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
+            //}
         }
 
 
@@ -407,7 +410,7 @@ namespace Ubiq.Samples
             {
                 SendMessage();
             }
-            if (ishit == true)
+            if (ishit == true && Time.time > lastSoundTime)
             {
 
                 if (hitSound != null)
@@ -415,6 +418,7 @@ namespace Ubiq.Samples
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
                 }
                 ishit = false;
+                lastSoundTime = Time.time + 3f;
             }
             if (!gameManager.gameStarted)
             {

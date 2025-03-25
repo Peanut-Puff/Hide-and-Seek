@@ -37,6 +37,7 @@ namespace Ubiq.Samples
         public Vector3 LocalPosition;
         public Vector3 LocalRotation;
         public bool istrail;
+        private float lastSoundTime = 0f; 
 
 #if XRI_3_0_7_OR_NEWER
 
@@ -103,6 +104,7 @@ namespace Ubiq.Samples
         }
         private IEnumerator CheckIfHiton()
         {
+            istrail = false;
             avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
             List<GameObject> objectList = new List<GameObject>();
             foreach (var avatar in avatars)
@@ -116,10 +118,11 @@ namespace Ubiq.Samples
             }
             while (isflying)
             {
+                //Debug.Log("checking local");
                 foreach (GameObject obj in objectList)
                 {
                     if (obj == null) continue;
-                    //Debug.Log("avatar name:"+avatar.Position);
+                    Debug.Log(obj.transform.position+"    "+transform.position);
 
                     if (DistancePointToPointSegment(obj.transform.position, transform.position))
                     {
@@ -145,9 +148,10 @@ namespace Ubiq.Samples
         }
         public void GotHitReaction(GameObject hitObject)
         {
-            istrail = false;
+
             Debug.Log("got hit and start to reaction");
             ishit = true;
+            hitObject = GameObject.Find("XR Origin Hands (XR Rig)");
             CharacterController rb = hitObject.GetComponent<CharacterController>();
             XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
             hitonSpot = hitObject.transform.position;
@@ -167,14 +171,6 @@ namespace Ubiq.Samples
                     // shake controller
                     SendHapticFeedback(device, 0.5f, 0.2f);
                 }
-            }
-            if (rb != null)
-            {
-                Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
-                knockbackDirection.y = 0;
-
-                StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
-                //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
             }
         }
         private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
@@ -220,15 +216,16 @@ namespace Ubiq.Samples
                     return;
                 }
             }
-            //if (ishit == true)
-            //{
+            if (ishit == true && Time.time> lastSoundTime)
+            {
 
-            //    if (hitSound != null)
-            //    {
-            //        AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
-            //    }
-            //    ishit = false;
-            //}
+                if (hitSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
+                }
+                ishit = false;
+                lastSoundTime = Time.time + 3f;
+            }
             if (isflying) //
             {
                 //firePoint = transform.position;// + transform.forward * 0.6f;
@@ -276,11 +273,6 @@ namespace Ubiq.Samples
             //}
             ishit = msg.ishit;
             isflying = msg.isflying;
-            if (isflying && istrail)
-            {
-                Debug.Log("start coroutine in local");
-                StartCoroutine(CheckIfHiton());
-            }
         }
 
 #endif
