@@ -113,12 +113,11 @@ namespace Ubiq.Samples
                 Transform activeChild = GetActiveChild(avatar.gameObject);
                 //if (activeChild.name.Contains("Body"))
                 Transform floatingBody = GetFloatingBody(activeChild.gameObject);
-                //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
+                Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
                 objectList.Add(floatingBody.gameObject);
             }
             while (isflying)
             {
-                Debug.Log("is detecting");
                 foreach (GameObject obj in objectList)
                 {
                     if (obj == null) continue;

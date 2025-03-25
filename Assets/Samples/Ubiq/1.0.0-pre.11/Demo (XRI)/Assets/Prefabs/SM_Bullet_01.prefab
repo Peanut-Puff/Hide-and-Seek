@@ -164,7 +164,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086261179823682334}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -275,15 +275,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c3972599e8f864fb1ea6ed7067cd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 2
+  bulletSpeed: 0.4
   owner: 0
   ishit: 0
   isflying: 0
-  Radius: 2
+  Radius: 0.5
   hitonSpot: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
   knockbackForce: 3
   knockbackDuration: 0.3
+  LocalPosition: {x: 0, y: 0, z: 0}
+  LocalRotation: {x: 0, y: 0, z: 0}
+  istrail: 0
 --- !u!1 &8155758887353419079
 GameObject:
   m_ObjectHideFlags: 0
