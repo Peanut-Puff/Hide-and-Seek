@@ -101,16 +101,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapes:
-  - {fileID: 0}
+  - {fileID: 4658025794289174146}
   - {fileID: 3946410311629934542}
   - {fileID: 3188345079942816474}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5881960887776939736}
+  - {fileID: 1571907338285446673}
+  - {fileID: 2083710739343637192}
   - {fileID: 128729097074914075}
-  - {fileID: 0}
+  - {fileID: 6650889677528432582}
   - {fileID: 4340720968607289834}
-  currentShape: {fileID: 0}
+  - {fileID: 8719755487225005304}
+  - {fileID: 861367958246303426}
+  - {fileID: 6377339687887507860}
+  currentShape: {fileID: 4658025794289174146}
 --- !u!65 &8099337987441926325
 BoxCollider:
   m_ObjectHideFlags: 0
