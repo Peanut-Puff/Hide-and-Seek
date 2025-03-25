@@ -279,6 +279,11 @@ MonoBehaviour:
   owner: 0
   ishit: 0
   isflying: 0
+  Radius: 2
+  hitonSpot: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 8300000, guid: d52e394839b13ff44a3c728474abee23, type: 3}
+  knockbackForce: 3
+  knockbackDuration: 0.3
 --- !u!1 &8155758887353419079
 GameObject:
   m_ObjectHideFlags: 0

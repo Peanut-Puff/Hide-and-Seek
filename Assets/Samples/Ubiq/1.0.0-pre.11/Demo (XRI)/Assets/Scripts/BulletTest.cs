@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using Ubiq.Messaging;
 using Ubiq.Spawning;
 using Ubiq.Geometry;
+using Ubiq.Avatars;
+using UnityEngine.XR;
+
+
 #if XRI_3_0_7_OR_NEWER
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -21,29 +25,29 @@ namespace Ubiq.Samples
         public bool owner;
         public bool ishit;
         public bool isflying;
+        public float Radius;
+        private List<Avatars.Avatar> avatars;
+
+        public Vector3 hitonSpot;
+        public AudioClip hitSound;
+        public float knockbackForce = 3f; // HIT BACK
+        public float knockbackDuration = 0.3f;
 
 #if XRI_3_0_7_OR_NEWER
 
         private NetworkContext context;
-        private Vector3 flightForce;
         private float explodeTime;
 
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
-            //particles = GetComponentInChildren<ParticleSystem>();
+            GetComponent<TrailRenderer>().enabled = false;
             owner = false;
         }
 
         private void Start()
         {
             context = NetworkScene.Register(this);
-            //flightForce = new Vector3(
-            //    x: (Random.value - 0.5f) * 0.05f,
-            //    y: 3.0f,
-            //    z: (Random.value - 0.5f) * 0.05f);
-            //explodeTime = Time.time + 10.0f;
-            //body.AddForce(flightForce, ForceMode.Force);
         }
 
         public void shoot(Vector3 hitposition, Vector3 forward)
@@ -61,7 +65,129 @@ namespace Ubiq.Samples
             explodeTime = Time.time+3f;
             isflying = true;
             owner = true;
+            GetComponent<TrailRenderer>().enabled = true;
+            StartCoroutine(FireLaser());
+        }
+        Transform GetActiveChild(GameObject parent)
+        {
+            foreach (Transform child in parent.transform)
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    return child;
+                }
+            }
+            return null;
+        }
+        Transform GetFloatingBody(GameObject parent)
+        {
+            foreach (Transform child in parent.transform)
+            {
+                if (child.name.Contains("Floating_Torso_A"))
+                {
+                    return child;
+                }
+            }
+            return null;
+        }
+        private bool DistancePointToPointSegment(Vector3 pointA, Vector3 pointB)
+        {
+            float distance = Vector3.Distance(pointA, pointB);
+            return distance <= Radius;
+        }
+        private IEnumerator FireLaser()
+        {
+            float startTime = Time.time;
+            avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            List<GameObject> objectList = new List<GameObject>();
+            int avatarcount = 0;
+            foreach (var avatar in avatars)
+            {
+                //Debug.Log($"Found Avatar on: {avatar.gameObject.transform.position}");
+                Transform activeChild = GetActiveChild(avatar.gameObject);
+                //if (activeChild.name.Contains("Body"))
+                Transform floatingBody = GetFloatingBody(activeChild.gameObject);
+                //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
+                objectList.Add(floatingBody.gameObject);
+            }
+            while (isflying)
+            {
+                Debug.Log("is detecting");
+                foreach (GameObject obj in objectList)
+                {
+                    if (obj == null) continue;
+                    //Debug.Log("avatar name:"+avatar.Position);
 
+                    if (DistancePointToPointSegment(obj.transform.position, transform.position))
+                    {
+                        Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        GotHitReaction(obj.gameObject);
+                        isflying = false;
+                        ishit = true;
+                    }
+                }
+                yield return null; // update every frame
+            }
+        }
+        public void GotHitReaction(GameObject hitObject)
+        {
+            ishit = true;
+            CharacterController rb = hitObject.GetComponent<CharacterController>();
+            XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
+            hitonSpot = hitObject.transform.position;
+            if (hitSound != null)
+            {
+                AudioSource.PlayClipAtPoint(hitSound, hitObject.transform.position);
+            }
+
+            FindFirstObjectByType<NetworkScoreboard>().AddScore("catcher", 1);
+            if (controllers.Length > 0)
+            {
+                foreach (XRDirectInteractor controller in controllers)
+                {
+                    // get xr
+                    UnityEngine.XR.InputDevice device = GetXRDevice(controller);
+
+                    // shake controller
+                    SendHapticFeedback(device, 0.5f, 0.2f);
+                }
+            }
+            if (rb != null)
+            {
+                Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
+                knockbackDirection.y = 0;
+
+                StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
+                //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
+            }
+        }
+        private UnityEngine.XR.InputDevice GetXRDevice(XRDirectInteractor interactor)
+        {
+            string name = interactor.gameObject.name.ToLower();
+            XRNode node = name.Contains("left") ? XRNode.LeftHand : XRNode.RightHand;
+            return InputDevices.GetDeviceAtXRNode(node);
+        }
+        private void SendHapticFeedback(UnityEngine.XR.InputDevice device, float amplitude, float duration)
+        {
+            if (device.isValid)
+            {
+                HapticCapabilities capabilities;
+                if (device.TryGetHapticCapabilities(out capabilities) && capabilities.supportsImpulse)
+                {
+                    device.SendHapticImpulse(0, amplitude, duration);
+                }
+            }
+        }
+        private IEnumerator KnockbackRoutine(CharacterController characterController, Vector3 knockbackDirection)
+        {
+            float timer = 0f;
+
+            while (timer < knockbackDuration)
+            {
+                characterController.Move(knockbackDirection * knockbackForce * Time.deltaTime);
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
         private void FixedUpdate()
         {
@@ -72,8 +198,15 @@ namespace Ubiq.Samples
             if (owner && isflying)
             {
                 body.isKinematic = false;
-                //body.AddForce(flightForce, ForceMode.Force); /
-
+                if (Time.time > explodeTime)
+                {
+                    NetworkSpawnManager.Find(this).Despawn(gameObject);
+                    return;
+                }
+            }
+            if(ishit && !isflying)
+            {
+                body.isKinematic = false;
                 if (Time.time > explodeTime)
                 {
                     NetworkSpawnManager.Find(this).Despawn(gameObject);
