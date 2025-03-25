@@ -87,7 +87,7 @@ namespace Ubiq.Samples
             if (iscatched)
             {
                 var go = spawnManager.SpawnWithPeerScope(bulletPrefab);
-                var bullet = go.GetComponent<Bullet>();
+                var bullet = go.GetComponent<BulletTest>();
                 bullet.shoot(transform.position + transform.forward * 0.4f,transform.forward);
                 //bullet.transform.position = transform.position + transform.forward * 0.6f;
                 //bullet.owner = true;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3900043020708315994}
   - component: {fileID: -1646338520183015520}
   - component: {fileID: -1370602215218600848}
+  - component: {fileID: -5805910520752760984}
   m_Layer: 0
   m_Name: SM_Bullet_01
   m_TagString: Untagged
@@ -81,7 +82,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.31941602, y: 0.17044061, z: 0.42693102}
   m_Center: {x: -0.043158382, y: 0.0030035414, z: 0.0014382005}
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086261179823682334}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d731ebfc6109e4a810fbc0a815ecb6, type: 3}
   m_Name: 
@@ -163,7 +164,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086261179823682334}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -262,6 +263,22 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-5805910520752760984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086261179823682334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3972599e8f864fb1ea6ed7067cd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 2
+  owner: 0
+  ishit: 0
+  isflying: 0
 --- !u!1 &8155758887353419079
 GameObject:
   m_ObjectHideFlags: 0
