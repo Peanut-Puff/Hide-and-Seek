@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3817146221689164809}
   - component: {fileID: -6376453156515093118}
   - component: {fileID: 7345534843013301105}
-  - component: {fileID: 2258577774822685095}
-  - component: {fileID: -2205699616326006719}
   - component: {fileID: -4747803128284045937}
   m_Layer: 0
   m_Name: AR - AQUA
@@ -206,42 +204,6 @@ MonoBehaviour:
   iscatched: 0
   owner: 0
   fired: 0
---- !u!114 &2258577774822685095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6041870177827332485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12a5813d446ef6c43b3471c6eebc8e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2086261179823682334, guid: 1471e98bb0946d847a15230e4b8cb13c, type: 3}
-  bulletSpeed: 10
-  MyLeftTrigger: {fileID: 664593973374250958, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyLeftButton_Y: {fileID: -3472989252234359612, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyRightTrigger: {fileID: -4396522540001259471, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyRightButton_Y: {fileID: -8616983900180182166, guid: c348712bda248c246b8c49b3db54643f, type: 3}
---- !u!114 &-2205699616326006719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6041870177827332485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6432e20fadb8e594c9a506816357c5a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2086261179823682334, guid: 1471e98bb0946d847a15230e4b8cb13c, type: 3}
-  bulletSpeed: 10
-  MyLeftButton_X: {fileID: 664593973374250958, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyLeftButton_Y: {fileID: -3472989252234359612, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyRightButton_X: {fileID: -4396522540001259471, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  MyRightButton_Y: {fileID: -8616983900180182166, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!65 &-4747803128284045937
 BoxCollider:
   m_ObjectHideFlags: 0

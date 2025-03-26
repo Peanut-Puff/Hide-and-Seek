@@ -141,7 +141,7 @@ namespace Ubiq.Samples
             {
                 AudioSource.PlayClipAtPoint(FireSound, transform.position);
             }
-            float startTime = Time.time;
+           // float startTime = Time.time;
             isflying = true;
             istrail = true;
             StartCoroutine(CheckIfHiton());
@@ -224,7 +224,7 @@ namespace Ubiq.Samples
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
                 }
                 ishit = false;
-                lastSoundTime = Time.time + 3f;
+                lastSoundTime = Time.time + 2f;
             }
             if (isflying) //
             {
