@@ -11251,8 +11251,12 @@ PrefabInstance:
       propertyPath: m_text
       value: "<b><color=#000000>\n\u2022 Up to 4 players, randomly assigned roles
         (at least 1 Catcher).  \r\n\u2022 Each game lasts 5 minutes.  The team with
-        the highest score wins.\n\u2022 Press the start button to begin the game! 
-        </color></b>\r\n"
+        the highest score wins.\n\u2022 Use the Quest 3 grab function to press the
+        start button and begin the game!  </color></b>\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 916951567880734861, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_margin.z
+      value: -382.56268
       objectReference: {fileID: 0}
     - target: {fileID: 1850910523307370404, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -11330,6 +11334,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 415
       objectReference: {fileID: 0}
+    - target: {fileID: 5296261531739366556, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 169.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296261531739366556, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 209.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296261531739366556, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296261531739366556, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 420.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296261531739366556, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -420
+      objectReference: {fileID: 0}
     - target: {fileID: 5398352138892137595, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2430.553
@@ -11346,9 +11370,39 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 12.1339
       objectReference: {fileID: 0}
+    - target: {fileID: 5571806965454307171, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_text
+      value: "<b><color=#FFFF00><size=150%>Rules</size></color></b>\r\n\n<b><color=#00EDFF>Hiders</color>:
+        \n \u2022 Fix machines to earn 1 points. After a successful repair, you cannot
+        repair again for 20s. \n\n\n\n\n\n\n\n\n \u2022 Use the Skeleton Hand to
+        change your avatar and hide.</b>\r\n\r\n\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571806965454307171, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_margin.z
+      value: -883.6753
+      objectReference: {fileID: 0}
     - target: {fileID: 6929556645610424613, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
       propertyPath: m_Name
       value: Game Instructions
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936534253560452536, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_text
+      value: "<b><color=#FF9300>Catchers</color>:\n\u2022 Use the controller's trigger
+        to shoot, and use grab button to pick up a gun at the gun shops.\n\n\n\n\n\n\n\n
+        \u2022 Shoot Hiders to earn 1 points. Hiders may disguise themselves as these
+        objects.</b>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134262817712096759, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134262817712096759, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 446
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134262817712096759, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -51
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6742870519498412085, guid: db75fd50e2e4e48b18236e7cd80238dc, type: 3}
@@ -12865,7 +12919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -328, y: 271}
+  m_AnchoredPosition: {x: -314, y: 271}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &549345679
