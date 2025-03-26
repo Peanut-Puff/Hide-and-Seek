@@ -142,6 +142,21 @@ namespace Ubiq.Samples
 
                         shapeAvatar.SetShape(randomShape);
 
+                        // Hide local avatar to prevent self-occlusion
+                        var avatarGO = avatar.gameObject;
+                        int localLayer = LayerMask.NameToLayer("LocalAvatar");
+
+                        void SetLayerRecursively(GameObject obj, int layer)
+                        {
+                            obj.layer = layer;
+                            foreach (Transform child in obj.transform)
+                            {
+                                SetLayerRecursively(child.gameObject, layer);
+                            }
+                        }
+
+                        SetLayerRecursively(avatarGO, localLayer);
+
                         // End the coroutine.
                         yield break;
                     }

@@ -5,3 +5,5 @@ obj/
 build/
 Packages/
 Assets/XR/XRGeneralSettingsPerBuildTarget.asset
+*.meta
+/.utmp
