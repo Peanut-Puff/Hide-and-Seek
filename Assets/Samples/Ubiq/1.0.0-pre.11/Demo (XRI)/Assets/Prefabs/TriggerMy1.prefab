@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772464220562224933, guid: 8dc18b64dc20e4548af4744b4961ec55, type: 3}
+  maxInteractionDistance: 3
   ClickSound: {fileID: 8300000, guid: eeeda5dce5e1d344f8e2f6195f16cb38, type: 3}
 --- !u!64 &7878101271554926368
 MeshCollider:
