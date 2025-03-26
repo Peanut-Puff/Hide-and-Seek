@@ -1,7 +1,7 @@
 # Identity IV
 COMP0113 coursework
 
-All scripts related to this project are in the `Assets/Scripts`.
+All scripts related to this project are in the `/Assets/Samples/Ubiq/1.0.0-pre.11/Demo (XRI)/Assets/Scripts`.
 
 ## Rules
 - Up to 4 players, randomly assigned roles (at least 1 Catcher).
