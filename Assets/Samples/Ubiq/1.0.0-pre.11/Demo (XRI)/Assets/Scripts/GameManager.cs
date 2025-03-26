@@ -187,6 +187,7 @@ namespace Ubiq.Samples
 
                     float timer = 0f;
                     GameObject effect = Instantiate(TeleportEffectPrefab, effectPosition, Quaternion.Euler(-90f, 0f, 0f));
+                    resetGameButton.enabled=false;
                     while (timer < 2f)
                     {
                         AvatrPositionEnd.transform.position = effectPosition;
@@ -194,6 +195,7 @@ namespace Ubiq.Samples
                         yield return null;
                     }
                     Destroy(effect);
+                    resetGameButton.enabled=true;
 
                     float fi = (float)i - 3f;
                     AvatrPositionEnd.transform.position = new Vector3(fi, 0f, -3.25f);
