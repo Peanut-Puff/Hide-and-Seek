@@ -9,6 +9,12 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 using System.Linq;
 using UnityEngine.UIElements;
+using Ubiq.Rooms;
+using Ubiq.Avatars;
+using Ubiq.Avatars;
+
+
+
 
 
 
@@ -63,6 +69,9 @@ namespace Ubiq.Samples
         public GetPosition AvatrPositionEnd;
         private float lastSoundTime = 0f;
         private List<Vector3> randomTransport = new List<Vector3>();
+        private string hitAvatarName;
+        private string myName;
+        private RoomClient roomClient;
 
         private void OnEnable()
         {
@@ -195,6 +204,7 @@ namespace Ubiq.Samples
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
+                int avatarcount = 0;
                 // Raycast
                 foreach (GameObject obj in objectList)
                 {
@@ -204,10 +214,12 @@ namespace Ubiq.Samples
                     if (DistancePointToLineSegment(obj.transform.position, firePoint, laserEnd))
                     {
                         //Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        hitAvatarName= avatars[avatarcount].Peer[DisplayNameManager.KEY];
                         GotHitReaction(obj.gameObject);
                         laserScoreCool = false;
                         laserHitCoolTime = Time.time;
                     }
+                    avatarcount += 1;
                 }
 
                 laserLength = Vector3.Distance(firePoint, laserEnd);
@@ -312,6 +324,9 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            var networkScene = NetworkScene.Find(this);
+            roomClient = networkScene.GetComponentInChildren<RoomClient>();
+            myName = roomClient.Me[DisplayNameManager.KEY];
             //network
             gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
@@ -409,7 +424,7 @@ namespace Ubiq.Samples
             {
                 SendMessage();
             }
-            if (ishit == true && Time.time > lastSoundTime)
+            if (ishit == true && Time.time > lastSoundTime && hitAvatarName==myName)
             {
                 Debug.Log("IVE BEEN HURTED");
                 if (hitSound != null)
@@ -439,6 +454,7 @@ namespace Ubiq.Samples
             public bool isfiring;
             public Vector3 firePoint;
             public Vector3 laserEnd;
+            public string hitavatarName;
         }
 
         private void SendMessage()
@@ -451,6 +467,7 @@ namespace Ubiq.Samples
             message.hitonSpot = hitonSpot;
             message.firePoint = firePoint;
             message.laserEnd = laserEnd;
+            message.hitavatarName = hitAvatarName;
             context.SendJson(message);
         }
 
@@ -466,6 +483,7 @@ namespace Ubiq.Samples
             hitonSpot = msg.hitonSpot;
             firePoint = msg.firePoint;
             laserEnd = msg.laserEnd;
+            hitAvatarName = msg.hitavatarName;
         }
 
 #endif
