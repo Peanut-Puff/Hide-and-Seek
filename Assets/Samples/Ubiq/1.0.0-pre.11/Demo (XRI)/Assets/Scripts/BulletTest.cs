@@ -33,11 +33,13 @@ namespace Ubiq.Samples
         public AudioClip FireSound;
         public float knockbackForce = 3f; // HIT BACK
         public float knockbackDuration = 0.3f;
+        private GameManager gameManager;
 
         public Vector3 LocalPosition;
         public Vector3 LocalRotation;
         public bool istrail;
-        private float lastSoundTime = 0f; 
+        private float lastSoundTime = 0f;
+        private List<Vector3> randomTransport = new List<Vector3>();
 
 #if XRI_3_0_7_OR_NEWER
 
@@ -54,7 +56,15 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            gameManager = FindObjectOfType<GameManager>();
             context = NetworkScene.Register(this);
+            float yaxis = 1.69f;
+            randomTransport.Add(new Vector3(23, yaxis, 40));
+            randomTransport.Add(new Vector3(3.5f, yaxis, 5.5f));
+            randomTransport.Add(new Vector3(-7f, yaxis, 26f));
+            randomTransport.Add(new Vector3(6.5f, yaxis, 27f));
+            randomTransport.Add(new Vector3(18f, yaxis, 32f));
+            randomTransport.Add(new Vector3(5.5f, yaxis, 45f));
         }
 
         public void shoot(Vector3 hitposition, Vector3 forward)
@@ -151,9 +161,8 @@ namespace Ubiq.Samples
 
             Debug.Log("got hit and start to reaction");
             ishit = true;
-            hitObject = GameObject.Find("XR Origin Hands (XR Rig)");
-            CharacterController rb = hitObject.GetComponent<CharacterController>();
-            XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
+            GameObject myself = GameObject.Find("XR Origin Hands (XR Rig)");
+            XRDirectInteractor[] controllers = myself.GetComponentsInChildren<XRDirectInteractor>();
             hitonSpot = hitObject.transform.position;
             if (hitSound != null)
             {
@@ -218,11 +227,14 @@ namespace Ubiq.Samples
             }
             if (ishit == true && Time.time> lastSoundTime)
             {
-
+                Debug.Log("I GOT HURT!!!");
                 if (hitSound != null)
                 {
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
                 }
+                GameObject myself = GameObject.Find("XR Origin Hands (XR Rig)");
+                int randomIndex = Random.Range(0, randomTransport.Count);
+                myself.transform.position = randomTransport[randomIndex];
                 ishit = false;
                 lastSoundTime = Time.time + 2f;
             }
