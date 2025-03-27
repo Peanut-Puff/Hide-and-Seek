@@ -167,8 +167,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You are the catcher!\n\r\nYou can enter to get the gun \nor enter the
-    park \nafter 15 seconds!"
+  m_text: "You are the catcher!\n\r\nYou can pick the gun \nor enter the park \nafter
+    15 seconds!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
