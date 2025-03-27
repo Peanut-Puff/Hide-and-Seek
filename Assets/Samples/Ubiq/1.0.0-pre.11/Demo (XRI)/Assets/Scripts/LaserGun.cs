@@ -114,6 +114,7 @@ namespace Ubiq.Samples
             laserBeam.transform.position = transform.position;
             float laserLength = 0.02f;
             laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
+            ishit = false;
         }
         private void OnMyLeftButton_X_Action(InputAction.CallbackContext context)
         {
