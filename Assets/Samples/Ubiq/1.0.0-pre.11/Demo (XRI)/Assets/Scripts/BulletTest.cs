@@ -6,6 +6,8 @@ using Ubiq.Spawning;
 using Ubiq.Geometry;
 using Ubiq.Avatars;
 using UnityEngine.XR;
+using Ubiq.Rooms;
+
 
 
 #if XRI_3_0_7_OR_NEWER
@@ -40,6 +42,9 @@ namespace Ubiq.Samples
         public bool istrail;
         private float lastSoundTime = 0f;
         private List<Vector3> randomTransport = new List<Vector3>();
+        private string hitAvatarName;
+        private string myName;
+        private RoomClient roomClient;
 
 #if XRI_3_0_7_OR_NEWER
 
@@ -56,6 +61,10 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            var networkScene = NetworkScene.Find(this);
+            roomClient = networkScene.GetComponentInChildren<RoomClient>();
+            myName = roomClient.Me[DisplayNameManager.KEY];
+
             gameManager = FindObjectOfType<GameManager>();
             context = NetworkScene.Register(this);
             float yaxis = 1.69f;
@@ -126,24 +135,29 @@ namespace Ubiq.Samples
                 //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
                 objectList.Add(floatingBody.gameObject);
             }
+            int avatarcount = 0;
             while (isflying)
             {
                 //Debug.Log("checking local");
                 foreach (GameObject obj in objectList)
                 {
                     if (obj == null) continue;
-                    Debug.Log(obj.transform.position+"    "+transform.position);
+                    //Debug.Log(obj.transform.position+"    "+transform.position);
 
                     if (DistancePointToPointSegment(obj.transform.position, transform.position))
                     {
-                        Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        // Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        hitAvatarName = avatars[avatarcount].Peer[DisplayNameManager.KEY];
                         GotHitReaction(obj.gameObject);
+
                         isflying = false;
                         ishit = true;
                     }
+                    avatarcount += 1;
                 }
                 yield return null; // update every frame
             }
+            ishit = false;
         }
         private void FireLaser()
         {
@@ -225,7 +239,7 @@ namespace Ubiq.Samples
                     return;
                 }
             }
-            if (ishit == true && Time.time> lastSoundTime)
+            if (ishit == true && Time.time> lastSoundTime && hitAvatarName == myName)
             {
                 Debug.Log("I GOT HURT!!!");
                 if (hitSound != null)
@@ -236,6 +250,7 @@ namespace Ubiq.Samples
                 int randomIndex = Random.Range(0, randomTransport.Count);
                 myself.transform.position = randomTransport[randomIndex];
                 ishit = false;
+                hitAvatarName = " ";
                 lastSoundTime = Time.time + 2f;
             }
             if (isflying) //
@@ -259,6 +274,7 @@ namespace Ubiq.Samples
             public bool isflying;
             public bool ishit;
             public bool istrail;
+            public string hitavatarName;
 
         }
 
@@ -269,6 +285,7 @@ namespace Ubiq.Samples
             message.ishit = ishit;
             message.isflying = isflying;
             message.istrail = istrail;
+            message.hitavatarName = hitAvatarName;
             context.SendJson(message);
         }
 
@@ -285,6 +302,7 @@ namespace Ubiq.Samples
             //}
             ishit = msg.ishit;
             isflying = msg.isflying;
+            hitAvatarName = msg.hitavatarName;
         }
 
 #endif

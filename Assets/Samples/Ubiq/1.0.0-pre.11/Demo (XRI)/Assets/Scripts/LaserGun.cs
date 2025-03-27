@@ -216,7 +216,7 @@ namespace Ubiq.Samples
                     {
                         //Debug.Log($"Avatar {obj.name} is hit by laser!");
                         hitAvatarName= avatars[avatarcount].Peer[DisplayNameManager.KEY];
-                        GotHitReaction(obj.gameObject);
+                        StartCoroutine( GotHitReaction(obj.gameObject));
                         laserScoreCool = false;
                         laserHitCoolTime = Time.time;
                     }
@@ -233,6 +233,7 @@ namespace Ubiq.Samples
             //laserBeam.SetActive(false);
             //laserLine.enabled = false;
             isfiring = false;
+            owner = false;
         }
         private void FireLaser()
         {
@@ -247,7 +248,7 @@ namespace Ubiq.Samples
             StartCoroutine(CheckIfHiton());
 
         }
-        public void GotHitReaction(GameObject hitObject)
+        public IEnumerator GotHitReaction(GameObject hitObject)
         {
             ishit = true;
             //CharacterController rb = hitObject.GetComponent<CharacterController>();
@@ -272,6 +273,7 @@ namespace Ubiq.Samples
                     SendHapticFeedback(device, 0.5f, 0.2f);
                 }
             }
+            yield return null;
         }
 
 
