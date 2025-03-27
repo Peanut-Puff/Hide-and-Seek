@@ -33,6 +33,7 @@ namespace Ubiq.Samples
         public bool owner;
         public bool fired;
         private GameManager gameManager;
+        private XRGrabInteractable grab;
         private void OnEnable()
         {
             SetupInteractorEvents();
@@ -61,12 +62,16 @@ namespace Ubiq.Samples
             if (MyLeftButton_X_Action != null)
             {
                 MyLeftButton_X_Action.performed -= OnMyLeftButton_X_Action;
+                MyLeftButton_X_Action.Disable(); 
+                MyLeftButton_X_Action.Dispose(); 
             }
 
             var MyRightButton_X_Action = GetInputAction(MyRightTrigger);
-            if (MyLeftButton_X_Action != null)
+            if (MyRightButton_X_Action != null) 
             {
-                MyLeftButton_X_Action.performed -= OnMyRightButton_X_Action;
+                MyRightButton_X_Action.performed -= OnMyRightButton_X_Action; 
+                MyRightButton_X_Action.Disable(); 
+                MyRightButton_X_Action.Dispose(); 
             }
         }
 
@@ -130,7 +135,7 @@ namespace Ubiq.Samples
             gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
             context = NetworkScene.Register(this);
-            var grab = GetComponent<XRGrabInteractable>();
+            grab = GetComponent<XRGrabInteractable>();
             grab.selectExited.AddListener(Interactable_SelectExited);
             grab.selectEntered.AddListener(Interactable_SelectEntered);
             if (body == null)
@@ -147,7 +152,19 @@ namespace Ubiq.Samples
             spaceAction.performed += OnSpacePressed;
             spaceAction.Enable();
         }
-
+        private void OnDestroy()
+        {
+            Debug.Log("destory gun event");
+            TeardownInteractorEvents();
+            grab.selectExited.RemoveListener(Interactable_SelectExited);
+            grab.selectEntered.RemoveListener(Interactable_SelectEntered);
+            if (spaceAction != null)
+            {
+                spaceAction.Disable();  // 禁用 InputAction
+                spaceAction.performed -= OnSpacePressed;  // 解绑事件
+                spaceAction.Dispose();  // 彻底释放资源
+            }
+        }
         private void OnSpacePressed(InputAction.CallbackContext context)
         {
             Fire();

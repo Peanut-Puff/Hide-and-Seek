@@ -174,8 +174,8 @@ namespace Ubiq.Samples
         }
         public void GotHitReaction(GameObject hitObject)
         {
-
-            Debug.Log("got hit and start to reaction");
+            //Debug.Log("reaction");
+            //Debug.Log("got hit and start to reaction");
             ishit = true;
             GameObject myself = GameObject.Find("XR Origin Hands (XR Rig)");
             XRDirectInteractor[] controllers = myself.GetComponentsInChildren<XRDirectInteractor>();
@@ -232,7 +232,7 @@ namespace Ubiq.Samples
             {
                 SendMessage();
             }
-            if (owner && isflying)
+            if (owner || isflying)
             {
                 body.isKinematic = false;
                 if (Time.time > explodeTime)
@@ -243,7 +243,6 @@ namespace Ubiq.Samples
             }
             if (ishit == true && Time.time> lastSoundTime && hitAvatarName == myName)
             {
-                Debug.Log("I GOT HURT!!!");
                 if (hitSound != null)
                 {
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
@@ -298,10 +297,6 @@ namespace Ubiq.Samples
             transform.position = pose.position;
             transform.rotation = pose.rotation;
             istrail = msg.istrail;
-            //if (istrail)
-            //{
-            //    GetComponent<TrailRenderer>().enabled = true;
-            //}
             ishit = msg.ishit;
             isflying = msg.isflying;
             hitAvatarName = msg.hitavatarName;

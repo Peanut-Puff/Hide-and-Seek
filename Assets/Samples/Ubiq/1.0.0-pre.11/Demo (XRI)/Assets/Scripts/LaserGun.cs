@@ -72,6 +72,7 @@ namespace Ubiq.Samples
         private string hitAvatarName;
         private string myName;
         private RoomClient roomClient;
+        private XRGrabInteractable grab;
 
         private void OnEnable()
         {
@@ -101,12 +102,16 @@ namespace Ubiq.Samples
             if (MyLeftButton_X_Action != null)
             {
                 MyLeftButton_X_Action.performed -= OnMyLeftButton_X_Action;
+                MyLeftButton_X_Action.Disable();
+                MyLeftButton_X_Action.Dispose();
             }
 
             var MyRightButton_X_Action = GetInputAction(MyRightTrigger);
-            if (MyLeftButton_X_Action != null)
+            if (MyRightButton_X_Action != null)
             {
-                MyLeftButton_X_Action.performed -= OnMyRightButton_X_Action;
+                MyRightButton_X_Action.performed -= OnMyRightButton_X_Action;
+                MyRightButton_X_Action.Disable();
+                MyRightButton_X_Action.Dispose();
             }
         }
         private void CylinderChangeBack()
@@ -335,7 +340,7 @@ namespace Ubiq.Samples
             gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
             context = NetworkScene.Register(this);
-            var grab = GetComponent<XRGrabInteractable>();
+            grab = GetComponent<XRGrabInteractable>();
             grab.selectExited.AddListener(Interactable_SelectExited);
             grab.selectEntered.AddListener(Interactable_SelectEntered);
             if (body == null)
@@ -364,6 +369,26 @@ namespace Ubiq.Samples
             randomTransport.Add(new Vector3(6.5f, yaxis, 27f));
             randomTransport.Add(new Vector3(18f, yaxis, 32f));
             randomTransport.Add(new Vector3(5.5f, yaxis, 45f));
+        }
+        private void OnDestroy()
+        {
+            Debug.Log("destory gun event");
+            TeardownInteractorEvents();
+            grab.selectExited.RemoveListener(Interactable_SelectExited);
+            grab.selectEntered.RemoveListener(Interactable_SelectEntered);
+            if (spaceAction != null)
+            {
+                spaceAction.Disable();  // 禁用 InputAction
+                spaceAction.performed -= OnSpacePressed;  // 解绑事件
+                spaceAction.Dispose();  // 彻底释放资源
+            }
+
+            if (yAction != null)
+            {
+                yAction.Disable();
+                yAction.performed -= OnYPressed;
+                yAction.Dispose();
+            }
         }
         private void OnYPressed(InputAction.CallbackContext context)
         {
