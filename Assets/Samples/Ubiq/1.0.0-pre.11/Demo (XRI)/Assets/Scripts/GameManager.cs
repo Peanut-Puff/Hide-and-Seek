@@ -217,10 +217,12 @@ namespace Ubiq.Samples
                     resetGameButton.enabled=false;
                     while (timer < 2f)
                     {
+                        startGameButton.enabled = false;
                         AvatrPositionEnd.transform.position = effectPosition;
                         timer += Time.deltaTime;
                         yield return null;
                     }
+                    startGameButton.enabled = true;
                     Destroy(effect);
                     resetGameButton.enabled=true;
 

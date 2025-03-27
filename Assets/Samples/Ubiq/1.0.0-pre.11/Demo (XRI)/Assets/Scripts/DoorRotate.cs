@@ -15,7 +15,7 @@ namespace Ubiq.Samples
         private Quaternion openRotation;          
         public float rotationAngle = -150f;        
         public float rotationSpeed = 120f;
-        public float rotationSpeedClose = 240f;
+        public float rotationSpeedClose = 250f;
 
         private GameManager gameManager;
         private AvatarManager avatarManager;
@@ -24,7 +24,7 @@ namespace Ubiq.Samples
         private List<Ubiq.Avatars.Avatar> avatars;
         private int count = 0;
         private RoomClient roomClient;
-        private float timer = 2f;
+        private float timer = 1f;
 
         private void Start()
         {
@@ -39,25 +39,6 @@ namespace Ubiq.Samples
 
         private void Update()
         {
-            //if (gameManager == null || avatarManager == null)
-            //{
-            //    return;
-            //}
-            //bool currentGameStarted = gameManager.gameStarted;
-
-            //Quaternion targetRotation = gameManager.gameStarted ? openRotation : closedRotation;
-            //if (gameManager.gameStarted)
-            //{
-            //    count = 1;
-            //}
-
-            //transform.rotation = Quaternion.RotateTowards(
-            //    transform.rotation,
-            //    targetRotation,
-            //    rotationSpeed * Time.deltaTime
-            //);
-
-            //lastGameStarted = currentGameStarted;
 
             if (gameManager == null || avatarManager == null)
             {
