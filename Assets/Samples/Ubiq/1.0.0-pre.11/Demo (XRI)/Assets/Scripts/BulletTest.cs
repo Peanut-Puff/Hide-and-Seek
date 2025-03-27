@@ -135,9 +135,10 @@ namespace Ubiq.Samples
                 //Debug.Log($"Found Avatar {avatar.Peer[DisplayNameManager.KEY]}: {floatingBody.position}");
                 objectList.Add(floatingBody.gameObject);
             }
-            int avatarcount = 0;
+            
             while (isflying)
             {
+                int avatarcount = 0;
                 //Debug.Log("checking local");
                 foreach (GameObject obj in objectList)
                 {
@@ -146,12 +147,13 @@ namespace Ubiq.Samples
 
                     if (DistancePointToPointSegment(obj.transform.position, transform.position))
                     {
-                        // Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        //Debug.Log(avatarcount);
                         hitAvatarName = avatars[avatarcount].Peer[DisplayNameManager.KEY];
                         GotHitReaction(obj.gameObject);
-
+                        
                         isflying = false;
                         ishit = true;
+                        break;
                     }
                     avatarcount += 1;
                 }
