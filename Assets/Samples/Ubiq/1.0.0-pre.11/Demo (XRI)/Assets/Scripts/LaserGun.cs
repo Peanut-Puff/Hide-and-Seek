@@ -242,6 +242,7 @@ namespace Ubiq.Samples
                 AudioSource.PlayClipAtPoint(SoundOfLaser,transform.position);
             }
             isfiring = true;
+            owner = true;
             StartCoroutine(CheckIfHiton());
 
         }
@@ -435,6 +436,7 @@ namespace Ubiq.Samples
                 int randomIndex = Random.Range(0, randomTransport.Count);
                 myself.transform.position = randomTransport[randomIndex];
                 ishit = false;
+                hitAvatarName = " ";
                 lastSoundTime = Time.time + 2f;
             }
             if (!gameManager.gameStarted)
