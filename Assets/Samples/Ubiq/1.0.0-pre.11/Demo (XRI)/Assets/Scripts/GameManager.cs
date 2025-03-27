@@ -141,7 +141,7 @@ namespace Ubiq.Samples
             {
                 if (remainingTime>=0.5)
                 {
-                    hintText.text = "You are the catcher!\n\nYou can get the gun\nor enter the park\nafter " + remainingTime.ToString("F0") + " s!";
+                    hintText.text = "You are the catcher!\n\nYou can pick the gun\nor enter the park\nafter " + remainingTime.ToString("F0") + " s!";
                     
                 }
                 else

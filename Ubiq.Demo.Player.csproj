@@ -71,6 +71,7 @@
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\LaserGun.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\GunWithBullet.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\SimpleShapeAvatar.cs" />
+    <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\LocalAvatarHider.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\LaserGunSpawner.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\Firework.cs" />
     <Compile Include="Assets\Samples\Ubiq\1.0.0-pre.11\Demo (XRI)\Assets\Scripts\LongPress.cs" />
