@@ -39,6 +39,7 @@ namespace Ubiq.Samples
         public float waitTime;
         private NetworkContext context;
         public string myRole;
+        public float maxInteractionDistance = 1.5f;
 
         private struct GameMessage
         {
@@ -81,6 +82,16 @@ namespace Ubiq.Samples
         private void OnStartButtonPressed(SelectEnterEventArgs args)
         {
             var avatars = new List<Ubiq.Avatars.Avatar>(FindObjectsOfType<Ubiq.Avatars.Avatar>());
+            if (args.interactorObject is MonoBehaviour mono)
+            {
+                var interactorTransform = mono.transform;
+                float distance = Vector3.Distance(interactorTransform.position, startGameButton.transform.position);
+                if (distance > maxInteractionDistance)
+                {
+                    Debug.Log("Too far to start the game.");
+                    return;
+                }
+            }
             if (avatars.Count > 4)
                 return;
             Debug.Log("Start");
@@ -93,6 +104,16 @@ namespace Ubiq.Samples
         private void OnResetButtonPressed(SelectEnterEventArgs args)
         {
             Debug.Log("Resetting game state...");
+            if (args.interactorObject is MonoBehaviour mono)
+            {
+                var interactorTransform = mono.transform;
+                float distance = Vector3.Distance(interactorTransform.position, resetGameButton.transform.position);
+                if (distance > maxInteractionDistance)
+                {
+                    Debug.Log("Too far to reset the game.");
+                    return;
+                }
+            }
             context.SendJson(new GameMessage { type = "reset" });
             StopAllCoroutines();
             DisableAll();
