@@ -7,3 +7,4 @@ Packages/
 Assets/XR/XRGeneralSettingsPerBuildTarget.asset
 *.meta
 /.utmp
+/.vs
