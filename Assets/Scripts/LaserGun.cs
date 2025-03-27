@@ -9,6 +9,12 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 using System.Linq;
 using UnityEngine.UIElements;
+using Ubiq.Rooms;
+using Ubiq.Avatars;
+using Ubiq.Avatars;
+
+
+
 
 
 
@@ -52,7 +58,6 @@ namespace Ubiq.Samples
         public bool laserScoreCool;
         public float laserHitCoolTime;
         public float laserHitCoolRange;
-        private bool ishitanything;
         private bool ishit;
         public Vector3 hitonSpot;
         public float force;
@@ -63,6 +68,10 @@ namespace Ubiq.Samples
         private GameManager gameManager;
         public GetPosition AvatrPositionEnd;
         private float lastSoundTime = 0f;
+        private List<Vector3> randomTransport = new List<Vector3>();
+        private string hitAvatarName;
+        private string myName;
+        private RoomClient roomClient;
 
         private void OnEnable()
         {
@@ -105,6 +114,7 @@ namespace Ubiq.Samples
             laserBeam.transform.position = transform.position;
             float laserLength = 0.02f;
             laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
+            ishit = false;
         }
         private void OnMyLeftButton_X_Action(InputAction.CallbackContext context)
         {
@@ -195,6 +205,7 @@ namespace Ubiq.Samples
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
+                int avatarcount = 0;
                 // Raycast
                 foreach (GameObject obj in objectList)
                 {
@@ -204,10 +215,12 @@ namespace Ubiq.Samples
                     if (DistancePointToLineSegment(obj.transform.position, firePoint, laserEnd))
                     {
                         //Debug.Log($"Avatar {obj.name} is hit by laser!");
+                        hitAvatarName= avatars[avatarcount].Peer[DisplayNameManager.KEY];
                         GotHitReaction(obj.gameObject);
                         laserScoreCool = false;
                         laserHitCoolTime = Time.time;
                     }
+                    avatarcount += 1;
                 }
 
                 laserLength = Vector3.Distance(firePoint, laserEnd);
@@ -230,14 +243,17 @@ namespace Ubiq.Samples
                 AudioSource.PlayClipAtPoint(SoundOfLaser,transform.position);
             }
             isfiring = true;
+            owner = true;
             StartCoroutine(CheckIfHiton());
 
         }
         public void GotHitReaction(GameObject hitObject)
         {
             ishit = true;
-            CharacterController rb = hitObject.GetComponent<CharacterController>();
-            XRDirectInteractor[] controllers = hitObject.GetComponentsInChildren<XRDirectInteractor>();
+            //CharacterController rb = hitObject.GetComponent<CharacterController>();
+            //shake mine controllers
+            GameObject myself = GameObject.Find("XR Origin Hands (XR Rig)");
+            XRDirectInteractor[] controllers = myself.GetComponentsInChildren<XRDirectInteractor>();
             hitonSpot = hitObject.transform.position;
             if (hitSound != null)
             {
@@ -256,14 +272,6 @@ namespace Ubiq.Samples
                     SendHapticFeedback(device, 0.5f, 0.2f);
                 }
             }
-            //if (rb != null)
-            //{
-            //    Vector3 knockbackDirection = (hitObject.transform.position - transform.position).normalized;
-            //    knockbackDirection.y = 0;
-
-            //    StartCoroutine(KnockbackRoutine(rb, knockbackDirection));
-            //    //StartCoroutine(TiltBackRoutine(hitObject,knockbackDirection));
-            //}
         }
 
 
@@ -318,9 +326,10 @@ namespace Ubiq.Samples
 
         private void Start()
         {
+            var networkScene = NetworkScene.Find(this);
+            roomClient = networkScene.GetComponentInChildren<RoomClient>();
+            myName = roomClient.Me[DisplayNameManager.KEY];
             //network
-            //laserBeam.SetActive(false);
-            //laserLine.enabled = false; //hide
             gameManager = FindObjectOfType<GameManager>();
             body.isKinematic = true;
             context = NetworkScene.Register(this);
@@ -344,6 +353,15 @@ namespace Ubiq.Samples
             yAction = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/y");
             yAction.performed += OnYPressed;
             yAction.Enable();
+
+            //set random transport spot
+            float yaxis = 1.69f;
+            randomTransport.Add(new Vector3(23, yaxis, 40));
+            randomTransport.Add(new Vector3(3.5f, yaxis,5.5f));
+            randomTransport.Add(new Vector3(-7f, yaxis, 26f));
+            randomTransport.Add(new Vector3(6.5f, yaxis, 27f));
+            randomTransport.Add(new Vector3(18f, yaxis, 32f));
+            randomTransport.Add(new Vector3(5.5f, yaxis, 45f));
         }
         private void OnYPressed(InputAction.CallbackContext context)
         {
@@ -399,8 +417,6 @@ namespace Ubiq.Samples
                 laserBeam.transform.position = (firePoint + laserEnd) / 2;
                 laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserLength / 2, laserBeam.transform.localScale.z);
 
-                //laserLine.SetPosition(0, firePoint);
-                //laserLine.SetPosition(1, laserEnd);
             }
             else
             {
@@ -410,15 +426,19 @@ namespace Ubiq.Samples
             {
                 SendMessage();
             }
-            if (ishit == true && Time.time > lastSoundTime)
+            if (ishit == true && Time.time > lastSoundTime && hitAvatarName==myName)
             {
-
+                Debug.Log("IVE BEEN HURTED");
                 if (hitSound != null)
                 {
                     AudioSource.PlayClipAtPoint(hitSound, hitonSpot);
                 }
+                GameObject myself = GameObject.Find("XR Origin Hands (XR Rig)");
+                int randomIndex = Random.Range(0, randomTransport.Count);
+                myself.transform.position = randomTransport[randomIndex];
                 ishit = false;
-                lastSoundTime = Time.time + 3f;
+                hitAvatarName = " ";
+                lastSoundTime = Time.time + 2f;
             }
             if (!gameManager.gameStarted)
             {
@@ -437,6 +457,7 @@ namespace Ubiq.Samples
             public bool isfiring;
             public Vector3 firePoint;
             public Vector3 laserEnd;
+            public string hitavatarName;
         }
 
         private void SendMessage()
@@ -449,6 +470,7 @@ namespace Ubiq.Samples
             message.hitonSpot = hitonSpot;
             message.firePoint = firePoint;
             message.laserEnd = laserEnd;
+            message.hitavatarName = hitAvatarName;
             context.SendJson(message);
         }
 
@@ -464,6 +486,7 @@ namespace Ubiq.Samples
             hitonSpot = msg.hitonSpot;
             firePoint = msg.firePoint;
             laserEnd = msg.laserEnd;
+            hitAvatarName = msg.hitavatarName;
         }
 
 #endif

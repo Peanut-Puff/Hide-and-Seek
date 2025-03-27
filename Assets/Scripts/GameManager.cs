@@ -6,6 +6,7 @@ using Ubiq.Messaging;
 using Ubiq.Rooms;
 using Ubiq.Avatars;
 using System.Collections.Generic;
+using TMPro;
 
 namespace Ubiq.Samples
 {
@@ -128,7 +129,33 @@ namespace Ubiq.Samples
         private IEnumerator EnableWallTemporarily()
         {
             WallPrefab.SetActive(true);
-            yield return new WaitForSeconds(waitTime);
+
+            TextMeshProUGUI hintText = WallPrefab.transform.Find("Collider/Canvas/CatcherHint").GetComponent<TextMeshProUGUI>();
+
+            hintText.gameObject.SetActive(true);
+            float remainingTime = waitTime;
+
+            startGameButton.enabled = false;
+
+            while (remainingTime > 0)
+            {
+                if (remainingTime>=0.5)
+                {
+                    hintText.text = "You are the catcher!\n\nYou can pick the gun\nor enter the park\nafter " + remainingTime.ToString("F0") + " s!";
+                    
+                }
+                else
+                {
+                    hintText.text = "Go!";
+                }
+                yield return null;
+                remainingTime -= Time.deltaTime;
+            }
+
+            startGameButton.enabled = true;
+
+            hintText.text = "";
+            hintText.gameObject.SetActive(false);
             WallPrefab.SetActive(false);
         }
 

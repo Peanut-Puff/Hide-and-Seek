@@ -5,6 +5,7 @@ namespace Ubiq.Samples
 {
     public class WallChange : MonoBehaviour
     {
+
         private void Start()
         {
             gameObject.SetActive(false);
@@ -15,5 +16,6 @@ namespace Ubiq.Samples
         {
            
         }
+
     }
 }
