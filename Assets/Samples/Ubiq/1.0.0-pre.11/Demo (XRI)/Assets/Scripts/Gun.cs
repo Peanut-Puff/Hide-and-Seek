@@ -218,7 +218,8 @@ namespace Ubiq.Samples
             if (!gameManager.gameStarted)
             {
                ForceToDrop(GetComponent<XRGrabInteractable>());
-               StartCoroutine(Wait2Second());
+               transform.position = new Vector3(-6, 3, 54);
+                //StartCoroutine(Wait2Second());
                return;
             }
             // if (!owner && fired)

@@ -471,7 +471,7 @@ namespace Ubiq.Samples
             {
                 ForceToDrop(GetComponent<XRGrabInteractable>());
                 //StartCoroutine(Wait2Second());
-                transform.position = new Vector3(0,0,0);
+                transform.position = new Vector3(-6,3,54);
                return;
             }
         }
