@@ -1,0 +1,10 @@
+# ninja log v5
+1	587	1743123549994002668	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e68b4c2d8f6b7d62
+1	600	1743123550010835489	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	8e421c0af5b04e8f
+2	601	1743123550013469077	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	195b11b8e81a33ea
+3	608	1743123550019315837	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	114ef614691071a0
+1	743	1743123550154021946	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	e9945ca2da73e611
+4	745	1743123550157215619	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	dc862249b48d1d25
+2	878	1743123550289722349	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cde799e9baf49233
+0	904	1743123550315839978	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	28adcc62509b55b
+904	1007	1743123550415631318	/Users/lostroll/Desktop/ClassResources/VirtualEnv/Hide-and-Seek/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6852413v/obj/arm64-v8a/libgame.so	b640df61c4d0a88e

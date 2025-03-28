@@ -14,7 +14,8 @@ namespace Ubiq.Samples
         private Quaternion closedRotation;          
         private Quaternion openRotation;          
         public float rotationAngle = -150f;        
-        public float rotationSpeed = 90f;        
+        public float rotationSpeed = 120f;
+        public float rotationSpeedClose = 250f;
 
         private GameManager gameManager;
         private AvatarManager avatarManager;
@@ -23,7 +24,7 @@ namespace Ubiq.Samples
         private List<Ubiq.Avatars.Avatar> avatars;
         private int count = 0;
         private RoomClient roomClient;
-        private float timer = 2f;
+        private float timer = 1f;
 
         private void Start()
         {
@@ -38,25 +39,6 @@ namespace Ubiq.Samples
 
         private void Update()
         {
-            //if (gameManager == null || avatarManager == null)
-            //{
-            //    return;
-            //}
-            //bool currentGameStarted = gameManager.gameStarted;
-
-            //Quaternion targetRotation = gameManager.gameStarted ? openRotation : closedRotation;
-            //if (gameManager.gameStarted)
-            //{
-            //    count = 1;
-            //}
-
-            //transform.rotation = Quaternion.RotateTowards(
-            //    transform.rotation,
-            //    targetRotation,
-            //    rotationSpeed * Time.deltaTime
-            //);
-
-            //lastGameStarted = currentGameStarted;
 
             if (gameManager == null || avatarManager == null)
             {
@@ -65,14 +47,11 @@ namespace Ubiq.Samples
 
             bool currentGameStarted = gameManager.gameStarted;
 
-            // 监听游戏结束（下降沿）：从 true → false
             if (lastGameStarted && !currentGameStarted)
             {
-                // 游戏刚刚结束，开始延迟旋转
                 StartCoroutine(RotateAfterDelay1());
             }
 
-            // 如果游戏开始了，立即旋转
             if (gameManager.gameStarted)
             {
                 count = 1;
@@ -105,7 +84,7 @@ namespace Ubiq.Samples
                 transform.rotation = Quaternion.RotateTowards(
                     transform.rotation,
                     targetRotation,
-                    rotationSpeed * Time.deltaTime
+                    rotationSpeedClose * Time.deltaTime
                 );
                 yield return null; 
             }

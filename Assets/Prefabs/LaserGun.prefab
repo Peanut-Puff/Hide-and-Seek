@@ -438,11 +438,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooltime: 1
-  laserRadius: 1
+  laserRadius: 0.4
   isfiring: 0
   firePoint: {x: 0, y: 0, z: 0}
   laserBeam: {fileID: 5632313627448983379}
-  laserDuration: 10
+  laserDuration: 1
   laserRange: 5
   MyLeftTrigger: {fileID: 664593973374250958, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   MyRightTrigger: {fileID: -4396522540001259471, guid: c348712bda248c246b8c49b3db54643f, type: 3}
