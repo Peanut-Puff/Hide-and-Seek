@@ -238,7 +238,7 @@ namespace Ubiq.Samples
             //laserBeam.SetActive(false);
             //laserLine.enabled = false;
             isfiring = false;
-            owner = false;
+            owner = true;
         }
         private void FireLaser()
         {
