@@ -201,7 +201,7 @@ namespace Ubiq.Samples
 
                 // need point of ray
                 laserEnd = transform.position + transform.forward * laserRange;
-                firePoint = transform.position;// + transform.forward * 0.6f;
+                firePoint = transform.position + transform.forward * 0.6f;
                                                //laserLine.SetPosition(0, firePoint);
                 laserBeam.transform.position = (firePoint + laserEnd) / 2;
                 laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
@@ -437,7 +437,7 @@ namespace Ubiq.Samples
             }
             if (isfiring) //
             {
-                firePoint = transform.position;// + transform.forward * 0.6f;
+                firePoint = transform.position + transform.forward * 0.6f;
                 laserEnd = firePoint + transform.forward * laserRange;
                 float laserLength = Vector3.Distance(firePoint, laserEnd);
                 laserBeam.transform.rotation = Quaternion.LookRotation(laserEnd - firePoint) * Quaternion.Euler(90, 0, 0); ;
