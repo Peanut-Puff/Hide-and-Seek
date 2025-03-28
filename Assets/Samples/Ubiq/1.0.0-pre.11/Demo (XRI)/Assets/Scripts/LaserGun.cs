@@ -470,7 +470,8 @@ namespace Ubiq.Samples
             if (!gameManager.gameStarted)
             {
                 ForceToDrop(GetComponent<XRGrabInteractable>());
-                StartCoroutine(Wait2Second());
+                //StartCoroutine(Wait2Second());
+                transform.position = new Vector3(0,0,0);
                return;
             }
         }
