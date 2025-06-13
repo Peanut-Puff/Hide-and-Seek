@@ -16,3 +16,5 @@ All scripts related to this project are in the `Assets/Scripts`.
 - Fix machines to earn 1 points. After a successful repair, you cannot repair again for 20s. 
 - Use the Skeleton Hand to change your avatar and hide.
 - Approach the railing to check your current appearance.
+
+The sample video can be checked here:https://youtu.be/vx_qI7KcMQk, with both English and Chinese introduction.
